@@ -51,7 +51,8 @@ function render() {
   $("#seedText").textContent = sp.error ? `Failed: ${sp.error}` : `Drafting answer ${sp.done} of ${sp.total} with Hindsight reflect`;
   $("#seedBtn").disabled = sp.running;
   const running = S.changes.some((c) => c.running);
-  if (sp.running || running) setTimeout(load, 2000);
+  // keep polling while a job runs, and once more if the seed finished between the server's two reads of its state
+  if (sp.running || running || (!seeded && sp.done && !sp.error)) setTimeout(load, sp.running || running ? 2000 : 500);
   if (!seeded) return;
   if (!S.changes.some((c) => c.id === sel)) {
     const pick = S.changes.find((c) => c.running) || S.changes.find((c) => c.status === "applying") || S.changes.find((c) => c.status === "proposed") || S.changes.find((c) => c.status === "applied") || S.changes[0];
