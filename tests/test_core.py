@@ -40,7 +40,7 @@ class FakeHindsight:
 
 @pytest.fixture
 def app(tmp_path):
-    hs = FakeHindsight(verdicts={"Acme": {"status": "affected", "reason": "Mumbai now available", "corrected_answer": "Data can stay in Mumbai."}})
+    hs = FakeHindsight(verdicts={"Acme": {"status": "affected", "false_sentence": "Seeded answer.", "reason": "Mumbai now available", "corrected_answer": "Data can stay in Mumbai."}})
     e = core.Errata(hs, core.Store(str(tmp_path / "t.db")), bank="test-bank",
                     facts={"F01": ("residency", "US only"), "F02": ("backups", "Oregon")},
                     questions=[("Q01", "Acme Fintech (IN)", "Where is our data hosted?", ["F01"], "E1"),
@@ -118,6 +118,24 @@ def test_state_persists_across_store_reopen(app):
     e.apply_change(ch["id"], "F01")
     again = core.Store(e.store.path)
     assert again.answer("Q01")["cited_facts"] == ["F01"] and len(again.impacts(ch["id"])) == 2
+
+
+@pytest.mark.parametrize("verdict,expected", [
+    ({"status": "affected", "false_sentence": "Seeded answer.", "reason": "r", "corrected_answer": "c"}, "affected"),
+    ({"status": "affected", "false_sentence": "a sentence we never sent", "reason": "r", "corrected_answer": "c"}, "needs_review"),
+    ({"status": "affected", "false_sentence": "", "reason": "r", "corrected_answer": "c"}, "needs_review"),
+    ({"status": "unaffected", "false_sentence": "", "reason": "r", "corrected_answer": ""}, "unaffected"),
+])
+def test_affected_requires_quoting_a_sentence_that_was_actually_sent(tmp_path, verdict, expected):
+    hs = FakeHindsight(verdicts={"Acme": verdict})
+    e = core.Errata(hs, core.Store(str(tmp_path / "t.db")), bank="b", facts={"F01": ("residency", "US only")},
+                    questions=[("Q01", "Acme Fintech (IN)", "Where is our data hosted?", ["F01"], "E1")])
+    e.seed()
+    ch = e.propose_change("Mumbai region is GA", "2026-11-03")
+    imp = e.apply_change(ch["id"], "F01")[0]
+    assert imp["verdict"] == expected
+    if expected == "affected":
+        assert imp["quoted"] == "Seeded answer."
 
 
 @pytest.mark.parametrize("note", ["", "   ", "x" * 5001])

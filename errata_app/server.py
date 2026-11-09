@@ -32,7 +32,7 @@ def run_seed():
     try:
         APP.seed(progress=lambda d, t: SEED.update(done=d, total=t))
     except Exception as e:
-        SEED["error"] = f"{type(e).__name__}: {str(e)[:300]}"
+        SEED["error"] = core.describe_error(e)
         traceback.print_exc()
     finally:
         SEED["running"] = False
@@ -113,7 +113,7 @@ class H(BaseHTTPRequestHandler):
             self._send(409, {"error": str(e)})
         except Exception as e:  # upstream (Hindsight) or unexpected: honest error, no fake success
             traceback.print_exc()
-            self._send(502, {"error": f"{type(e).__name__}: {str(e)[:300]}"})
+            self._send(502, {"error": f"Hindsight request failed — {core.describe_error(e)}"})
 
 
 def main():
