@@ -66,16 +66,19 @@ For a "who might be affected?" sweep, over-citing is the right failure direction
 
 My first instinct was to re-retain the fact under the same `document_id`. Hindsight treats that as an upsert: it deletes the old document's memories and writes new ones. The memory IDs that earlier `based_on` citations pointed to would then stop resolving, and my audit trail would quietly break.
 
-So every fact version gets its own document ID (`fact:F01:v1` → `fact:F01:v2`). The old memories are invalidated with a reason rather than deleted (`core.py`, line 223):
+So every fact version gets its own document ID (`fact:F01:v1` → `fact:F01:v2`). The new version is retained *first*, then the old memories are invalidated with a reason rather than deleted (`core.py`, line 233):
 
 ```python
-old_doc, new_doc = f["doc_id"], next_doc_id(f["doc_id"])
+self.hs.retain(self.bank, new_text, document_id=new_doc, tags=["kind:fact", f"fact:{fid}"], ...)
 listed = self.hs.list_memories(self.bank, document_id=old_doc, limit=100)
-for m in (listed or {}).get("items") or []:
+items = (listed or {}).get("items") or []
+for m in items:
     self.hs.invalidate(self.bank, m["id"], f"superseded by change {cid} effective {ch['effective']}: {ch['note'][:200]}")
 ```
 
-`invalidate` is a `PATCH /memories/{id}` with `state: "invalidated"`. The memory is excluded from recall but kept, with its reason, for audit. The high-level Python client doesn't wrap that endpoint, so it's the one raw HTTP call in the codebase.
+The order matters. My first version invalidated first, and an independent review pointed out that a failed retain would leave the fact with no live version at all.
+
+`invalidate` is a `PATCH /memories/{id}` with `state: "invalidated"`. The memory is excluded from recall but kept, with its reason, for audit.
 
 Which fact a free-text note supersedes comes from `recall` over the fact memories. A human confirms the top suggestion before anything changes. In my runs, recall's top hit was the right fact for **4 of 4** change notes.
 
@@ -83,17 +86,17 @@ Does the old version stop leaking into new answers? I asked 8 fresh questions af
 
 ## Where I was wrong
 
-I expected Hindsight to win at *finding* the affected answers. On this dataset it doesn't, at least not alone. A dumb keyword index over question text found all 12 affected answers with fewer false candidates (4 vs 7). That's partly because I wrote the keyword list knowing my own fact sheet, which a real team with 500 facts can't do as easily. Errata uses the union of both, and the measured lesson is that candidates were never the hard part.
+I expected Hindsight to win at *finding* the affected answers. On this dataset it doesn't, at least not alone. A dumb keyword index over question text found all 12 affected answers with fewer false candidates (4 vs 7). That's partly because I wrote the keyword list knowing my own fact sheet, which a real team with 500 facts can't do as easily. Errata uses the union; candidates were never the hard part.
 
 The hard part is the **verdict**. When I ran Errata's verifier (`reflect` with a `response_schema`) on the data-residency change, it found all three truly affected answers. It also flagged four that weren't wrong, including my deliberate trap: the US credit union whose "your data stays in the US" answer is still true. Worse, in an earlier run the same trap had come back correctly *unaffected*. The verdict isn't deterministic.
 
-So I made the verifier earn its "affected" (`core.py`, line 78):
+So I made the verifier earn its "affected" (`core.py`, line 82):
 
 ```python
 def grounded(verdict, sent_text):
     """'affected' only counts if the verifier quoted a sentence that is really in the sent answer."""
     quote = (verdict.get("false_sentence") or "").strip()
-    if verdict.get("status") == "affected" and not (quote and norm(quote) in norm(sent_text)):
+    if verdict.get("status") == "affected" and not (len(norm(quote).split()) >= 2 and norm(quote) in norm(sent_text)):
         return "needs_review", "verifier said affected but did not quote a sentence that was actually sent: " + (verdict.get("reason") or ""), ""
     return verdict["status"], verdict.get("reason", ""), quote if verdict.get("status") == "affected" else ""
 ```
@@ -106,7 +109,7 @@ One accidental test came free. Midway through a run my Cloud credits ran out, an
 
 1. **Capture provenance when you generate, not later.** `reflect`'s `based_on` gave me a dependency record at zero labelling cost, with perfect recall on my set. Store it next to the output.
 2. **Version your document IDs; never upsert evidence.** Invalidate superseded memories with a reason. Your citations stay resolvable and your history stays honest.
-3. **Measure the boring baseline first.** My keyword index embarrassed my assumptions about candidate retrieval, and that told me where the real work was.
+3. **Measure the boring baseline first.** My keyword index embarrassed my assumptions about candidate retrieval.
 4. **Make the model quote its evidence.** A verdict that must point at a sentence that actually exists is cheap to check in code.
 5. **Fail toward a human.** Every error path in Errata ends in *needs review*, and approval is the only way anything changes.
 

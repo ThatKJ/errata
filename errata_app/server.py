@@ -52,9 +52,12 @@ class H(BaseHTTPRequestHandler):
 
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
-        if n > 20000:
-            raise ValueError("request too large")
-        return json.loads(self.rfile.read(n) or b"{}")
+        if n < 0 or n > 20000:
+            raise ValueError("bad request size")
+        b = json.loads(self.rfile.read(n) or b"{}")
+        if not isinstance(b, dict):
+            raise ValueError("JSON object expected")
+        return b
 
     def log_message(self, fmt, *a):  # keep request bodies out of logs
         print(f"{self.command} {self.path.split('?')[0]} -> {a[1] if len(a) > 1 else ''}")
@@ -73,15 +76,20 @@ class H(BaseHTTPRequestHandler):
 
     def do_POST(self):
         p = self.path.split("?")[0]
+        # CSRF / DNS-rebinding guard: only JSON requests addressed to this local server
+        host = (self.headers.get("Host") or "").split(":")[0]
+        if host not in ("127.0.0.1", "localhost") or not (self.headers.get("Content-Type") or "").startswith("application/json"):
+            return self._send(403, {"error": "requests must be application/json to localhost"})
         if not APP:
             return self._send(503, {"error": "HINDSIGHT_API_KEY is not configured on the server. Add it to .env and restart."})
         try:
             b = self._body()
             if p == "/api/seed":
-                if store.meta("seeded_at"):
-                    return self._send(409, {"error": "already seeded"})
                 if not BUSY.acquire(blocking=False):
                     return self._send(409, {"error": "another operation is running"})
+                if store.meta("seeded_at"):
+                    BUSY.release()
+                    return self._send(409, {"error": "already seeded"})
                 SEED.update(running=True, done=0, error=None)
                 threading.Thread(target=run_seed, daemon=True).start()
                 return self._send(202, {"ok": True})
@@ -103,7 +111,10 @@ class H(BaseHTTPRequestHandler):
                     reviewer = (b.get("reviewer") or "").strip()[:80]
                     if not reviewer:
                         raise ValueError("reviewer name required")
-                    return self._send(200, APP.decide(m.group(1), m.group(2), b.get("decision"), reviewer, (b.get("text") or "")[:2000]))
+                    text = b.get("text")
+                    if text is not None and not isinstance(text, str):
+                        raise ValueError("text must be a string")
+                    return self._send(200, APP.decide(m.group(1), m.group(2), b.get("decision"), reviewer, None if text is None else text[:2000]))
                 return self._send(404, {"error": "not found"})
             finally:
                 BUSY.release()
