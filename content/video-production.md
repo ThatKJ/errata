@@ -11,6 +11,9 @@
    The result must be width ≥1920, height ≥1080, and duration between 120 and 300 s.
 6. Optional thumbnail: a team photo plus the text "Find the answers you already sent wrong". Make it in Nano Banana per the guide, with real team photos only.
 
+## Draft asset already generated (not a substitute for the recording)
+`docs/demo/errata-recorded-screens-draft.mp4`: 1920×1080, 152 s, built on 2026-11-10 from four **real screenshots** of the local app on the real demo bank plus three title cards. Every frame is labelled "recorded screenshot"; no live timing is implied; there is no narration. Use it as a storyboard or as the fallback if the live app cannot be shown. ffprobe: `width=1920 height=1080 duration=152.0`.
+
 ## Titles (pick one; no banned word)
 1. Finding customer answers a fact change made wrong (Hindsight memory)
 2. My agent remembers which facts every answer used

@@ -18,6 +18,17 @@
 - Tests: 47 unit/HTTP tests pass (`uv run pytest`). Live tests not re-run (verdict logic untouched).
 - Running server: restarted on the new code (log `errata-server.log`); same DB and bank.
 
+## Stage 08: demo and video assets (DONE as draft)
+- `docs/demo/errata-recorded-screens-draft.mp4` (1920×1080, 152 s): four real screenshots + three title cards, each frame labelled "recorded screenshot, 10 Nov 2026", no narration, no implied live timing. ffprobe verified. The 90-second live route is in `content/pitch-script.md` and `content/video-script.md` (updated to the new UI).
+- Preflight for a live demo: `scripts/hindsight-local.sh status` (healthy), `curl 127.0.0.1:8765/api/state` (`configured: true`), open http://127.0.0.1:8765, select change C1 (recorded run) and open Q02's evidence. One small live action that needs no LLM: open any evidence dialog (live `list_memories`). A live change needs one reflect per candidate (~40 s to 3 min each).
+
+## Stage 09: content (DONE, blocked only on the repo URL)
+- `python3 content/check_content.py`: every check passes except the `[GITHUB_REPO_URL]` placeholder (human: public repo not approved). Article 1,497 words. LinkedIn 707 chars.
+- Article, LinkedIn, Reddit, video script, pitch and publishing checklist agree with run 2, the current code and the new UI. The article does not claim the learning loop.
+
+## Stage 4C: learning experiment (EXPERIMENTAL, isolated bank `errata-learn-*`)
+- Script `scripts/learn_experiment.py`; results `results/local/learn_experiment.json` and `.log` when finished. Ground truth declared in the script before any call. Not integrated into the app; the pitch does not claim learning unless the summary shows the held-out case improving with the experience recalled and the controls intact.
+
 ## Resume commands
 ```bash
 cd ~/Hackathons/HWB/errata && git status && git log --oneline -6
