@@ -305,3 +305,20 @@ def test_ungrounded_quote_is_shown_to_reviewer():
     v = {"status": "affected", "false_sentence": "We host only in Virginia", "reason": "India region", "corrected_answer": "x"}
     verdict, reason, quoted = core.grounded(v, "All data stays in us-east-1.")
     assert verdict == "needs_review" and "We host only in Virginia" in reason and quoted == ""
+
+
+def test_grounding_tolerates_wrapping_quotes_and_markdown():
+    """Found live: local models wrap quotes in "..." or **...**; the sentence is still verbatim from the sent text."""
+    sent = 'Kestrel Ledger does not offer any hosting region in Asia-Pacific; all data is in **us-east-1**.'
+    v = {"status": "affected", "false_sentence": '"Kestrel Ledger does not offer any hosting region in Asia-Pacific"', "reason": "r", "corrected_answer": "x"}
+    assert core.grounded(v, sent)[0] == "affected"
+    v["false_sentence"] = "all data is in us-east-1."
+    assert core.grounded(v, sent)[0] == "affected"
+
+
+def test_unaffected_that_quotes_a_false_sent_sentence_goes_to_review():
+    """Found live: status 'unaffected' while false_sentence quotes a sent sentence as false -> contradictory, never cleared."""
+    sent = "All customer data is stored exclusively in AWS us-east-1."
+    v = {"status": "unaffected", "false_sentence": "All customer data is stored exclusively in AWS us-east-1.", "reason": "The statement is false", "corrected_answer": ""}
+    assert core.grounded(v, sent)[0] == "needs_review"
+    assert core.grounded(dict(v, false_sentence=""), sent)[0] == "unaffected"

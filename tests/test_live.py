@@ -64,3 +64,20 @@ def test_live_change_flags_affected_keeps_trap_and_unrelated(tmp_path):
     assert reopened.answer("Q01")["version"] == 2 and reopened.answer("Q01")["status"] == "correction approved (not sent)"
     mem = (hs.list_memories(bank, document_id="answer:Q01:v2", limit=10) or {}).get("items") or []
     assert mem, "approved correction was not retained into Hindsight"
+
+
+def test_adapter_works_across_threads():
+    """The server calls Hindsight from different threads (seed thread, request threads). hindsight-client's sync
+    wrapper binds its aiohttp session to one event loop, so a shared client failed in the 2nd thread (found live)."""
+    import threading
+    hs, errs = core.LiveHindsight(URL, KEY), []
+    hs.create_bank("errata-test-threads", name="thread check (no data)")
+    hs.list_memories("errata-test-threads", limit=1)
+
+    def other():
+        try:
+            hs.list_memories("errata-test-threads", limit=1)
+        except Exception as e:
+            errs.append(repr(e))
+    t = threading.Thread(target=other); t.start(); t.join()
+    assert not errs, errs

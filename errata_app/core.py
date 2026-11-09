@@ -75,14 +75,17 @@ PUNCT = str.maketrans({"\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"
 
 
 def norm(t):
-    t = unicodedata.normalize("NFKC", t or "").translate(PUNCT)
+    t = re.sub(r'[*`"#]', "", unicodedata.normalize("NFKC", t or "").translate(PUNCT))  # quoting/Markdown marks are not content
     return re.sub(r"\s+", " ", t.strip().lower()).rstrip(".!?")
 
 
 def grounded(verdict, sent_text):
     """'affected' only counts if the verifier quoted a sentence that is really in the sent answer."""
     quote = (verdict.get("false_sentence") or "").strip()
-    if verdict.get("status") == "affected" and not (len(norm(quote).split()) >= 2 and norm(quote) in norm(sent_text)):
+    found = len(norm(quote).split()) >= 2 and norm(quote) in norm(sent_text)
+    if verdict.get("status") == "unaffected" and found:  # says "still true" yet quotes a sent sentence as false
+        return "needs_review", f"contradictory verdict: unaffected, but quoted {json.dumps(quote[:200])} as false: " + (verdict.get("reason") or ""), ""
+    if verdict.get("status") == "affected" and not found:
         return "needs_review", (f"verifier said affected but its quote was not found in the sent answer (quote: {json.dumps(quote[:200])}): "
                                 + (verdict.get("reason") or "")), ""
     return verdict["status"], verdict.get("reason", ""), quote if verdict.get("status") == "affected" else ""
@@ -97,9 +100,15 @@ class LiveHindsight:
     """Thin adapter over the official hindsight-client 1.2.0 (+ one raw PATCH the high-level client doesn't wrap).
     Works against the local open-source server (no key) or Hindsight Cloud (key)."""
     def __init__(self, base_url, api_key=None, timeout=600.0):  # > server LLM timeout (300s), so the server fails first
-        from hindsight_client import Hindsight
-        self.base, self.key = base_url.rstrip("/"), api_key
-        self.c = Hindsight(base_url=self.base, api_key=api_key, timeout=timeout)
+        self.base, self.key, self.timeout, self._local = base_url.rstrip("/"), api_key, timeout, threading.local()
+
+    @property
+    def c(self):
+        """One client per thread: hindsight-client's sync wrapper binds its aiohttp session to one event loop."""
+        if not hasattr(self._local, "c"):
+            from hindsight_client import Hindsight
+            self._local.c = Hindsight(base_url=self.base, api_key=self.key, timeout=self.timeout)
+        return self._local.c
 
     def create_bank(self, bank_id, **k): return as_dict(self.c.create_bank(bank_id, **k))
     def retain_batch(self, bank_id, items, **k): return as_dict(self.c.retain_batch(bank_id, items, **k))

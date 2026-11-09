@@ -25,7 +25,7 @@ _Measured 2026-11-10 (IST) on one MacBook Pro (Apple silicon arm64, 17 GB unifie
 **Restart persistence:** `hindsight-local.sh stop` stopped the server, the health check was confirmed down, then `start` brought it back (warm start ≈16 s). The same bank still listed both memories (`fact:F01:v1`, `fact:F09:v1`).
 
 ## 2. Unit tests: `uv run pytest`
-**33 passed, 1 deselected** (the live test is opt-in). They use a FAKE client for logic. Connection-loss tests use the **real adapter** against a closed port.
+**35 passed, 2 deselected** (live tests are opt-in; `pytest -m live` → 2 passed). They use a FAKE client for logic. Connection-loss tests use the **real adapter** against a closed port.
 New in this migration (each written failing first, except the Markdown case, which already passed and is kept as a regression guard):
 - no `Authorization` header without a key
 - Hindsight unreachable → `needs_review`; propose fails loudly
@@ -80,8 +80,22 @@ The pre-registered labels assumed each answer stays on its question's topic. qwe
 | Double decision / approve unaffected / blank text | unit tests | 409 / 400 / 400 |
 | Foreign Host header on GET | curl | 403 |
 
-## 6. Ollama down
-_PENDING: run after the demo seed finishes (it would interrupt it)._
+## 6. Ollama down (real)
+Hindsight was restarted with its LLM endpoint pointing at a closed port (`127.0.0.1:11999`), so the user's Ollama app kept running. The app's `_verify` was then run on a real bank. Result: Hindsight answered `HTTP 500: Cannot connect to host 127.0.0.1:11999` and Errata returned **`needs_review`** ("verification failed: …") after 14.5 s. Nothing was cleared. The normal server was restored afterwards.
+
+## 6b. Browser end-to-end on the local demo bank (`errata-demo-20261109193639`)
+Driven through Chrome DevTools against the real app. Screenshots are in `docs/screenshots/local-0*.png`.
+1. Seed through the app endpoint (the same one as the button): **30/30 drafted in ≈19 min**. The sent-answer batch is now retained asynchronously.
+2. Paste the Mumbai note → `recall` ranks **F01 › F03 › F02 › F04** (643 ms) → confirm F01.
+3. Supersede & check: **12 candidates verified in ≈20 min** (≈55–184 s each; these drafts are long) → 1 *needs correction* (Q02, grounded quote), 9 *needs review*, 2 *still accurate* (`local-03-impacts.png`).
+4. Review Q02. The dialog shows the sent v1 text, F01 v1 invalidated in Hindsight (valid until 2026-11-03), F01 v2, and the `reflect` `based_on` memory. The draft overclaimed RBI compliance, so the reviewer **edited it** before approving. The answer became v2 `correction approved (not sent)`, and `answer:Q02:v2` was retained into Hindsight.
+5. **Full restart of the app and Hindsight** (both confirmed down, then started): same bank, no re-seed. Q02 is still v2. In Hindsight, `answer:Q02:v2` has 4 valid units, `fact:F01:v1` has 1 invalidated unit and 0 valid ones, and `fact:F01:v2` is valid (`local-05-after-restart-approved.png`). The browser console had no errors.
+
+**Bugs found by this live run and fixed (each with a regression test that fails without the fix):**
+- `hindsight-client`'s sync wrapper binds its aiohttp session to one event loop. A client shared between the seed thread and request threads failed with `Timeout context manager should be used inside a task`. Fix: one client per thread (`LiveHindsight.c`). Live test: `test_adapter_works_across_threads`.
+- Quotes wrapped in `"…"` or Markdown failed grounding. Fix: `norm()` strips quoting and Markdown marks on both sides.
+- Q24 and Q30 came back `unaffected` while their reasons said the statement "is false". Fix: an `unaffected` verdict whose `false_sentence` is found in the sent text becomes `needs_review` ("contradictory verdict"). Neither pair was gold-affected for this change, but it was a silent-clear path.
+The demo verdicts above were produced *before* these two grounding fixes. §4 has been re-run with them (see below).
 
 ## 7. Resources
 - Ollama reports 16 GB for qwen3.5:9b with a 4096-token context (MLX, unified memory).
