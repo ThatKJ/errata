@@ -185,9 +185,9 @@ dialog::backdrop{background:rgba(27,31,36,.5)}
 .note.ok{border-color:var(--green)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media (max-width:1100px){.shell{grid-template-columns:1fr;grid-template-areas:"focus" "rail" "records"}.rail{position:static}.ev-grid{grid-template-columns:1fr}.compare{position:static}}
+@media (max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);grid-template-areas:"focus" "rail" "records"}.rail{position:static}.ev-grid{grid-template-columns:1fr}.compare{position:static}}
 @media (max-width:640px){
-  .topbar{padding:0 16px;height:auto;min-height:52px;flex-wrap:wrap;row-gap:0;padding-bottom:8px;padding-top:8px}.workspace{flex-basis:100%;order:3;font-size:12.5px}
+  .topbar{padding:8px 16px;height:auto;min-height:52px;flex-wrap:wrap;row-gap:2px;gap:10px}.workspace{flex-basis:100%;order:3;font-size:12.5px}.conn{white-space:normal;font-size:12px}
   main{padding:14px 16px 32px}.banner{margin:12px 16px 0}.card{padding:16px}
   .head-row h1{font-size:18px}.factshift{grid-template-columns:1fr}
   .row{grid-template-columns:1fr;gap:6px}.row .act{flex-direction:row;align-items:center;justify-content:flex-start}
