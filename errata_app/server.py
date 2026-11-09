@@ -19,6 +19,7 @@ HS_URL = CFG["HINDSIGHT_BASE_URL"] or "http://127.0.0.1:8888"  # local open-sour
 HS = core.LiveHindsight(HS_URL, CFG["HINDSIGHT_API_KEY"] or None)
 APP = core.Errata(HS, store, BANK, FACTS, QUESTIONS)
 SEED = {"running": False, "done": 0, "total": len(QUESTIONS), "error": None}
+JOB = {"change": None, "error": None}  # the one background verification job (one local LLM call at a time)
 BUSY = threading.Lock()  # one mutating Hindsight workflow at a time (demo-scale app)
 
 
@@ -29,10 +30,19 @@ def hindsight_up():
         return False
 
 
+def change_view(c):
+    imps = store.impacts(c["id"])
+    verified = [i["verified_at"] for i in imps if i.get("verified_at")]
+    return {**c, "impacts": imps, "progress": APP.progress(c["id"]), "running": JOB["change"] == c["id"],
+            "job_error": JOB["error"] if JOB["change"] == c["id"] else None,
+            # when this change's verdicts were produced; rows from before this column existed fall back to the audit event
+            "verified_at": max(verified) if verified else APP._event_time("apply_change", c["id"])}
+
+
 def state():
     return {"configured": hindsight_up(), "hindsight": "local" if HS_URL.startswith(("http://127.0.0.1", "http://localhost")) else "remote", "bank": BANK, "seeded_at": store.meta("seeded_at"), "seed": SEED,
             "facts": store.facts(), "answers": store.answers(),
-            "changes": [{**c, "impacts": store.impacts(c["id"])} for c in reversed(store.changes())],
+            "changes": [change_view(c) for c in reversed(store.changes())],
             "events": store.events(30)}
 
 
@@ -45,6 +55,23 @@ def run_seed():
     finally:
         SEED["running"] = False
         BUSY.release()
+
+
+def run_verify(cid):
+    """Background job: one verdict at a time, each persisted as it lands. Holds BUSY until done."""
+    try:
+        APP.verify_pending(cid)
+    except Exception as e:
+        JOB["error"] = core.describe_error(e)
+        traceback.print_exc()
+    finally:
+        JOB["change"] = None
+        BUSY.release()
+
+
+def start_verify(cid):
+    JOB.update(change=cid, error=None)
+    threading.Thread(target=run_verify, args=(cid,), daemon=True).start()
 
 
 class H(BaseHTTPRequestHandler):
@@ -76,6 +103,12 @@ class H(BaseHTTPRequestHandler):
             return self._send(403, {"error": "localhost only"})
         if p == "/api/state":
             return self._send(200, state())
+        m = re.fullmatch(r"/api/changes/(C\d+)/impacts/(Q\d+)/evidence", p)
+        if m:
+            try:
+                return self._send(200, APP.evidence(m.group(1), m.group(2)))
+            except ValueError as e:
+                return self._send(404, {"error": str(e)})
         if p == "/favicon.ico":
             self.send_response(204); self.end_headers(); return
         f = {"/": "index.html", "/app.js": "app.js", "/app.css": "app.css"}.get(p)
@@ -103,6 +136,7 @@ class H(BaseHTTPRequestHandler):
                 return self._send(202, {"ok": True})
             if not BUSY.acquire(blocking=False):
                 return self._send(409, {"error": "another operation is running"})
+            BUSY_HELD_BY_JOB = False  # a started background job owns the lock and releases it when done
             try:
                 if p == "/api/changes":
                     eff = b.get("effective") or datetime.now(timezone.utc).date().isoformat()
@@ -113,7 +147,18 @@ class H(BaseHTTPRequestHandler):
                 if m:
                     if b.get("fact_id") not in FACTS:
                         raise ValueError("unknown fact_id")
-                    return self._send(200, {"impacts": APP.apply_change(m.group(1), b["fact_id"])})
+                    APP.supersede(m.group(1), b["fact_id"])     # fast, no LLM: new version live, old invalidated
+                    start_verify(m.group(1))                     # slow: one reflect per candidate, in the background
+                    BUSY_HELD_BY_JOB = True
+                    return self._send(202, {"change": m.group(1), "progress": APP.progress(m.group(1))})
+                m = re.fullmatch(r"/api/changes/(C\d+)/resume", p)
+                if m:  # finish an interrupted verification (server restarted mid-run); nothing is re-verified
+                    ch = store.change(m.group(1))
+                    if not ch or ch["status"] != "applying":
+                        raise core.Conflict(f"change {m.group(1)} is not awaiting verification")
+                    start_verify(m.group(1))
+                    BUSY_HELD_BY_JOB = True
+                    return self._send(202, {"change": m.group(1), "progress": APP.progress(m.group(1))})
                 m = re.fullmatch(r"/api/changes/(C\d+)/impacts/(Q\d+)/decision", p)
                 if m:
                     reviewer = (b.get("reviewer") or "").strip()[:80]
@@ -125,7 +170,8 @@ class H(BaseHTTPRequestHandler):
                     return self._send(200, APP.decide(m.group(1), m.group(2), b.get("decision"), reviewer, None if text is None else text[:2000]))
                 return self._send(404, {"error": "not found"})
             finally:
-                BUSY.release()
+                if not BUSY_HELD_BY_JOB:
+                    BUSY.release()
         except (ValueError, json.JSONDecodeError) as e:
             self._send(400, {"error": str(e)})
         except core.Conflict as e:

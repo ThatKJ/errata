@@ -141,10 +141,11 @@ class Store:
         create table if not exists impacts(change_id text, qid text, sources text, verdict text, reason text, draft text, evidence text,
             decision text, reviewer text, decided_at text, verify_ms int, primary key(change_id, qid));
         create table if not exists events(at text, kind text, detail text);""")
-        try:
-            self.db.execute("alter table impacts add column quoted text")
-        except sqlite3.OperationalError:
-            pass  # column already exists
+        for col in ("quoted text", "verified_at text"):  # additive migrations; existing rows keep NULL
+            try:
+                self.db.execute(f"alter table impacts add column {col}")
+            except sqlite3.OperationalError:
+                pass  # column already exists
 
     def x(self, sql, args=()):
         with self.lock:
@@ -232,8 +233,19 @@ class Errata:
         self.store.log("propose_change", {"id": cid, "suggested": ranked[:3]})
         return self.store.change(cid)
 
-    # ---- 3. apply: supersede fact version, verify every dependent answer --------
-    def apply_change(self, cid, fid):
+    # ---- 3. apply: supersede fact version, then verify every dependent answer -----
+    def candidates(self, fid):
+        """Sent answers linked to a fact: Hindsight citation UNION keyword index; draft-failed answers always (no provenance)."""
+        out = []
+        for a in self.store.answers():
+            sources = (["hindsight_citation"] if fid in a["cited_facts"] else []) + (["dependency_index"] if fid in a["index_deps"] else []) \
+                + (["draft_failed"] if not a["text"] else [])  # no text = no provenance: always route to a human
+            if sources:
+                out.append({"qid": a["qid"], "sources": sources})
+        return out
+
+    def supersede(self, cid, fid):
+        """Step 1 (fast, no LLM): lock the change, retain the new fact version, invalidate the old one. Leaves status 'applying'."""
         ch, f = self.store.change(cid), self.store.fact(fid)
         if not ch or not f:
             raise ValueError("unknown change or fact")
@@ -256,23 +268,101 @@ class Errata:
             raise
         if not items:
             self.store.log("warning", {"id": cid, "msg": f"0 memories found for {old_doc} to invalidate; old version may still be live"})
-        hist = f["history"] + [{"version": f["version"], "text": f["text"], "doc_id": old_doc, "superseded_by_change": cid, "valid_to": ch["effective"]}]
+        hist = f["history"] + [{"version": f["version"], "text": f["text"], "doc_id": old_doc, "superseded_by_change": cid, "valid_to": ch["effective"],
+                                "invalidated_memories": len(items)}]
         self.store.x("update facts set version=?, text=?, doc_id=?, updated_at=?, history=? where fid=?",
                      (f["version"] + 1, new_text, new_doc, ch["effective"], json.dumps(hist), fid))
+        self.store.log("supersede", {"id": cid, "fact": fid, "invalidated": len(items), "candidates": len(self.candidates(fid))})
+
+    def verify_pending(self, cid):
+        """Step 2 (one LLM call per candidate): verify every candidate not yet judged. Each verdict is persisted as it lands,
+        so an interrupted run resumes here without repeating work. Marks the change 'applied' when nothing is pending."""
+        ch = self.store.change(cid)
+        if not ch or ch["status"] != "applying":
+            raise Conflict(f"change {cid} is {ch['status'] if ch else 'unknown'}, not applying")
+        fid = ch["applied_fact"]
+        f = self.store.fact(fid)
+        old = f["history"][-1] if f["history"] else {}
+        nothing_invalidated = old.get("superseded_by_change") == cid and old.get("invalidated_memories") == 0
+        done = {i["qid"] for i in self.store.impacts(cid)}
         out = []
-        for a in self.store.answers():
-            sources = (["hindsight_citation"] if fid in a["cited_facts"] else []) + (["dependency_index"] if fid in a["index_deps"] else []) \
-                + (["draft_failed"] if not a["text"] else [])  # no text = no provenance: always route to a human
-            if not sources:
+        for c in self.candidates(fid):
+            if c["qid"] in done:
                 continue
-            v = self._verify(cid, ch, fid, a, sources)
-            if not items and v["verdict"] == "unaffected":  # old version may still be live in memory: verdict untrustworthy
-                v.update(verdict="needs_review", reason=f"old fact version {old_doc} was not found to invalidate; " + v["reason"])
-                self.store.x("update impacts set verdict=?, reason=? where change_id=? and qid=?", (v["verdict"], v["reason"], cid, a["qid"]))
+            v = self._verify(cid, ch, fid, self.store.answer(c["qid"]), c["sources"])
+            if nothing_invalidated and v["verdict"] == "unaffected":  # old version may still be live in memory: verdict untrustworthy
+                v.update(verdict="needs_review", reason=f"old fact version {old.get('doc_id')} was not found to invalidate; " + v["reason"])
+                self.store.x("update impacts set verdict=?, reason=? where change_id=? and qid=?", (v["verdict"], v["reason"], cid, c["qid"]))
             out.append(v)
-        self.store.x("update changes set applied_fact=?, status='applied' where id=?", (fid, cid))
-        self.store.log("apply_change", {"id": cid, "fact": fid, "candidates": len(out), "affected": sum(i["verdict"] == "affected" for i in out)})
+        self.store.x("update changes set status='applied' where id=?", (cid,))
+        imps = self.store.impacts(cid)
+        self.store.log("apply_change", {"id": cid, "fact": fid, "candidates": len(imps), "affected": sum(i["verdict"] == "affected" for i in imps)})
         return out
+
+    def apply_change(self, cid, fid):
+        """supersede + verify_pending in one synchronous call (tests, eval script)."""
+        self.supersede(cid, fid)
+        return self.verify_pending(cid)
+
+    def progress(self, cid):
+        ch = self.store.change(cid)
+        if not ch or not ch["applied_fact"]:
+            return None
+        done = {i["qid"] for i in self.store.impacts(cid)}
+        cands = [c["qid"] for c in self.candidates(ch["applied_fact"])]
+        return {"candidates": len(cands), "verified": len(done), "pending": [q for q in cands if q not in done]}
+
+    # ---- evidence time machine: stored facts + live memory state, no LLM -----------
+    def evidence(self, cid, qid):
+        """Everything a reviewer needs to judge one (change, answer) pair, in time order. Stored rows come from SQLite;
+        memory state (ids, invalidation reason/time) is read live from Hindsight and labelled as such. No generation."""
+        ch = self.store.change(cid)
+        imp = next((i for i in self.store.impacts(cid) if i["qid"] == qid), None) if ch else None
+        a = self.store.answer(qid)
+        if not ch or not imp or not a:
+            raise ValueError("unknown change or impact")
+        fid = ch["applied_fact"]
+        f = self.store.fact(fid)
+        old = next((h for h in f["history"] if h.get("superseded_by_change") == cid), f["history"][-1] if f["history"] else None)
+        live, live_error = True, None
+
+        def mem(doc, **k):
+            nonlocal live, live_error
+            if not live:
+                return None
+            try:
+                items = (self.hs.list_memories(self.bank, document_id=doc, limit=20, **k) or {}).get("items") or []
+                return [{"id": m.get("id"), "state": m.get("state"), "text": (m.get("text") or "")[:300], "invalidation_reason": m.get("invalidation_reason"),
+                         "invalidated_at": m.get("invalidated_at")} for m in items]
+            except Exception as e:
+                live, live_error = False, describe_error(e)
+                return None
+        sent_v = next((h for h in a["history"] if h.get("replaced_by_change") == cid), None)  # original text if already corrected
+        sent_text = sent_v["text"] if sent_v else a["text"]
+        sent_version = sent_v["version"] if sent_v else a["version"]
+        quote_found = bool(imp["quoted"]) and norm(imp["quoted"]) in norm(sent_text)
+        tl = [{"kind": "fact_retained", "at": "2026-08-01", "doc_id": old["doc_id"] if old else f["doc_id"], "text": old["text"] if old else f["text"],
+               "version": old["version"] if old else f["version"]},
+              {"kind": "answer_sent", "at": a["sent_at"], "doc_id": f"answer:{qid}:v{sent_version}", "text": sent_text, "version": sent_version,
+               "memories": mem(f"answer:{qid}:v{sent_version}")},
+              {"kind": "change_effective", "at": ch["effective"], "note": ch["note"], "change_id": cid, "old_doc_id": old["doc_id"] if old else None,
+               "new_doc_id": f["doc_id"], "new_text": f["text"], "new_version": mem(f["doc_id"], state="valid"),
+               "invalidated": mem(old["doc_id"], state="invalidated") if old else None, "still_valid": mem(old["doc_id"], state="valid") if old else None},
+              {"kind": "verified", "at": imp["verified_at"] or self._event_time("apply_change", cid), "verdict": imp["verdict"], "reason": imp["reason"],
+               "draft": imp["draft"], "verify_ms": imp["verify_ms"], "based_on": imp["evidence"], "recorded": not imp["verified_at"]}]
+        if imp["decision"]:
+            tl.append({"kind": "decided", "at": imp["decided_at"], "decision": imp["decision"], "reviewer": imp["reviewer"],
+                       "retained_as": f"answer:{qid}:v{a['version']}" if imp["decision"] == "approve" else f"decision:{cid}:{qid}",
+                       "memories": mem(f"answer:{qid}:v{a['version']}" if imp["decision"] == "approve" else f"decision:{cid}:{qid}"),
+                       "final_text": a["text"] if imp["decision"] == "approve" else None, "status": a["status"]})
+        return {"change_id": cid, "qid": qid, "deal": a["deal"], "question": a["question"], "fact_id": fid, "provenance": imp["sources"],
+                "quoted": imp["quoted"] or "", "quote_found": quote_found, "timeline": tl, "live": live, "live_error": live_error}
+
+    def _event_time(self, kind, cid):
+        for ev in self.store.events(500):
+            if ev["kind"] == kind and json.loads(ev["detail"]).get("id") == cid:
+                return ev["at"]
+        return None
 
     def _verify(self, cid, ch, fid, a, sources):
         t = time.time()
@@ -292,8 +382,8 @@ class Errata:
             verdict, reason, quoted, draft, ev = "needs_review", f"verification failed: {describe_error(e)}", "", "", []
         if not a["text"]:
             verdict, reason = "needs_review", "original answer text missing (draft failed at seed); human must check"
-        self.store.x("insert or replace into impacts(change_id,qid,sources,verdict,reason,draft,evidence,verify_ms,quoted) values(?,?,?,?,?,?,?,?,?)",
-                     (cid, a["qid"], json.dumps(sources), verdict, reason, draft, json.dumps(ev), round((time.time() - t) * 1000), quoted))
+        self.store.x("insert or replace into impacts(change_id,qid,sources,verdict,reason,draft,evidence,verify_ms,quoted,verified_at) values(?,?,?,?,?,?,?,?,?,?)",
+                     (cid, a["qid"], json.dumps(sources), verdict, reason, draft, json.dumps(ev), round((time.time() - t) * 1000), quoted, now()))
         return {"qid": a["qid"], "sources": sources, "verdict": verdict, "reason": reason, "draft": draft, "evidence": ev, "quoted": quoted}
 
     # ---- 4. human decision, written back to memory ------------------------------
