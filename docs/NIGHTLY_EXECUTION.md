@@ -27,7 +27,13 @@
 - Article, LinkedIn, Reddit, video script, pitch and publishing checklist agree with run 2, the current code and the new UI. The article does not claim the learning loop.
 
 ## Stage 4C: learning experiment (EXPERIMENTAL, isolated bank `errata-learn-*`)
-- Script `scripts/learn_experiment.py`; results `results/local/learn_experiment.json` and `.log` when finished. Ground truth declared in the script before any call. Not integrated into the app; the pitch does not claim learning unless the summary shows the held-out case improving with the experience recalled and the controls intact.
+- Script `scripts/learn_experiment.py`; results `results/local/learn_experiment.json` (bank `errata-learn-20261109234523`, finished 2026-11-09T23:56:34+00:00). Ground truth declared in the script before any call. 2 samples per held-out case, one run, qwen3.5:9b, ~32–74 s per verdict.
+- **Result (verbatim from the summary):**
+  - L2, held-out similar case for the *same* customer (truth unaffected): before 0/2 matched truth (`needs_review`, `affected`); **after 2/2 `unaffected`, and the retained decision `decision:C1:L1` was in `based_on` both times.** The reasons cite it ("The reviewer decision explicitly confirms that backup and disaster-recovery copies are governed by the backup fact…").
+  - L3, control (truth affected): `affected` 2/2 before and 2/2 after. **Never cleared**, even with the experience recalled.
+  - L4, cross-customer (Acme, truth unaffected): before `affected` 2/2 (verifier error); after `affected` 1, `needs_review` 1; **Bharat's decision was recalled in 1 of 2 Acme verifications.** No false clear, but the experience is not scoped to the customer at retrieval time.
+- **Verdict: EXPERIMENTAL, not integrated.** The mechanism works end to end (retain → recall in `based_on` → verdict changes toward ground truth on the held-out case, control intact), but n=2 per case in one run, and the cross-customer recall means a customer-scoped tag filter is required before this could ship without inventing a global rule from one customer's context. Not in the main pitch; may be described as an experiment with these exact numbers.
+- Memory during this run: Ollama loaded qwen3.5:9b (7.8 GB, 100% GPU); swap grew from 2.8 GB used of 4 GB to 15.7 GB used of 16 GB with 19% free memory. One inference at a time was respected; nothing else heavy was started. The model unloads itself after ~5 min idle.
 
 ## Resume commands
 ```bash

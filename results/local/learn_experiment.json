@@ -1,0 +1,249 @@
+{
+ "bank": "errata-learn-20261109234523",
+ "started": "2026-11-09T23:45:23+00:00",
+ "truth": {
+  "L1": "unaffected",
+  "L2": "unaffected",
+  "L3": "affected",
+  "L4": "unaffected"
+ },
+ "samples_per_case": 2,
+ "before": {
+  "L1": [
+   {
+    "verdict": "needs_review",
+    "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The sentence \\\"Kestrel Ledger customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA)\\\" is now false because, effective 2026-11-03, new Indian customers' data is\"): Effective 2026-",
+    "quoted": "",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 74014
+   }
+  ],
+  "L2": [
+   {
+    "verdict": "needs_review",
+    "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"While the primary customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA) ...\"): The previously sent answer asserted that Bharat Microfinance's primary data was stored exclusively ",
+    "quoted": "",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 39045
+   },
+   {
+    "verdict": "affected",
+    "reason": "The primary customer data for Indian customers like Bharat Microfinance is now stored and processed by default in the Mumbai region (AWS ap-south-1), not exclusively in us-east-1.",
+    "quoted": "While the primary customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA)...",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 32062
+   }
+  ],
+  "L3": [
+   {
+    "verdict": "affected",
+    "reason": "The earlier statement claiming exclusive use of AWS us-east-1 is contradicted by the current product fact (effective 2026-11-03) which designates Mumbai (AWS ap-south-1) as the default region for new Indian customers. Since Acme Fintech (IN) is an Indian customer, the previous answer's assertion of ",
+    "quoted": "\"Kestrel Ledger customer data is stored and processed exclusively in the **AWS us-east-1 region (N. Virginia, USA)**. This is the only hosting region offered for primary data operations.\"",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 32151
+   },
+   {
+    "verdict": "affected",
+    "reason": "The Mumbai region (AWS ap-south-1) reached GA status effective 2026-11-03, making us-east-1 no longer the exclusive location for Indian customers.",
+    "quoted": "Kestrel Ledger customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA)",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 49991
+   }
+  ],
+  "L4": [
+   {
+    "verdict": "affected",
+    "reason": "The Mumbai region (AWS ap-south-1) is now GA and offers hosting in India, so the assertion that no other hosting regions are offered is incorrect for Indian customers like Acme Fintech (IN).",
+    "quoted": "No other hosting regions are offered for production or backup storage",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 31172
+   },
+   {
+    "verdict": "affected",
+    "reason": "The previously sent answer is materially incomplete for Acme Fintech (IN) because it asserts that us-east-1 is the exclusive primary production environment and that no other regions are offered, whereas the current fact effective from 2026-11-03 states that Mumbai region (AWS ap-south-1) is now GA a",
+    "quoted": "While the primary production environment and all live customer data are hosted exclusively in AWS us-east-1 (N. Virginia, USA), the backup copies themselves are replicated to the us-west-2 region to s",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 33610
+   }
+  ]
+ },
+ "after": {
+  "L2": [
+   {
+    "verdict": "unaffected",
+    "reason": "The reviewer decision explicitly confirms that backup and disaster-recovery copies are governed by the backup fact (Oregon, 35 days), not by the primary hosting region. The new fact about Mumbai does not retroactively change the DR configuration for existing arrangements.",
+    "quoted": "",
+    "based_on": [
+     "decision:C1:L1",
+     "fact:F01:v2"
+    ],
+    "experience_recalled": true,
+    "ms": 41602
+   },
+   {
+    "verdict": "unaffected",
+    "reason": "The reviewer decision on 2026-11-09 explicitly rejected the proposed correction regarding fact F01. The original statement that Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days remains true because the India region launch does not change where t",
+    "quoted": "",
+    "based_on": [
+     "decision:C1:L1",
+     "fact:F01:v2"
+    ],
+    "experience_recalled": true,
+    "ms": 32793
+   }
+  ],
+  "L3": [
+   {
+    "verdict": "affected",
+    "reason": "The answer claims Kestrel Ledger data is stored exclusively in us-east-1 and that this is the only hosting region offered, which directly contradicts the current fact effective as of November 3, 2026, stating that new Indian customers' data is stored and processed in India (AWS ap-south-1/Mumbai) by",
+    "quoted": "\"Kestrel Ledger customer data is stored and processed exclusively in the **AWS us-east-1 region (N. Virginia, USA)**. This is the only hosting region offered for primary data operations.\"",
+    "based_on": [
+     "fact:F01:v2",
+     "decision:C1:L1"
+    ],
+    "experience_recalled": true,
+    "ms": 45916
+   },
+   {
+    "verdict": "affected",
+    "reason": "The sent answer asserts that us-east-1 is the *only* hosting region and data is stored *exclusively* there, which contradicts the current fact effective 2026-11-03 stating that new Indian customers' data is stored and processed in India by default.",
+    "quoted": "Kestrel Ledger customer data is stored and processed exclusively in the **AWS us-east-1 region (N. Virginia, USA)**. This is the only hosting region offered for primary data operations.",
+    "based_on": [
+     "fact:F01:v2",
+     "decision:C1:L1"
+    ],
+    "experience_recalled": true,
+    "ms": 38528
+   }
+  ],
+  "L4": [
+   {
+    "verdict": "affected",
+    "reason": "Effective 2026-11-03, a new Mumbai region (AWS ap-south-1) went GA, establishing that new Indian customers' data is stored and processed in India by default. If Acme Fintech qualifies as a 'new Indian customer', their primary live data resides in AWS ap-south-1, not us-east-1.",
+    "quoted": "While the primary production environment and all live customer data are hosted exclusively in AWS us-east-1 (N. Virginia, USA)",
+    "based_on": [
+     "fact:F01:v2"
+    ],
+    "experience_recalled": false,
+    "ms": 45147
+   },
+   {
+    "verdict": "needs_review",
+    "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The sent answer is materially incomplete for Acme Fintech (IN) because it asserts that primary production data and backups are hosted exclusively in AWS us-east-1\"): Fact F01 (effective 2026-11-03) states that new Indian ",
+    "quoted": "",
+    "based_on": [
+     "fact:F01:v2",
+     "decision:C1:L1"
+    ],
+    "experience_recalled": true,
+    "ms": 39350
+   }
+  ]
+ },
+ "log": [
+  "seed 94s {'L1': ['F02', 'F01', 'F12'], 'L2': ['F12', 'F02', 'F01'], 'L3': ['F01', 'F02'], 'L4': ['F02', 'F01']}",
+  "recall -> ['F01', 'F02', 'F12']",
+  "F01 superseded (v1 invalidated, v2 retained)",
+  "before L1 ['needs_review'] ms [74014]",
+  "before L2 ['needs_review', 'affected'] ms [39045, 32062]",
+  "before L3 ['affected', 'affected'] ms [32151, 49991]",
+  "before L4 ['affected', 'affected'] ms [31172, 33610]",
+  "experience retained as decision:C1:L1",
+  "experience memories: 1",
+  "after  L2 ['unaffected', 'unaffected'] recalled [True, True]",
+  "after  L3 ['affected', 'affected'] recalled [True, True]",
+  "after  L4 ['affected', 'needs_review'] recalled [False, True]"
+ ],
+ "experience_memories": [
+  {
+   "id": "3190647a-db9d-4b68-b194-230233c10542",
+   "text": "Reviewer learn-experiment rejected Errata's proposed correction to answer L1 for Bharat Microfinance (IN) regarding change C1; the original answer stands because backup and disaster-recovery copies ar"
+  }
+ ],
+ "summary": {
+  "L2": {
+   "truth": "unaffected",
+   "before": {
+    "matches_truth": 0,
+    "needs_review": 1,
+    "false_clear": 0,
+    "recalled": 0,
+    "n": 2
+   },
+   "after": {
+    "matches_truth": 2,
+    "needs_review": 0,
+    "false_clear": 0,
+    "recalled": 2,
+    "n": 2
+   }
+  },
+  "L3": {
+   "truth": "affected",
+   "before": {
+    "matches_truth": 2,
+    "needs_review": 0,
+    "false_clear": 0,
+    "recalled": 0,
+    "n": 2
+   },
+   "after": {
+    "matches_truth": 2,
+    "needs_review": 0,
+    "false_clear": 0,
+    "recalled": 2,
+    "n": 2
+   }
+  },
+  "L4": {
+   "truth": "unaffected",
+   "before": {
+    "matches_truth": 0,
+    "needs_review": 0,
+    "false_clear": 0,
+    "recalled": 0,
+    "n": 2
+   },
+   "after": {
+    "matches_truth": 0,
+    "needs_review": 1,
+    "false_clear": 0,
+    "recalled": 1,
+    "n": 2
+   }
+  },
+  "L1": {
+   "truth": "unaffected",
+   "before": {
+    "matches_truth": 0,
+    "needs_review": 1,
+    "false_clear": 0,
+    "recalled": 0,
+    "n": 1
+   }
+  }
+ },
+ "verdict_on_experiment": "EXPERIMENTAL: see summary; a held-out improvement requires L2 after > L2 before with experience_recalled, L3 never cleared, and L4 not recalling Bharat's decision",
+ "finished": "2026-11-09T23:56:34+00:00"
+}

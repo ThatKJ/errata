@@ -78,6 +78,7 @@ uv run python scripts/eval_local.py                      # ground-truth eval of 
 - Verdicts come from an LLM (Hindsight `reflect`). Every verdict is reviewable, and nothing is sent automatically.
 - Latency is local-LLM-bound (tens of seconds per `reflect` on a laptop). The one-time seed of 30 drafts takes tens of minutes.
 - Single user, single workspace, local SQLite. No authentication.
+- Human decisions are retained into Hindsight, but the verifier does not yet recall them. An isolated experiment (`scripts/learn_experiment.py`, `results/local/learn_experiment.json`) showed a retained rejection changing a held-out verdict for the same customer (2/2) while a control stayed flagged, and also being recalled once for a different customer. That cross-customer recall is why it is not integrated: **experimental, not a learning claim.**
 
 ## License
 MIT
