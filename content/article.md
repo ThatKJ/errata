@@ -105,8 +105,8 @@ The schema now requires the exact sentence from the sent answer that became fals
 
 Then I re-ran everything locally: all 30 answers and all 4 changes through the real app pipeline, against 12 affected answers I had labelled in advance. The honest numbers:
 
-- **False clears: 0 of 12.** Every truly affected answer reached a human. 6 were marked *needs correction* and 6 *needs review*, the latter because the model's quote didn't match the sent text verbatim.
-- **Precision of "needs correction": 0.50.** The six "false positives" surprised me: each quotes a sent sentence that really is stale. The local model's chatty answers restated neighbouring facts, like "No other third parties process customer data, including any analytics vendors." inside a billing answer. My labels assumed answers stay on topic. That assumption was wrong, not the verifier.
+- **False clears: 0 of 12, in two runs.** Every truly affected answer reached a human: 6 marked *needs correction*, 6 *needs review* because the model's quote didn't match the sent text.
+- **Precision of "needs correction": 0.55.** The "false positives" surprised me: four of five quote a sent sentence that really is stale. The local model's chatty answers restated neighbouring facts, like "No other third parties process customer data, including any analytics vendors." inside a billing answer. My labels assumed answers stay on topic. That assumption was wrong, not the verifier.
 
 A verification costs about 38 seconds on a laptop, which is fine for a batch job that runs once per change.
 

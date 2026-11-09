@@ -24,7 +24,7 @@
 ## 3:25–4:15 — Before vs. after (measured, synthetic, small n; docs/LOCAL_VALIDATION_REPORT.md, earlier Cloud spike in docs/MEMORY_PROOF.md)
 - `based_on` captured **32/32** true fact dependencies (precision 0.78).
 - New questions after 4 changes: **Hindsight 8/8**, plain RAG over the same docs 4/8, stateless 2/8.
-- Local full-pipeline eval (30 answers, 4 changes, 12 pre-labelled stale pairs): **0 of 12 silently cleared**, recall mapping 4/4, "affected" precision 0.50; every false alarm quoted a really-stale sent sentence.
+- Local full-pipeline eval (30 answers, 4 changes, 12 pre-labelled stale pairs): **0 of 12 silently cleared** (two runs), recall mapping 4/4, "affected" precision 0.55; 4 of 5 false alarms quoted a really-stale sent sentence, 1 was a real error.
 - Honest: a keyword index found the same candidates on this small fact sheet. The verdict is the hard part. Our verifier over-flagged, so verdicts must quote the false sentence and a human approves.
 
 ## 4:15–5:00 — Architecture, team, limitations, next

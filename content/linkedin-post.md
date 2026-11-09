@@ -11,7 +11,7 @@ I built Errata to find them, on Hindsight agent memory running fully local (open
 - Version fact IDs; invalidate old memories, never overwrite evidence.
 - Every verdict must quote the sentence that went stale, or it goes to a human.
 
-Result on my synthetic test (30 sent answers, 4 changes): 0 of 12 stale answers slipped through. Half needed human review, and the "false alarms" were real stale sentences I hadn't labelled.
+Result on my synthetic test (30 sent answers, 4 changes): 0 of 12 stale answers slipped through. Half needed human review, and most "false alarms" were real stale sentences I hadn't labelled.
 
 Code: https://github.com/ThatKJ/errata
 

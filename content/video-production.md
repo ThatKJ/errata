@@ -3,8 +3,9 @@
 ## Recording (human)
 1. Close notifications (Focus mode). Use one browser window at 1920×1080 with nothing else on screen.
 2. Recorder: QuickTime (File → New Screen Recording; region 1920×1080), or OBS if installed. Turn the mic on and do a 10 s test.
-3. Run the app: `cd errata && uv run python -m errata_app.server`, then open http://127.0.0.1:8765.
-4. Follow `content/video-script.md`. If the 30–45 s verification wait feels long, cut it in editing and say on screen "(wait shortened)".
+3. Start the local stack: `cd errata && scripts/hindsight-local.sh start && uv run python -m errata_app.server`, then open http://127.0.0.1:8765. The workspace must already be seeded (≈19 min, do it beforehand), and a fresh change must not yet be posted.
+   - The demo bank `errata-demo-20261109193639` already has C1 (Mumbai) applied and Q02 approved. To record the change step live, either post a **different** change (for example the Snowflake subprocessor note from `errata_app/seed_data.py` CHANGES E2), or reseed into a fresh DB first: `ERRATA_DB=errata-video.db uv run python -m errata_app.server`, then click Load.
+4. Follow `content/video-script.md`. Locally, **Supersede & check** takes ≈15–20 min for ~12 candidates (measured). Record the click and the first verdicts appearing, pause the recording, and resume when it finishes. Show "(≈18 min skipped, local LLM)" on screen. Never imply it is instant.
 5. Before upload, verify the export with real numbers:
    `ffprobe -v error -show_entries stream=width,height -show_entries format=duration -of default=nw=1 errata-demo.mov`
    The result must be width ≥1920, height ≥1080, and duration between 120 and 300 s.
@@ -21,7 +22,8 @@
 Errata finds security-questionnaire and RFP answers that a product-fact change made wrong. It shows the memory evidence and drafts a correction for human approval. All data shown is synthetic (a fictional company).
 
 - How Hindsight is used: reflect drafts answers and records based_on citations; versioned fact IDs, with old memories invalidated rather than deleted; recall maps a free-text change to the fact; reflect with a response schema re-checks each answer and must quote the false sentence.
-- Measured on synthetic data (small n): see docs/MEMORY_PROOF.md in the repo.
+- Runs fully local: the open-source Hindsight server (embedded Postgres) + Ollama qwen3.5:9b. No API key.
+- Measured on synthetic data (small n): see docs/LOCAL_VALIDATION_REPORT.md in the repo.
 
 Code: [GITHUB_REPO_URL] · Article: [ARTICLE_URL] · Hindsight: https://github.com/vectorize-io/hindsight · Docs: https://hindsight.vectorize.io/
 

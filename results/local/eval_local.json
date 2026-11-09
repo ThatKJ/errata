@@ -1,8 +1,8 @@
 {
- "bank": "errata-eval-20261109190940",
+ "bank": "errata-eval-20261109204950",
  "hindsight": "http://127.0.0.1:8888",
  "model": "qwen3.5:9b",
- "started": "2026-11-09T19:36:09+00:00",
+ "started": "2026-11-09T20:49:50+00:00",
  "rows": [
   {
    "change": "E1",
@@ -10,14 +10,14 @@
    "qid": "Q01",
    "gold_affected": true,
    "trap": false,
-   "state": "needs_review",
+   "state": "affected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The previously sent answer is now materially false for Acme Fintech (IN) because it states customer data will be hosted exclusively in the AWS us-east-1 region, whereas current facts effective 2026-11-03 establish that new I",
-   "verify_ms": 59603
+   "quoted": "Kestrel Ledger hosts and processes customer data exclusively in AWS us-east-1 (N. Virginia, USA).",
+   "reason": "Kestrel Ledger now offers primary storage and processing in AWS Mumbai (ap-south-1) for Indian customers by default; the us-east-1 region is no longer the only option.",
+   "verify_ms": 160355
   },
   {
    "change": "E1",
@@ -25,14 +25,14 @@
    "qid": "Q02",
    "gold_affected": true,
    "trap": false,
-   "state": "needs_review",
+   "state": "affected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Since 2026-11-03, Kestrel Ledger's Mumbai region (AWS ap-south-1) has reached GA status, and new Indian customers are stored and processed in India by default.",
-   "verify_ms": 34079
+   "quoted": "No, Kestrel Ledger cannot satisfy RBI data localisation rules because it stores and processes all customer data exclusively in AWS us-east-1 (N. Virginia, USA), and explicitly offers no other hosting regions, including any within India.",
+   "reason": "Kestrel Ledger's Mumbai region (AWS ap-south-1) went GA effective November 3, 2026, allowing new Indian customers' data to be stored and processed in India by default.",
+   "verify_ms": 123628
   },
   {
    "change": "E1",
@@ -40,14 +40,14 @@
    "qid": "Q03",
    "gold_affected": false,
    "trap": true,
-   "state": "unaffected",
+   "state": "affected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "",
-   "reason": "The statement is misleading because the system now supports multi-region deployment (AWS ap-south-1), although this specific US customer remains unaffected.",
-   "verify_ms": 51607
+   "quoted": "*The product explicitly states that all customer data is stored and processed exclusively in AWS us-east-1 (N. Virginia, USA), with no other hosting regions offered for primary storage*",
+   "reason": "Since November 3, 2026, Kestrel Ledger has a live Mumbai region (AWS ap-south-1). While the product still states that data for Indian customers is stored in India by default, it no longer guarantees exclusive US-only storage for *all* customers.",
+   "verify_ms": 114876
   },
   {
    "change": "E1",
@@ -55,14 +55,14 @@
    "qid": "Q04",
    "gold_affected": false,
    "trap": false,
-   "state": "affected",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "While customer data is primarily hosted and processed exclusively in the AWS us-east-1 region (N. Virginia, USA)...",
-   "reason": "A current fact effective 2026-11-03 states that our Mumbai region (AWS ap-south-1) is now GA and that new Indian customers' data is stored and processed in India by default, meaning us-east-1 is no longer the only region.",
-   "verify_ms": 38302
+   "quoted": "",
+   "reason": "The provided answer contains no false statements; all information is consistent and accurate.",
+   "verify_ms": 102859
   },
   {
    "change": "E1",
@@ -70,13 +70,11 @@
    "qid": "Q05",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The previously sent answer incorrectly stated that AWS us-east-1 was the exclusive region and that no other hosting regions are offered for Acme Fintech (IN). The current fact effective from 2026-11-03 indicates that Indian ",
-   "verify_ms": 40882
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E1",
@@ -84,13 +82,13 @@
    "qid": "Q06",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: A new operational update effective November 3, 2026, states that the Mumbai region (AWS ap-south-1) is now GA. Consequently, New Indian customers' data is stored and processed in India by default, and us-east-1 is no longer ",
-   "verify_ms": 42143
+   "reason": "The provided answer explicitly states that Kestrel Ledger does not share customer data with any analytics vendor and lists only AWS, Stripe, and Zendesk as subprocessors. There is no false information to correct.",
+   "verify_ms": 117847
   },
   {
    "change": "E1",
@@ -110,13 +108,13 @@
    "qid": "Q08",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The previously sent answer is materially incomplete because it failed to address the critical change effective 2026-11-03: Kestrel Ledger now operates a Mumbai region (AWS ap-south-1) where Indian customers' data is stored a",
-   "verify_ms": 51514
+   "reason": "The provided answer contains accurate information about Kestrel Ledger's GDPR compliance, DPA availability, data processing locations, security controls, and certifications. There are no false statements or inaccuracies present in the text that require correction.",
+   "verify_ms": 105328
   },
   {
    "change": "E1",
@@ -220,13 +218,11 @@
    "qid": "Q17",
    "gold_affected": false,
    "trap": false,
-   "state": "unaffected",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "The new fact F01 states that New Indian customers' data is stored in India by default, but it does not apply to existing EU-based institutions like Nordlys Bank. There is no current fact stating that non-Indian EU customers have been migrated or must use the Mumbai region; therefore, the statement t",
-   "verify_ms": 53365
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E1",
@@ -282,14 +278,14 @@
    "qid": "Q22",
    "gold_affected": true,
    "trap": false,
-   "state": "affected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "Kestrel Ledger does not offer any hosting region in Asia-Pacific or closer to Australia.",
-   "reason": "While the product previously stored all data exclusively in AWS us-east-1, fact F01 (effective 2026-11-03) states that the Mumbai region (AWS ap-south-1) is now GA. This means Asia-Pacific hosting is available for customers meeting specific criteria.",
-   "verify_ms": 43081
+   "quoted": "",
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The sentence 'Kestrel Ledger does not offer any hosting region in Asia-Pacific or closer to Australia' is now false.\"): As of November 3, 2026, the Mumbai region (AWS ap-south-1) has reached GA status, meaning Kestrel Led",
+   "verify_ms": 40913
   },
   {
    "change": "E1",
@@ -297,11 +293,13 @@
    "qid": "Q23",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The previously sent answer is not false or materially incomplete for 'Tasman Wealth (AU)' because the customer is an Australian entity, not an Indian customer. The rule about storing data in Mumbai region applies only to new Indian customers. There is no current fact stating that non-Indian customer",
+   "verify_ms": 36787
   },
   {
    "change": "E1",
@@ -309,13 +307,13 @@
    "qid": "Q24",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Fact F01 states that the Mumbai region (`ap-south-1`, India) is now GA and new Indian customers' data is stored and processed in India by default, meaning `us-east-1` is no longer the only region.",
-   "verify_ms": 40095
+   "reason": "The previous answer stated that AWS hosts and processes customer data exclusively in us-east-1. While the new fact F01 confirms that the Mumbai region (AWS ap-south-1) is now GA for New Indian customers as of 2026-11-03, there is no information indicating a change to the existing data residency term",
+   "verify_ms": 44836
   },
   {
    "change": "E1",
@@ -371,13 +369,13 @@
    "qid": "Q29",
    "gold_affected": false,
    "trap": false,
-   "state": "affected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation"
    ],
-   "quoted": "Customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA).",
-   "reason": "The statement claiming hosting exclusivity is false for Acme Fintech (IN) as new Indian customers' data is now stored and processed in Mumbai (AWS ap-south-1) by default effective Nov 3, 2026.",
-   "verify_ms": 34636
+   "quoted": "",
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"\"): The sent answer is materially incomplete because it fails to address that effective November 3, 2026, Acme Fintech's data is stored and processed in India (Mumbai region/ap-south-1), meaning communications occur withi",
+   "verify_ms": 66961
   },
   {
    "change": "E1",
@@ -385,13 +383,13 @@
    "qid": "Q30",
    "gold_affected": false,
    "trap": false,
-   "state": "affected",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
-   "quoted": "All processing and storage occur exclusively within AWS regions in the USA",
-   "reason": "Fact F01 indicates that new Indian customers have their data stored and processed by default in the Mumbai region (AWS ap-south-1), making the claim that all processing occurs exclusively in the USA false.",
-   "verify_ms": 37816
+   "quoted": "",
+   "reason": "The provided answer contains no false statements; it accurately describes that Kestrel Ledger customer data is stored in AWS us-east-1 (USA) with backups in AWS us-west-2 (USA), and subprocessors are limited to AWS, Stripe, and Zendesk (all US-based). The claim that 'no companies outside Australia r",
+   "verify_ms": 48248
   },
   {
    "change": "E2",
@@ -399,13 +397,13 @@
    "qid": "Q01",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Snowflake (US) was onboarded effective November 4, 2026, as a new subprocessor for product usage analytics; it receives customer account metadata.",
-   "verify_ms": 41217
+   "reason": "The provided answer contains accurate information about Kestrel Ledger's data hosting and processing locations (AWS us-east-1), subprocessors (AWS, Stripe, Zendesk, Snowflake), backup regions (us-west-2), RTO/RPO metrics, and GDPR compliance measures. There are no false statements or inaccuracies in",
+   "verify_ms": 39934
   },
   {
    "change": "E2",
@@ -425,13 +423,11 @@
    "qid": "Q03",
    "gold_affected": false,
    "trap": false,
-   "state": "affected",
-   "sources": [
-    "hindsight_citation"
-   ],
-   "quoted": "No third-party analytics vendors or subprocessors outside this US-based infrastructure chain process customer data.",
-   "reason": "The core claim that 'our data' is stored inside the United States remains true. However, the specific sentence stating that *no* third-party subprocessors outside the US chain process customer data is now false or incomplete. While Snowflake was onboarded as a subprocessor, it is explicitly identifi",
-   "verify_ms": 44501
+   "state": "not_candidate",
+   "sources": [],
+   "quoted": "",
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E2",
@@ -451,14 +447,14 @@
    "qid": "Q05",
    "gold_affected": true,
    "trap": false,
-   "state": "affected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "No other third party, including any analytics vendor, processes customer data for Kestrel Ledger",
-   "reason": "Snowflake (US) was onboarded as of November 4, 2026, as a new subprocessor that receives customer account metadata for product usage analytics.",
-   "verify_ms": 37891
+   "quoted": "",
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The previously sent answer is **materially incomplete** because it states that 'no other third party, including any analytics vendor, processes customer data.' This statement is now false as of **2026\"): The previously se",
+   "verify_ms": 39506
   },
   {
    "change": "E2",
@@ -472,8 +468,8 @@
     "dependency_index"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The previously sent answer is now factually false due to a material change in subprocessor arrangements. Kestrel Ledger now shares customer account metadata with Snowflake (US) for product usage analytics.",
-   "verify_ms": 36405
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"the previous statement that no other third party, including any analytics vendor, processes customer data is now materially false\"): Kestrel Ledger now shares customer data with Snowflake (US) as a subprocessor for produc",
+   "verify_ms": 32045
   },
   {
    "change": "E2",
@@ -486,9 +482,9 @@
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "No other third parties process customer data, including any analytics vendors.",
-   "reason": "The statement is no longer accurate as of 2026-11-04 when Kestrel Ledger onboarded Snowflake (US) as a new subprocessor that receives customer account metadata for product usage analytics.",
-   "verify_ms": 35981
+   "quoted": "No other third-party vendor processes customer data for Kestrel Ledger",
+   "reason": "Snowflake (US) was onboarded as a new subprocessor to receive customer account metadata for product usage analytics as of November 4, 2026.",
+   "verify_ms": 31268
   },
   {
    "change": "E2",
@@ -501,8 +497,8 @@
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The previously sent answer incorrectly stated that no analytics vendors or third parties process customer data. This is now false because effective 2026-11-04, Kestrel Ledger onboarded Snowflake (US) as a new subprocessor re",
-   "verify_ms": 38534
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The statement claiming 'Kestrel Ledger's only subprocessors are AWS (hosting), Stripe (billing), and Zendesk (support tickets)' is now false as of 2026-11-04, when Snowflake (US) was onboarded as a ne\"): Snowflake (US) wa",
+   "verify_ms": 38406
   },
   {
    "change": "E2",
@@ -606,11 +602,13 @@
    "qid": "Q17",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The new fact (F03) confirms that Snowflake (US) was onboarded as a subprocessor on November 4, 2026, to handle product usage analytics and receive customer account metadata. This disclosure is a data privacy update concerning subprocessor locations and data access, not an operational change to syste",
+   "verify_ms": 28099
   },
   {
    "change": "E2",
@@ -654,13 +652,11 @@
    "qid": "Q21",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The statement is misleadingly incomplete because the system now utilizes multiple subprocessors. While Zendesk handles support tickets, Snowflake (US) was onboarded effective 2026-11-04 as a new subprocessor specifically for",
-   "verify_ms": 37695
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E2",
@@ -692,14 +688,14 @@
    "qid": "Q24",
    "gold_affected": true,
    "trap": false,
-   "state": "affected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "No other third parties process customer data for Kestrel Ledger.",
-   "reason": "The earlier answer accurately listed AWS (us-east-1 and us-west-2 regions), Stripe, and Zendesk as US-based subprocessors. However, it concluded that no other third parties process data. This conclusion is now incomplete because fact F03 (effective 2026-11-04) explicitly states that Snowflake (US) w",
-   "verify_ms": 44535
+   "quoted": "",
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"\"): The original response failed to list Snowflake, which Kestrel Ledger onboarded as a new subprocessor effective 2026-11-04.",
+   "verify_ms": 38991
   },
   {
    "change": "E2",
@@ -767,14 +763,14 @@
    "qid": "Q30",
    "gold_affected": true,
    "trap": false,
-   "state": "needs_review",
+   "state": "affected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Snowflake (US) was onboarded as a new subprocessor for product usage analytics and receives customer account metadata, making the previous claim about no third parties processing data incorrect.",
-   "verify_ms": 35914
+   "quoted": "No third-party analytics vendor or other entity processes customer data on behalf of Kestrel Ledger",
+   "reason": "As of November 4, 2026, Snowflake (a US-based company) was onboarded as a new subprocessor that receives customer account metadata for product usage analytics.",
+   "verify_ms": 31051
   },
   {
    "change": "E3",
@@ -782,13 +778,11 @@
    "qid": "Q01",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The statement is materially incomplete as it omits that the Kestrel mobile app also holds the SOC 2 Type II report.",
-   "verify_ms": 40179
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E3",
@@ -832,13 +826,11 @@
    "qid": "Q05",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: The new SOC 2 Type II report (period Jul\u2013Sep 2026) explicitly includes the Kestrel mobile app in scope alongside the web platform and API, making the statement that it was out of scope false.",
-   "verify_ms": 49880
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E3",
@@ -870,13 +862,13 @@
    "qid": "Q08",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Fact F06 (mentioned_at 2026-11-05) supersedes earlier statements by expanding the audit scope to include the mobile app, making the prior assertion that certification was limited to 'web platform and public API' no longer ac",
-   "verify_ms": 59689
+   "reason": "The provided answer contains no false statements; all information presented is accurate and consistent with the context.",
+   "verify_ms": 31438
   },
   {
    "change": "E3",
@@ -890,8 +882,8 @@
     "dependency_index"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: As of 2026-11-05, Kestrel Ledger issued a new SOC 2 Type II report covering July\u2013September 2026 that explicitly includes the Kestrel mobile app in scope alongside the web platform and public API.",
-   "verify_ms": 35573
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"'No', Kestrel Ledger's SOC 2 report does not cover the mobile app.\"): The new SOC 2 Type II report (covering July\u2013September 2026) now includes the Kestrel mobile app in scope alongside the web platform and public API, mea",
+   "verify_ms": 29768
   },
   {
    "change": "E3",
@@ -899,14 +891,14 @@
    "qid": "Q10",
    "gold_affected": false,
    "trap": true,
-   "state": "unaffected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
    "quoted": "",
-   "reason": "The answer explicitly states that the previously sent answer remains true and is not false or materially incomplete.",
-   "verify_ms": 22598
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The previously sent statement containing 'the Kestrel mobile application is explicitly out of scope for this audit' is now **false**.\"): The Kestrel mobile application is included in the SOC 2 Type II report alongside the",
+   "verify_ms": 25875
   },
   {
    "change": "E3",
@@ -914,13 +906,13 @@
    "qid": "Q11",
    "gold_affected": false,
    "trap": false,
-   "state": "unaffected",
+   "state": "affected",
    "sources": [
     "hindsight_citation"
    ],
-   "quoted": "",
-   "reason": "The statement 'No, Kestrel Ledger is not ISO/IEC 27001 certified' is correct as of August 1, 2026, based on the official product fact sheet. There is no false information to extract.",
-   "verify_ms": 36672
+   "quoted": "a SOC 2 Type II report covering the web platform and public API (though the mobile app is out of scope)",
+   "reason": "The corrected answer states that the SOC 2 Type II report now covers the Kestrel mobile app as well, updated to include the mobile app in scope for period Jul\u2013Sep 2026.",
+   "verify_ms": 33187
   },
   {
    "change": "E3",
@@ -1024,11 +1016,13 @@
    "qid": "Q20",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The retrieved facts confirm the existence of the SOC 2 Type II report but do not explicitly confirm current certification status. The scope expansion to include the mobile app is a material change to audit coverage, but since the prior answer did not claim exclusivity to 'only' web and API, and no f",
+   "verify_ms": 46542
   },
   {
    "change": "E3",
@@ -1089,9 +1083,9 @@
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "No, the Kestrel mobile application is explicitly excluded from the independent audit scope of the SOC 2 Type II report...",
-   "reason": "The Kestrel mobile application is now included in the independent audit scope of the SOC 2 Type II report for the period July\u2013September 2026, alongside the web platform and public API.",
-   "verify_ms": 40181
+   "quoted": "No, the mobile application is **not** included in Kestrel Ledger's independent audit scope. The Kestrel Ledger SOC 2 Type II report explicitly covers only the web platform and public API, while the Kestrel mobile app is specifically stated as being out of scope for that report.",
+   "reason": "The new SOC 2 Type II report covering July\u2013September 2026 now explicitly includes the Kestrel mobile app in scope alongside the web platform and public API, contradicting the previous statement that it was out of scope.",
+   "verify_ms": 38459
   },
   {
    "change": "E3",
@@ -1140,8 +1134,8 @@
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "The provided answer contains accurate information about Kestrel Ledger's encryption standards and security controls; there is no false statement to correct.",
-   "verify_ms": 32649
+   "reason": "The provided answer confirms that Kestrel Ledger encrypts all data in transit using TLS 1.2 or higher, and explicitly states that the new SOC 2 Type II report (as of 2026-11-05) now includes the mobile app under the same encryption standards. There is no false information or contradiction presented ",
+   "verify_ms": 31627
   },
   {
    "change": "E3",
@@ -1149,11 +1143,13 @@
    "qid": "Q30",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The original statement regarding data location (US-based infrastructure) remains factually correct; the only change is that the mobile app is now explicitly included in the SOC 2 audit scope, which validates rather than contradicts the original assurance.",
+   "verify_ms": 39511
   },
   {
    "change": "E4",
@@ -1161,13 +1157,13 @@
    "qid": "Q01",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "affected",
    "sources": [
     "hindsight_citation"
    ],
-   "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: A policy change effective November 6, 2026, mandates that due to regulatory record-keeping holds, customer data must be retained for 180 days after termination before permanent deletion.",
-   "verify_ms": 43641
+   "quoted": "encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days.",
+   "reason": "The sentence is now materially incomplete because a regulatory record-keeping hold mandates that customer data be retained for 180 days after termination before permanent deletion, superseding the previous 90-day standard. The effective total retention period is now 35 days (backup window) plus up t",
+   "verify_ms": 40985
   },
   {
    "change": "E4",
@@ -1199,13 +1195,11 @@
    "qid": "Q04",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: Due to a regulatory record-keeping hold effective November 6, 2026, customer data is now retained for 180 days after contract termination before permanent deletion, superseding the previous 90-day policy.",
-   "verify_ms": 35268
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E4",
@@ -1213,13 +1207,11 @@
    "qid": "Q05",
    "gold_affected": false,
    "trap": false,
-   "state": "unaffected",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "The change in data retention period (90 days to 180 days) affects the retention timeline rather than the list of processing entities, so no sentence in the original answer is materially false regarding the specific question asked.",
-   "verify_ms": 34976
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E4",
@@ -1227,13 +1219,11 @@
    "qid": "Q06",
    "gold_affected": false,
    "trap": false,
-   "state": "unaffected",
-   "sources": [
-    "hindsight_citation"
-   ],
+   "state": "not_candidate",
+   "sources": [],
    "quoted": "",
-   "reason": "The only updated fact (F08, effective 2026-11-06) concerns the retention period of customer data (changed from 90 to 180 days after termination). This change in retention duration does not alter the policy regarding data sharing with analytics vendors, nor does it impact the regions where data is st",
-   "verify_ms": 40692
+   "reason": "",
+   "verify_ms": null
   },
   {
    "change": "E4",
@@ -1253,13 +1243,13 @@
    "qid": "Q08",
    "gold_affected": false,
    "trap": false,
-   "state": "needs_review",
+   "state": "unaffected",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: A factual update dated 2026-11-06 explicitly changed the retention policy: due to a regulatory record-keeping hold, customer data is now retained for 180 days after termination before permanent deletion (previously 90).",
-   "verify_ms": 33639
+   "reason": "The provided text contains a correction note stating that a previously stated period of 90 days no longer applies as of November 6, 2026. However, the text does not explicitly state that the original answer claiming '90 days' was false or incorrect; it only clarifies the current status. Since there ",
+   "verify_ms": 35611
   },
   {
    "change": "E4",
@@ -1303,14 +1293,14 @@
    "qid": "Q12",
    "gold_affected": true,
    "trap": false,
-   "state": "needs_review",
+   "state": "affected",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "",
-   "reason": "verifier said affected but did not quote a sentence that was actually sent: As of November 6, 2026 (fact F08), due to a regulatory record-keeping hold, customer data is retained for 180 days after contract termination before permanent deletion, superseding the previous 90-day period.",
-   "verify_ms": 45093
+   "quoted": "\"Kestrel Ledger permanently deletes all customer data within 90 days after contract termination, in accordance with its current product policy.\"",
+   "reason": "Effective November 6, 2026, due to a regulatory record-keeping hold, Kestrel Ledger retains customer data for 180 days after contract termination before permanent deletion, superseding the previous 90-day standard.",
+   "verify_ms": 28587
   },
   {
    "change": "E4",
@@ -1323,9 +1313,9 @@
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "**Permanent Deletion**: Kestrel Ledger permanently deletes all customer data within **90 days** after contract termination [F08].",
-   "reason": "Due to a policy change effective November 6, 2026, customer data must now be retained for 180 days after contract termination before permanent deletion.",
-   "verify_ms": 35599
+   "quoted": "When the Midwest Credit Union's contract with Kestrel Ledger ends, all customer data is permanently deleted within 90 days of contract termination.",
+   "reason": "The current product fact (effective 2026-11-06) states that due to a regulatory record-keeping hold, customer data is now retained for 180 days after termination before permanent deletion, supersededing the previous 90-day rule.",
+   "verify_ms": 37549
   },
   {
    "change": "E4",
@@ -1333,13 +1323,13 @@
    "qid": "Q14",
    "gold_affected": false,
    "trap": false,
-   "state": "unaffected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation"
    ],
    "quoted": "",
-   "reason": "The provided answer states that Acme Fintech can export all Kestrel Ledger data as CSV or JSON files at any time, and this right exists independently of the platform's retention policy. There is no false information in the text to correct.",
-   "verify_ms": 34912
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"The previously sent answer is materially incomplete because it states that Kestrel Ledger will permanently delete all customer data within **90 days** after contract termination. This sentence is now \"): A policy change e",
+   "verify_ms": 34443
   },
   {
    "change": "E4",
@@ -1407,11 +1397,13 @@
    "qid": "Q20",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The policy change extended data retention from 90 to 180 days post-termination but did not alter the breach notification timeline or support response protocols.",
+   "verify_ms": 30425
   },
   {
    "change": "E4",
@@ -1479,14 +1471,14 @@
    "qid": "Q26",
    "gold_affected": true,
    "trap": false,
-   "state": "affected",
+   "state": "needs_review",
    "sources": [
     "hindsight_citation",
     "dependency_index"
    ],
-   "quoted": "Yes, your data will be fully erased within three months of offboarding.",
-   "reason": "Kestrel Ledger's current policy requires customer data to be retained for 180 days after contract termination before permanent deletion due to a regulatory record-keeping hold, which exceeds the requested three-month window.",
-   "verify_ms": 33634
+   "quoted": "",
+   "reason": "verifier said affected but its quote was not found in the sent answer (quote: \"**No**, Kestrel Ledger no longer permanently deletes all customer data within **90 days** after contract termination.\"): The statement is false because the retention period has been extended from 90 days to 180 days due t",
+   "verify_ms": 29247
   },
   {
    "change": "E4",
@@ -1510,9 +1502,9 @@
    "sources": [
     "hindsight_citation"
    ],
-   "quoted": "After contract termination, the provider permanently deletes all customer data within **90 days**.",
-   "reason": "The retention period for customer data after contract termination was incorrectly stated as 90 days; it is actually 180 days due to a regulatory record-keeping hold effective 2026-11-06.",
-   "verify_ms": 34228
+   "quoted": "After contract termination, all customer data, including these logs, is permanently deleted within 90 days of the termination date.",
+   "reason": "Fact F08 supersedes the previous policy regarding the post-termination deletion timeline. The current fact explicitly mandates a 180-day retention period after termination due to a regulatory hold, whereas the sent answer stated a 90-day deletion window.",
+   "verify_ms": 37225
   },
   {
    "change": "E4",
@@ -1532,11 +1524,13 @@
    "qid": "Q30",
    "gold_affected": false,
    "trap": false,
-   "state": "not_candidate",
-   "sources": [],
+   "state": "unaffected",
+   "sources": [
+    "hindsight_citation"
+   ],
    "quoted": "",
-   "reason": "",
-   "verify_ms": null
+   "reason": "The provided text does not contain any false statements; it consistently asserts that customer data is not transmitted to companies outside Australia (with the nuance that US-based providers like AWS, Stripe, and Zendesk are used, but no non-US third parties process the data).",
+   "verify_ms": 43616
   }
  ],
  "mapping": [
@@ -1551,7 +1545,7 @@
     "F04",
     "F08"
    ],
-   "recall_ms": 566
+   "recall_ms": 630
   },
   {
    "change": "E2",
@@ -1561,10 +1555,10 @@
     "F03",
     "F04",
     "F08",
-    "F10",
-    "F01"
+    "F02",
+    "F10"
    ],
-   "recall_ms": 298
+   "recall_ms": 463
   },
   {
    "change": "E3",
@@ -1575,9 +1569,9 @@
     "F01",
     "F16",
     "F13",
-    "F03"
+    "F07"
    ],
-   "recall_ms": 516
+   "recall_ms": 208
   },
   {
    "change": "E4",
@@ -1590,29 +1584,30 @@
     "F18",
     "F14"
    ],
-   "recall_ms": 271
+   "recall_ms": 203
   }
  ],
- "resumed_from_existing_seed": true,
+ "seed_s": 1202.6,
  "drafted": 30,
  "summary": {
   "gold_affected_pairs": 12,
-  "candidates": 39,
+  "candidates": 36,
   "TP": 6,
-  "FP": 6,
+  "FP": 5,
   "FN": 6,
-  "TN_candidates": 8,
-  "needs_review": 19,
+  "TN_candidates": 15,
+  "needs_review": 10,
   "gold_routed_to_needs_review": 6,
   "false_clear": [],
   "trap_flagged_affected": [
+   "E1/Q03",
    "E2/Q07"
   ],
   "recall_mapping_correct": 4,
-  "verify_ms_median": 38302,
-  "precision": 0.5,
+  "verify_ms_median": 38459,
+  "precision": 0.545,
   "recall": 0.5,
   "flagged_for_human_recall": 1.0
  },
- "finished": "2026-11-09T20:03:32+00:00"
+ "finished": "2026-11-09T21:41:45+00:00"
 }

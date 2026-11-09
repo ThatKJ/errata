@@ -9,12 +9,12 @@ Full pipeline on the open-source Hindsight server + Ollama `qwen3.5:9b`: 30 sent
 
 | | |
 |---|---|
-| Stale answers **silently cleared** | **0 / 12**: all 12 reached a human (6 *needs correction*, 6 *needs review*) |
+| Stale answers **silently cleared** | **0 / 12** in two independent runs: all 12 reached a human (run 2: 6 *needs correction*, 6 *needs review*) |
 | Change note → right fact (Hindsight `recall` top-1) | 4 / 4 |
-| Precision of *needs correction* | 0.50. All 6 "false alarms" quote a sent sentence that really is stale, but outside the pre-registered labels |
+| Precision of *needs correction* | 0.55 (run 2). 4 of the 5 "false alarms" quote a sent sentence that really is stale but sits outside the pre-registered labels; 1 is a genuine verifier error |
 | Old fact version after a change | invalidated in Hindsight with a reason; new version live; verified via `list_memories(state=…)` |
 | Persistence | memory and audit trail survive a full restart of Hindsight and the app |
-| Latency (laptop, Apple silicon) | `reflect` median ≈32 s; verification ≈38 s per candidate; seeding 30 answers ≈33 min |
+| Latency (laptop, Apple silicon) | `reflect` median ≈32 s; verification median ≈38 s per candidate (up to ~3 min for long drafts); seeding 30 answers ≈19–20 min |
 
 An earlier spike on Hindsight Cloud (different model) measured `based_on` citation recall of 32/32. On 8 post-change questions it scored Hindsight 8/8, BM25 RAG 4/8 and stateless 2/8: [`docs/MEMORY_PROOF.md`](docs/MEMORY_PROOF.md).
 
@@ -57,7 +57,7 @@ uv run python -m errata_app.server     # http://127.0.0.1:8765
 ```
 Stop: `Ctrl-C` the app, then run `scripts/hindsight-local.sh stop`. Memory lives in Hindsight's embedded Postgres, and the audit trail lives in `errata-local.db`. Both survive restarts, and the app never re-seeds an existing workspace.
 
-Click **Load synthetic workspace**. It makes 30 real local `reflect` calls, so seeding takes tens of minutes on a laptop (see measured timings below). Then paste a change, for example:
+Click **Load synthetic workspace**. It makes 30 real local `reflect` calls, so seeding takes tens of minutes on a laptop (see measured timings above). Then paste a change, for example:
 > Ops update Nov 3: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored and processed in India by default; us-east-1 is no longer the only region.
 
 The same adapter also works against Hindsight Cloud: set `HINDSIGHT_BASE_URL` and `HINDSIGHT_API_KEY` in `.env`.

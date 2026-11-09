@@ -44,31 +44,38 @@ New in this migration (each written failing first, except the Markdown case, whi
 The first live run failed one assertion carried over from the Cloud era: "Hindsight must not cite F01 for the backups answer Q04". The local model's verbose backup answer also mentions primary hosting, so it cites F01. That's a provenance-precision difference, not a safety one. The assertion now checks the outcome instead: Q04 must not be judged *affected* by the residency change.
 
 ## 4. Ground-truth evaluation of the full app pipeline: `scripts/eval_local.py`
-Dataset `errata_app/seed_data.py`: 30 sent answers, 20 facts, 4 changes. The **12 gold-affected (answer, change) pairs** and the 3 traps were fixed before any model ran. Each change: `propose_change` (recall suggestion recorded) → `apply_change` on the gold fact → verdicts. Raw rows: `results/local/eval_local.json`.
+Dataset `errata_app/seed_data.py`: 30 sent answers, 20 facts, 4 changes. The **12 gold-affected (answer, change) pairs** and the 3 traps were fixed before any model ran. Each change: `propose_change` (recall suggestion recorded) → `apply_change` on the gold fact → verdicts. Fresh isolated bank per run.
 
-| Metric | Formula | Value |
-|---|---|---|
-| Change → fact mapping (recall top-1) | correct / 4 | **4 / 4** |
-| Candidates verified | union of `based_on` citations and the keyword index | 39 |
-| TP (affected ∧ gold) | | 6 |
-| FP (affected ∧ ¬gold) | | 6 |
-| FN (gold ∧ ¬affected) | | 6, **all 6 are `needs_review`** |
-| Precision of `affected` | TP / (TP+FP) | **0.50** |
-| Recall of `affected` | TP / 12 | **0.50** |
-| **False clears** (gold ∧ `unaffected`/not a candidate) | | **0 / 12** |
-| Gold pairs routed to a human (`affected` or `needs_review`) | | **12 / 12 = 1.00** |
-| `needs_review` total | | 19 |
-| Trap flagged `affected` | | 1 (E2/Q07) |
-| Median verifier latency | per candidate | 38.3 s |
+**Run 2 (current code, after the live-found grounding fixes): `results/local/eval_local.json`**
 
-**Error analysis.** All 6 FPs come with a quote checked in code against the text that was actually sent, and each quote contradicts the new fact:
-- E1/Q29: *"Customer data is stored and processed exclusively in the AWS us-east-1 region"*. False after the Mumbai launch.
-- E2/Q07 (trap): *"No other third parties process customer data, including any analytics vendors."* False after the Snowflake analytics subprocessor.
-- E4/Q28: *"…permanently deletes all customer data within **90 days**."* False after the 180-day hold.
+| Metric | Formula | Run 2 | Run 1 (earlier verifier) |
+|---|---|---|---|
+| Change → fact mapping (recall top-1) | correct / 4 | **4 / 4** | 4 / 4 |
+| Candidates verified | `based_on` citations ∪ keyword index | 36 | 39 |
+| TP (affected ∧ gold) | | 6 | 6 |
+| FP (affected ∧ ¬gold) | | 5 | 6 |
+| FN (gold ∧ ¬affected) | | 6, all `needs_review` | 6, all `needs_review` |
+| Precision of `affected` | TP / (TP+FP) | **0.55** | 0.50 |
+| Recall of `affected` | TP / 12 | **0.50** | 0.50 |
+| **False clears** (gold ∧ `unaffected`/not a candidate) | | **0 / 12** | 0 / 12 |
+| Gold pairs routed to a human | (affected or needs_review) / 12 | **1.00** | 1.00 |
+| `needs_review` total | | 10 | 19 |
+| Traps flagged `affected` | | 2 (E1/Q03, E2/Q07) | 1 |
+| Median verifier latency | per candidate | 38.5 s | 38.3 s |
 
-The pre-registered labels assumed each answer stays on its question's topic. qwen3.5:9b drafts are verbose and restate neighbouring facts, so they contain additional statements that really are stale. We report the strict numbers as the result and don't re-label. The 6 FNs are all cases where the verifier said *affected* but its quote didn't match the sent text verbatim. The grounding rule then routes the item to `needs_review` instead of *needs correction*. That costs precision of the label, never safety.
+Run 1 used the verifier before the quote-normalization and contradiction fixes (`results/local/eval_local_run1.json`). LLM verdicts also vary from run to run, so the two runs bracket the behaviour rather than prove an improvement.
 
-**Run note.** The first eval run's final seed step (`retain_batch` of 30 sent answers) exceeded the 300 s client timeout. The server finished it (46 answer memory units present), and the run was resumed on the same bank and DB (`eval_local.py 20261109190940`). Fixes: answers are now retained with `retain_async=True` (an audit record nothing waits on), and the client timeout (600 s) exceeds the server LLM timeout (300 s). Seeding 30 drafts took ≈33 min wall-clock.
+**Run 2 error analysis.** Each of the 5 FPs has a quote that is verified in code as text actually sent. Manual reading:
+- **4 really are stale sentences outside the pre-registered labels:**
+  - E1/Q03 (trap): *"…stored and processed exclusively in AWS us-east-1…"*
+  - E2/Q07 (trap): *"No other third-party vendor processes customer data…"*
+  - E3/Q11: *"…SOC 2 Type II report covering the web platform and public API (though the mobile app is out of scope)"*
+  - E4/Q28: *"…permanently deleted within 90 days…"*
+- **1 is a genuine verifier error:** E4/Q01 quotes *"encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days."* The retention change doesn't make that false.
+
+The pre-registered labels assumed each answer stays on its question's topic. qwen3.5:9b drafts are verbose and restate neighbouring facts. We report the strict numbers as the result and don't re-label. The 6 FNs are all `needs_review`, never cleared.
+
+**Run note (run 1).** The first seed's final `retain_batch` of 30 sent answers exceeded the 300 s client timeout. The server finished it, and the run resumed on the same bank. Fixes: answers are now retained with `retain_async=True`, and the client timeout (600 s) exceeds the server LLM timeout (300 s). Run 2 seeded 30 answers with no error.
 
 ## 5. Failure behaviour
 | Scenario | How tested | Result |
@@ -95,7 +102,7 @@ Driven through Chrome DevTools against the real app. Screenshots are in `docs/sc
 - `hindsight-client`'s sync wrapper binds its aiohttp session to one event loop. A client shared between the seed thread and request threads failed with `Timeout context manager should be used inside a task`. Fix: one client per thread (`LiveHindsight.c`). Live test: `test_adapter_works_across_threads`.
 - Quotes wrapped in `"…"` or Markdown failed grounding. Fix: `norm()` strips quoting and Markdown marks on both sides.
 - Q24 and Q30 came back `unaffected` while their reasons said the statement "is false". Fix: an `unaffected` verdict whose `false_sentence` is found in the sent text becomes `needs_review` ("contradictory verdict"). Neither pair was gold-affected for this change, but it was a silent-clear path.
-The demo verdicts above were produced *before* these two grounding fixes. §4 has been re-run with them (see below).
+The demo verdicts above were produced *before* the two grounding fixes. §4 run 2 uses them.
 
 ## 7. Resources
 - Ollama reports 16 GB for qwen3.5:9b with a 4096-token context (MLX, unified memory).
