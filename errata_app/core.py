@@ -6,8 +6,14 @@ Flow: seed (retain facts v1 -> draft & 'send' answers via reflect, recording bas
       -> decide (human approves/rejects; approval retained back into Hindsight as an experience).
 Nothing is ever sent to a customer. Customer text and change notes are untrusted data: they are quoted, never executed.
 """
-import json, re, sqlite3, threading, time, urllib.request
+import json, os, re, sqlite3, threading, time, urllib.request
 from datetime import datetime, timezone
+
+try:  # python.org macOS builds ship without a CA bundle; use certifi's (verification stays ON)
+    import certifi
+    os.environ.setdefault("SSL_CERT_FILE", certifi.where())
+except ImportError:
+    pass
 
 MAX_NOTE = 5000
 VERDICT_SCHEMA = {"type": "object", "required": ["status", "reason", "corrected_answer"], "properties": {

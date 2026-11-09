@@ -1,0 +1,4083 @@
+{
+  "bank": "errata-spike-20261109170945",
+  "base_url": "https://api.hindsight.vectorize.io",
+  "started": "2026-11-09T17:09:45.221263+00:00",
+  "calls": [
+    {
+      "op": "get_version",
+      "ms": 1271,
+      "ok": true
+    },
+    {
+      "op": "create_bank",
+      "ms": 1592,
+      "ok": true
+    },
+    {
+      "op": "retain_batch_facts",
+      "ms": 7260,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1220,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 464,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 388,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 460,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1256,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 415,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1365,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1228,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q01",
+      "ms": 7081,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q02",
+      "ms": 6843,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q03",
+      "ms": 5324,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q04",
+      "ms": 4871,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q05",
+      "ms": 6423,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q06",
+      "ms": 5764,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q07",
+      "ms": 5460,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q08",
+      "ms": 4873,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q09",
+      "ms": 4420,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q10",
+      "ms": 4814,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q11",
+      "ms": 6140,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q12",
+      "ms": 5154,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q13",
+      "ms": 4780,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q14",
+      "ms": 5388,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q15",
+      "ms": 4337,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q16",
+      "ms": 4370,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q17",
+      "ms": 4545,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q18",
+      "ms": 4241,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q19",
+      "ms": 4286,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q20",
+      "ms": 5189,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q21",
+      "ms": 5408,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q22",
+      "ms": 4522,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q23",
+      "ms": 5345,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q24",
+      "ms": 5116,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q25",
+      "ms": 5240,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q26",
+      "ms": 5129,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q27",
+      "ms": 5354,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q28",
+      "ms": 4290,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q29",
+      "ms": 4378,
+      "ok": true
+    },
+    {
+      "op": "reflect_draft_Q30",
+      "ms": 4442,
+      "ok": true
+    },
+    {
+      "op": "retain_batch_answers",
+      "ms": 11482,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 378,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 387,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 400,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1211,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 531,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1307,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 385,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 398,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 425,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1200,
+      "ok": true
+    },
+    {
+      "op": "retain_note_E1",
+      "ms": 2855,
+      "ok": true
+    },
+    {
+      "op": "recall_map_E1",
+      "ms": 592,
+      "ok": true
+    },
+    {
+      "op": "reflect_sweep_E1",
+      "ms": 7643,
+      "ok": true
+    },
+    {
+      "op": "list_v1_E1",
+      "ms": 471,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E1",
+      "ms": 2642,
+      "ok": true
+    },
+    {
+      "op": "retain_v2_E1",
+      "ms": 2962,
+      "ok": true
+    },
+    {
+      "op": "retain_note_E2",
+      "ms": 2350,
+      "ok": true
+    },
+    {
+      "op": "recall_map_E2",
+      "ms": 3382,
+      "ok": true
+    },
+    {
+      "op": "reflect_sweep_E2",
+      "ms": 7167,
+      "ok": true
+    },
+    {
+      "op": "list_v1_E2",
+      "ms": 1251,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E2",
+      "ms": 2291,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E2",
+      "ms": 3226,
+      "ok": true
+    },
+    {
+      "op": "retain_v2_E2",
+      "ms": 2678,
+      "ok": true
+    },
+    {
+      "op": "retain_note_E3",
+      "ms": 2243,
+      "ok": true
+    },
+    {
+      "op": "recall_map_E3",
+      "ms": 562,
+      "ok": true
+    },
+    {
+      "op": "reflect_sweep_E3",
+      "ms": 7766,
+      "ok": true
+    },
+    {
+      "op": "list_v1_E3",
+      "ms": 382,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E3",
+      "ms": 2639,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E3",
+      "ms": 2474,
+      "ok": true
+    },
+    {
+      "op": "retain_v2_E3",
+      "ms": 2566,
+      "ok": true
+    },
+    {
+      "op": "retain_note_E4",
+      "ms": 3330,
+      "ok": true
+    },
+    {
+      "op": "recall_map_E4",
+      "ms": 647,
+      "ok": true
+    },
+    {
+      "op": "reflect_sweep_E4",
+      "ms": 7183,
+      "ok": true
+    },
+    {
+      "op": "list_v1_E4",
+      "ms": 1254,
+      "ok": true
+    },
+    {
+      "op": "invalidate_E4",
+      "ms": 2430,
+      "ok": true
+    },
+    {
+      "op": "retain_v2_E4",
+      "ms": 2095,
+      "ok": true
+    },
+    {
+      "op": "consolidate",
+      "ms": 1262,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1244,
+      "ok": true
+    },
+    {
+      "op": "list_operations",
+      "ms": 1256,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N1",
+      "ms": 6209,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N1",
+      "ms": 6399,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N2",
+      "ms": 4837,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N2",
+      "ms": 5849,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N3",
+      "ms": 4693,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N3",
+      "ms": 5348,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N4",
+      "ms": 5663,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N4",
+      "ms": 6894,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N5",
+      "ms": 8640,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N5",
+      "ms": 9246,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N6",
+      "ms": 6158,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N6",
+      "ms": 6824,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N7",
+      "ms": 6002,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N7",
+      "ms": 8841,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_facts_N8",
+      "ms": 5519,
+      "ok": true
+    },
+    {
+      "op": "reflect_new_H_all_N8",
+      "ms": 10153,
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "server_version": {
+    "api_version": "1.1.0",
+    "features": {
+      "observations": true,
+      "mcp": true,
+      "worker": false,
+      "bank_config_api": true,
+      "bank_llm_health": false,
+      "file_upload_api": true,
+      "document_export_api": true,
+      "document_import_api": true,
+      "audit_log": false,
+      "llm_trace": false,
+      "store_document_text": true
+    }
+  },
+  "retain_facts": {
+    "success": true,
+    "bank_id": "errata-spike-20261109170945",
+    "items_count": 20,
+    "var_async": false,
+    "operation_id": null,
+    "operation_ids": null,
+    "usage": {
+      "input_tokens": 40995,
+      "output_tokens": 3552,
+      "total_tokens": 44547,
+      "cached_tokens": 38640,
+      "thoughts_tokens": 0
+    }
+  },
+  "idle_after_facts_s": 27.8,
+  "answers": {
+    "Q01": {
+      "text": "Kestrel Ledger stores and processes all customer data exclusively within the AWS us-east-1 region located in N. Virginia, USA. Encrypted backups of this data are replicated to the AWS us-west-2 region in Oregon, USA.",
+      "cited": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "type": "world",
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, USA) | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33265,
+        "output_tokens": 261,
+        "total_tokens": 33526,
+        "cached_tokens": 13323,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01",
+        "F02"
+      ]
+    },
+    "Q02": {
+      "text": "Kestrel Ledger cannot support data localisation within India. All customer data is stored and processed exclusively in the AWS us-east-1 region in N. Virginia, USA, with encrypted backups replicated to AWS us-west-2 in Oregon, USA.",
+      "cited": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "type": "world",
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, USA) | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33284,
+        "output_tokens": 248,
+        "total_tokens": 33532,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01",
+        "F02"
+      ]
+    },
+    "Q03": {
+      "text": "Yes, all Kestrel Ledger customer data is stored and processed exclusively within the United States. Primary data resides in the AWS us-east-1 region in N. Virginia, and encrypted backups are replicated to the AWS us-west-2 region in Oregon.",
+      "cited": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "type": "world",
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, USA) | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33248,
+        "output_tokens": 243,
+        "total_tokens": 33491,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01",
+        "F02"
+      ]
+    },
+    "Q04": {
+      "text": "Kestrel Ledger stores encrypted backups in the AWS us-west-2 region (Oregon, USA), where they are retained for a period of 35 days.",
+      "cited": [
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "5ccc1836-6148-4c33-bb33-16690460d55c",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are retained for 35 days."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33312,
+        "output_tokens": 216,
+        "total_tokens": 33528,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F02"
+      ]
+    },
+    "Q05": {
+      "text": "Kestrel Ledger uses the following three third-party subprocessors to process customer data: AWS for hosting, Stripe for billing, and Zendesk for support tickets. Kestrel Ledger does not share customer data with any other third parties, including analytics vendors.",
+      "cited": [
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "840183e3-9dd5-42c8-b71a-2d8b72224c43",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "498edbe0-ba99-49e7-83c3-cef22269b871",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors."
+        },
+        {
+          "id": "2f551d54-db95-426f-80a4-0140e229514d",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting."
+        },
+        {
+          "id": "f5376d92-3888-47ce-b8cd-a74a5001b1eb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+        },
+        {
+          "id": "7c6e18b3-aa9a-4420-8e1d-d87ae8d39a7b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Stripe for billing."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33257,
+        "output_tokens": 274,
+        "total_tokens": 33531,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F03"
+      ]
+    },
+    "Q06": {
+      "text": "Kestrel Ledger does not share customer data with any analytics vendors or other third parties. Its only designated subprocessors are AWS for hosting, Stripe for billing, and Zendesk for support tickets.",
+      "cited": [
+        {
+          "id": "840183e3-9dd5-42c8-b71a-2d8b72224c43",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "498edbe0-ba99-49e7-83c3-cef22269b871",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors."
+        },
+        {
+          "id": "f5376d92-3888-47ce-b8cd-a74a5001b1eb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33342,
+        "output_tokens": 265,
+        "total_tokens": 33607,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F03"
+      ]
+    },
+    "Q07": {
+      "text": "Kestrel Ledger utilizes Stripe as its designated billing processor.",
+      "cited": [
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "7c6e18b3-aa9a-4420-8e1d-d87ae8d39a7b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Stripe for billing."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33198,
+        "output_tokens": 191,
+        "total_tokens": 33389,
+        "cached_tokens": 13321,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F03"
+      ]
+    },
+    "Q08": {
+      "text": "Yes, Kestrel Ledger will sign a GDPR Data Processing Agreement that includes EU Standard Contractual Clauses upon request.",
+      "cited": [
+        {
+          "id": "924d148e-7d02-4325-8f52-73b46b33467d",
+          "type": "world",
+          "document_id": "fact:F20:v1",
+          "tags": [
+            "fact:F20",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger signs a GDPR Data Processing Agreement including EU Standard Contractual Clauses upon request. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "f995bce1-b07e-4ef4-af0d-64bb5f351c6c",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F20",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger signs a GDPR Data Processing Agreement including EU Standard Contractual Clauses upon request."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33365,
+        "output_tokens": 245,
+        "total_tokens": 33610,
+        "cached_tokens": 15244,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F20"
+      ]
+    },
+    "Q09": {
+      "text": "The Kestrel Ledger SOC 2 Type II report does not cover the mobile app; it is explicitly excluded from the report's scope. Our SOC 2 Type II report currently covers the Kestrel Ledger web platform and public API.",
+      "cited": [
+        {
+          "id": "83accea5-125f-4899-8989-9fd8ee5780d6",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "1dd91fde-699d-42d5-b23e-fedf5230e450",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "84492a7d-b9cd-4186-8964-abdc68fc0d6e",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope."
+        },
+        {
+          "id": "8fc66260-d7fb-42e4-8d97-35608faf83b2",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33334,
+        "output_tokens": 255,
+        "total_tokens": 33589,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F06"
+      ]
+    },
+    "Q10": {
+      "text": "Yes, Kestrel Ledger holds a SOC 2 Type II report, which covers our web platform and public API. Please note that the Kestrel mobile app is excluded from the scope of this report.",
+      "cited": [
+        {
+          "id": "1dd91fde-699d-42d5-b23e-fedf5230e450",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "83accea5-125f-4899-8989-9fd8ee5780d6",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "8fc66260-d7fb-42e4-8d97-35608faf83b2",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API."
+        },
+        {
+          "id": "84492a7d-b9cd-4186-8964-abdc68fc0d6e",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33265,
+        "output_tokens": 256,
+        "total_tokens": 33521,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F06"
+      ]
+    },
+    "Q11": {
+      "text": "Kestrel Ledger is not ISO 27001 certified and has no plans to obtain this certification in 2026. While we do not hold this specific certification, we maintain a SOC 2 Type II report for our web platform and public API.",
+      "cited": [
+        {
+          "id": "ffb17db7-cde6-4763-8dac-dc9883998d16",
+          "type": "world",
+          "document_id": "fact:F07:v1",
+          "tags": [
+            "fact:F07",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger is not ISO 27001 certified and has no plans to obtain this certification in 2026. | When: 2026-01-01 to 2026-12-31 | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "1dd91fde-699d-42d5-b23e-fedf5230e450",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "52ee6f39-2a1e-41ba-b61e-9262f3cd86dc",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F07",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger has no plans to obtain ISO 27001 certification in 2026."
+        },
+        {
+          "id": "8a554d29-b9b6-4e3f-bbf2-03f303c529bd",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F07",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger is not ISO 27001 certified."
+        },
+        {
+          "id": "8fc66260-d7fb-42e4-8d97-35608faf83b2",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33333,
+        "output_tokens": 252,
+        "total_tokens": 33585,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F06",
+        "F07"
+      ]
+    },
+    "Q12": {
+      "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination.",
+      "cited": [
+        {
+          "id": "cc5a4651-069d-45a8-8936-1dced7c3f0a1",
+          "type": "world",
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after contract termination."
+        },
+        {
+          "id": "9e78663d-d2af-4aeb-b5c2-45b42427abf9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33282,
+        "output_tokens": 191,
+        "total_tokens": 33473,
+        "cached_tokens": 15241,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F08"
+      ]
+    },
+    "Q13": {
+      "text": "Following the termination of your contract, Kestrel Ledger permanently deletes all customer data within 90 days. Please note that customers maintain the ability to export all of their data in CSV or JSON formats at any time prior to this period.",
+      "cited": [
+        {
+          "id": "cc5a4651-069d-45a8-8936-1dced7c3f0a1",
+          "type": "world",
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after contract termination."
+        },
+        {
+          "id": "96d9f34b-3e63-4da3-bb01-6523f788dc00",
+          "type": "world",
+          "document_id": "fact:F17:v1",
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Customers can export all Kestrel Ledger data in CSV or JSON formats at any time. | Involving: Kestrel Ledger customers"
+        },
+        {
+          "id": "9e78663d-d2af-4aeb-b5c2-45b42427abf9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+        },
+        {
+          "id": "b4ee0b9b-d3e1-4639-8ea1-2401bcf258f9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger customers can export all data in CSV or JSON formats at any time."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33279,
+        "output_tokens": 246,
+        "total_tokens": 33525,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F08",
+        "F17"
+      ]
+    },
+    "Q14": {
+      "text": "Yes, Kestrel Ledger customers can export all of their data in CSV or JSON formats at any time. Please note that Kestrel Ledger permanently deletes all customer data within 90 days following contract termination.",
+      "cited": [
+        {
+          "id": "96d9f34b-3e63-4da3-bb01-6523f788dc00",
+          "type": "world",
+          "document_id": "fact:F17:v1",
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Customers can export all Kestrel Ledger data in CSV or JSON formats at any time. | Involving: Kestrel Ledger customers"
+        },
+        {
+          "id": "cc5a4651-069d-45a8-8936-1dced7c3f0a1",
+          "type": "world",
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after contract termination."
+        },
+        {
+          "id": "b4ee0b9b-d3e1-4639-8ea1-2401bcf258f9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger customers can export all data in CSV or JSON formats at any time."
+        },
+        {
+          "id": "9e78663d-d2af-4aeb-b5c2-45b42427abf9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33271,
+        "output_tokens": 232,
+        "total_tokens": 33503,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F08",
+        "F17"
+      ]
+    },
+    "Q15": {
+      "text": "Yes, Kestrel Ledger supports SAML 2.0 single sign-on with Okta and Microsoft Entra ID on the Enterprise plan.",
+      "cited": [
+        {
+          "id": "084cc6f3-afab-432f-92f6-aa5d4dff8fc7",
+          "type": "world",
+          "document_id": "fact:F09:v1",
+          "tags": [
+            "fact:F09",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger supports SAML 2.0 single sign-on with Okta and Microsoft Entra ID on the Enterprise plan."
+        },
+        {
+          "id": "7758d682-15cf-40ad-8ce3-6bfec653b336",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F09",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger supports SAML 2.0 single sign-on with Okta and Microsoft Entra ID on the Enterprise plan."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33306,
+        "output_tokens": 249,
+        "total_tokens": 33555,
+        "cached_tokens": 15242,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F09"
+      ]
+    },
+    "Q16": {
+      "text": "Yes, Kestrel Ledger enforces multi-factor authentication for every user login.",
+      "cited": [
+        {
+          "id": "a70f474d-5516-47e2-9f1f-95ad3a653db7",
+          "type": "world",
+          "document_id": "fact:F10:v1",
+          "tags": [
+            "fact:F10",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger enforces multi-factor authentication for every user login. | Security requirement"
+        },
+        {
+          "id": "793f9718-ae74-4ee8-8d2b-a345ed93c126",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F10",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger enforces multi-factor authentication for every user login."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33274,
+        "output_tokens": 204,
+        "total_tokens": 33478,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F10"
+      ]
+    },
+    "Q17": {
+      "text": "Kestrel Ledger commits to a 99.9% monthly uptime SLA for customers on the Enterprise plan.",
+      "cited": [
+        {
+          "id": "20b9ae8d-c119-401a-b5e5-921f7e1660d4",
+          "type": "world",
+          "document_id": "fact:F11:v1",
+          "tags": [
+            "fact:F11",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger offers a 99.9% monthly uptime SLA on the Enterprise plan. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "1e2f4b37-da2b-46f1-8d73-4e60110746b6",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F11",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger offers a 99.9% monthly uptime SLA on the Enterprise plan."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33197,
+        "output_tokens": 190,
+        "total_tokens": 33387,
+        "cached_tokens": 15238,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F11"
+      ]
+    },
+    "Q18": {
+      "text": "Kestrel Ledger's disaster recovery objectives are an RTO of 4 hours and an RPO of 1 hour.",
+      "cited": [
+        {
+          "id": "a2dbd307-898b-4a37-adb2-228be203106f",
+          "type": "world",
+          "document_id": "fact:F12:v1",
+          "tags": [
+            "fact:F12",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger's disaster recovery targets are an RTO of 4 hours and an RPO of 1 hour."
+        },
+        {
+          "id": "f6de9b7f-3592-43fe-88e9-b49eceb230d6",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F12",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger's disaster recovery targets are an RTO of 4 hours and an RPO of 1 hour."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33285,
+        "output_tokens": 211,
+        "total_tokens": 33496,
+        "cached_tokens": 15241,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F12"
+      ]
+    },
+    "Q19": {
+      "text": "Yes, Kestrel Ledger commissions an independent third-party penetration test of its web platform annually.",
+      "cited": [
+        {
+          "id": "4538abb9-2184-44f6-a289-bb43df1db304",
+          "type": "world",
+          "document_id": "fact:F13:v1",
+          "tags": [
+            "fact:F13",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger commissions an independent third-party penetration test of its web platform annually. | Involving: Kestrel Ledger | Security and compliance"
+        },
+        {
+          "id": "8a00193c-2296-4101-910c-347a96846d7b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F13",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger commissions an independent third-party penetration test of its web platform annually."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33235,
+        "output_tokens": 212,
+        "total_tokens": 33447,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F13"
+      ]
+    },
+    "Q20": {
+      "text": "Kestrel Ledger notifies all affected customers of a confirmed security breach within 72 hours.",
+      "cited": [
+        {
+          "id": "bae9a4c3-6e9e-4a41-b61f-3f8cd038b4e6",
+          "type": "world",
+          "document_id": "fact:F14:v1",
+          "tags": [
+            "fact:F14",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger notifies affected customers of a confirmed security breach within 72 hours. | Involving: Kestrel Ledger | Security policy/protocol"
+        },
+        {
+          "id": "1e364f1b-1015-4af9-8b0d-0da1a02aef3b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F14",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger notifies affected customers of a confirmed security breach within 72 hours."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33292,
+        "output_tokens": 222,
+        "total_tokens": 33514,
+        "cached_tokens": 13325,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F14"
+      ]
+    },
+    "Q21": {
+      "text": "Kestrel Ledger support is available 24x5 on business days. For Enterprise P1 incidents, we provide 24x7 support coverage.",
+      "cited": [
+        {
+          "id": "efe83684-b487-42e0-b4f5-6d68cc3319a2",
+          "type": "world",
+          "document_id": "fact:F15:v1",
+          "tags": [
+            "fact:F15",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger support is available 24x5 on business days, with 24x7 response for Enterprise P1 incidents."
+        },
+        {
+          "id": "c80312f5-f273-4c14-aec1-7a5f9107f9af",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F15",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger support is available 24x5 on business days."
+        },
+        {
+          "id": "9f1f3f9f-e446-4b59-990f-4976ae2bf325",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F15",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger support has a 24x7 response for Enterprise P1 incidents."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33254,
+        "output_tokens": 234,
+        "total_tokens": 33488,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F15"
+      ]
+    },
+    "Q22": {
+      "text": "Kestrel Ledger does not offer hosting regions in the Asia-Pacific area. All customer data is exclusively stored and processed in the AWS us-east-1 region located in N. Virginia, USA.",
+      "cited": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "type": "world",
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, USA) | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33307,
+        "output_tokens": 263,
+        "total_tokens": 33570,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01"
+      ]
+    },
+    "Q23": {
+      "text": "Kestrel Ledger secures all data at rest using AES-256 encryption. This process utilizes AWS KMS customer-managed keys to ensure comprehensive data protection.",
+      "cited": [
+        {
+          "id": "fa65ec95-bd3c-4582-bc09-1616bc650159",
+          "type": "world",
+          "document_id": "fact:F04:v1",
+          "tags": [
+            "fact:F04",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypts all data at rest using AES-256 encryption with AWS KMS customer-managed keys. | Security and data protection."
+        },
+        {
+          "id": "7dc0ffaf-91a3-4089-be8d-656f096c4745",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F04",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypts all data at rest using AES-256 encryption with AWS KMS customer-managed keys."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33278,
+        "output_tokens": 213,
+        "total_tokens": 33491,
+        "cached_tokens": 15241,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F04"
+      ]
+    },
+    "Q24": {
+      "text": "Kestrel Ledger uses AWS (hosting), Stripe (billing), and Zendesk (support tickets) as its only subprocessors. All of these providers maintain infrastructure or operations in the USA; specifically, Kestrel Ledger stores and processes all customer data in the AWS us-east-1 region (N. Virginia, USA) and replicates encrypted backups to AWS us-west-2 (Oregon, USA).",
+      "cited": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "type": "world",
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, USA) | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        },
+        {
+          "id": "f5376d92-3888-47ce-b8cd-a74a5001b1eb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+        },
+        {
+          "id": "7c6e18b3-aa9a-4420-8e1d-d87ae8d39a7b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Stripe for billing."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33319,
+        "output_tokens": 332,
+        "total_tokens": 33651,
+        "cached_tokens": 15242,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01",
+        "F02",
+        "F03"
+      ]
+    },
+    "Q25": {
+      "text": "The Kestrel mobile application is excluded from the scope of our SOC 2 Type II report. Our current SOC 2 Type II report covers the Kestrel Ledger web platform and public API.",
+      "cited": [
+        {
+          "id": "83accea5-125f-4899-8989-9fd8ee5780d6",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "1dd91fde-699d-42d5-b23e-fedf5230e450",
+          "type": "world",
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "84492a7d-b9cd-4186-8964-abdc68fc0d6e",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope."
+        },
+        {
+          "id": "8fc66260-d7fb-42e4-8d97-35608faf83b2",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33353,
+        "output_tokens": 242,
+        "total_tokens": 33595,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F06"
+      ]
+    },
+    "Q26": {
+      "text": "Yes, Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. Please note that tenant audit logs are subject to a separate retention period of one year.",
+      "cited": [
+        {
+          "id": "cc5a4651-069d-45a8-8936-1dced7c3f0a1",
+          "type": "world",
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after contract termination."
+        },
+        {
+          "id": "731bdab4-3786-4b9d-a985-0a52a121d4ff",
+          "type": "world",
+          "document_id": "fact:F18:v1",
+          "tags": [
+            "fact:F18",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger retains tenant audit logs for 1 year."
+        },
+        {
+          "id": "9e78663d-d2af-4aeb-b5c2-45b42427abf9",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+        },
+        {
+          "id": "d0e15bb2-6927-4e00-a9f9-96b2beee65fb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F18",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger retains tenant audit logs for 1 year."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33345,
+        "output_tokens": 265,
+        "total_tokens": 33610,
+        "cached_tokens": 15243,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F08",
+        "F18"
+      ]
+    },
+    "Q27": {
+      "text": "The Kestrel Ledger public API enforces a rate limit of 1,000 requests per minute per tenant.",
+      "cited": [
+        {
+          "id": "46fabffd-524e-4ac6-9212-cde812f59965",
+          "type": "world",
+          "document_id": "fact:F16:v1",
+          "tags": [
+            "fact:F16",
+            "kind:fact"
+          ],
+          "text": "The Kestrel Ledger public API has a rate limit of 1,000 requests per minute per tenant."
+        },
+        {
+          "id": "e88d4291-d28a-4a6a-aaac-cf0bedf3707a",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F16",
+            "kind:fact"
+          ],
+          "text": "The Kestrel Ledger public API has a rate limit of 1,000 requests per minute per tenant."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33229,
+        "output_tokens": 188,
+        "total_tokens": 33417,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F16"
+      ]
+    },
+    "Q28": {
+      "text": "Kestrel Ledger retains tenant audit logs for a period of one year.",
+      "cited": [
+        {
+          "id": "731bdab4-3786-4b9d-a985-0a52a121d4ff",
+          "type": "world",
+          "document_id": "fact:F18:v1",
+          "tags": [
+            "fact:F18",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger retains tenant audit logs for 1 year."
+        },
+        {
+          "id": "d0e15bb2-6927-4e00-a9f9-96b2beee65fb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F18",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger retains tenant audit logs for 1 year."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33230,
+        "output_tokens": 180,
+        "total_tokens": 33410,
+        "cached_tokens": 15240,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F18"
+      ]
+    },
+    "Q29": {
+      "text": "Yes, Kestrel Ledger encrypts all data in transit using TLS 1.2 or higher.",
+      "cited": [
+        {
+          "id": "95d3a3ad-9df3-430d-baa9-038319be8b98",
+          "type": "world",
+          "document_id": "fact:F05:v1",
+          "tags": [
+            "fact:F05",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypts all data in transit using TLS 1.2 or higher."
+        },
+        {
+          "id": "592c29e5-7b1e-422d-abed-1b21ecb5e937",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F05",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypts all data in transit using TLS 1.2 or higher."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33293,
+        "output_tokens": 205,
+        "total_tokens": 33498,
+        "cached_tokens": 15242,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F05"
+      ]
+    },
+    "Q30": {
+      "text": "Kestrel Ledger does not share your customer data with any third parties, including analytics vendors. The only entities that serve as subprocessors for Kestrel Ledger are AWS (for hosting), Stripe (for billing), and Zendesk (for support tickets). All primary customer data is stored and processed exclusively in the AWS us-east-1 region located in N. Virginia, USA, while encrypted backups are replicated to AWS us-west-2 in Oregon, USA.",
+      "cited": [
+        {
+          "id": "840183e3-9dd5-42c8-b71a-2d8b72224c43",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "type": "world",
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "id": "75af6b02-4942-4050-8ed8-564102488683",
+          "type": "world",
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "id": "11f1580d-754b-478f-8cc7-51081c4023ff",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA."
+        },
+        {
+          "id": "1e5edb85-cd1e-41fc-8ed0-9dd33cc5a038",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA)."
+        },
+        {
+          "id": "498edbe0-ba99-49e7-83c3-cef22269b871",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors."
+        },
+        {
+          "id": "7c6e18b3-aa9a-4420-8e1d-d87ae8d39a7b",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Stripe for billing."
+        },
+        {
+          "id": "f5376d92-3888-47ce-b8cd-a74a5001b1eb",
+          "type": "observation",
+          "document_id": null,
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+        }
+      ],
+      "usage": {
+        "input_tokens": 33329,
+        "output_tokens": 324,
+        "total_tokens": 33653,
+        "cached_tokens": 15242,
+        "thoughts_tokens": 0
+      },
+      "failed": false,
+      "recorded_facts": [
+        "F01",
+        "F02",
+        "F03"
+      ]
+    }
+  },
+  "retain_answers": {
+    "success": true,
+    "bank_id": "errata-spike-20261109170945",
+    "items_count": 30,
+    "var_async": false,
+    "operation_id": null,
+    "operation_ids": null,
+    "usage": {
+      "input_tokens": 63109,
+      "output_tokens": 11232,
+      "total_tokens": 74341,
+      "cached_tokens": 57960,
+      "thoughts_tokens": 0
+    }
+  },
+  "idle_after_answers_s": 33.7,
+  "changes": {
+    "E1": {
+      "retain_note": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2052,
+          "output_tokens": 374,
+          "total_tokens": 2426,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      },
+      "recall_hits": [
+        {
+          "document_id": "fact:F01:v1",
+          "tags": [
+            "fact:F01",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region located in N. Virginia, USA. | Where: AWS us-east-1 (N. Virginia, "
+        },
+        {
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        },
+        {
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after co"
+        },
+        {
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors. | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        }
+      ],
+      "mapped_fact": "F01",
+      "sweep": {
+        "structured": {
+          "affected_answer_ids": [
+            "Q01",
+            "Q02",
+            "Q03",
+            "Q22",
+            "Q24",
+            "Q30"
+          ]
+        },
+        "text": "The following previously sent RFP answers are now false or materially incomplete following the announcement that the AWS ap-south-1 (Mumbai) region is now GA for Indian customer data storage and processing:\n\n* **Q01 (sent to Acme Fintech):** Stated that all customer data is hosted and processed exclusively in the AWS us-east-1 region (N. Virginia, USA).\n* **Q02 (sent to Bharat Microfinance):** Stated that Kestrel Ledger cannot support data localisation within India because all customer data is stored and processed exclusively in AWS us-east-1 (N. Virginia, USA).\n* **Q03 (sent to Midwest Credit Union):** Stated that all Kestrel Ledger customer data is stored and processed exclusively within the United States.\n* **Q22 (sent to Tasman Wealth):** Stated that Kestrel Ledger does not offer hosting regions in the Asia-Pacific area and that all customer data is stored and processed in AWS us-east-1 (N. Virginia, USA).\n* **Q24 (sent to Tasman Wealth):** Stated that all customer data is stored and processed in the AWS us-east-1 region (N. Virginia, USA).\n* **Q30 (sent to Tasman Wealth):** Stated that all primary customer data is stored and processed exclusively in the AWS us-east-1 region (N. Virginia, USA).",
+        "cited": [
+          {
+            "id": "b9cb6bb4-ea5a-43eb-9b61-f6d9aa19a7f9",
+            "type": "world",
+            "document_id": "answer:Q24",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger stores and processes all customer data in the AWS us-east-1 region (N. Virginia, USA) and replicates encrypted backups to AWS us-west-2 (Oregon, USA). | Where: USA | Involving: Kestrel "
+          },
+          {
+            "id": "32ceff09-7cf7-4a7f-85a8-891fb034d505",
+            "type": "world",
+            "document_id": "answer:Q01",
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger stores and processes all customer data exclusively within the AWS us-east-1 region in N. Virginia, USA. | Where: N. Virginia, USA | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "cfd60814-6b98-4d59-8569-d10a8492e5b9",
+            "type": "world",
+            "document_id": "answer:Q30",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger stores and processes primary customer data in AWS us-east-1 (N. Virginia, USA) and replicates encrypted backups to AWS us-west-2 (Oregon, USA). | Where: N. Virginia, USA; Oregon, USA | "
+          },
+          {
+            "id": "4876447c-fb74-4d61-8bad-cc3214d796f3",
+            "type": "world",
+            "document_id": "answer:Q22",
+            "tags": [
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger does not offer hosting regions in the Asia-Pacific area; all customer data is stored and processed in AWS us-east-1 (N. Virginia, USA). | When: 2026-10-20 | Where: N. Virginia, USA | In"
+          },
+          {
+            "id": "efbd0632-bdad-433e-abaf-294baeed5a28",
+            "type": "world",
+            "document_id": "answer:Q03",
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger customer data is stored and processed exclusively within the United States. | When: 2026-10-20 | Where: United States | Involving: Midwest Credit Union | Response to RFP question regard"
+          },
+          {
+            "id": "e8b22e6e-7fcf-47fd-96ab-9e74c64fc2f3",
+            "type": "world",
+            "document_id": "answer:Q02",
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger cannot support data localisation within India, as all customer data is stored and processed exclusively in the AWS us-east-1 region in N. Virginia, USA, with backups in AWS us-west-2 in"
+          },
+          {
+            "id": "e382787f-5b27-4031-aa58-bc554c323850",
+            "type": "world",
+            "document_id": "answer:Q03",
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger primary data resides in AWS us-east-1 (N. Virginia) and backups are in AWS us-west-2 (Oregon). | When: 2026-10-20 | Where: N. Virginia, Oregon | Involving: Midwest Credit Union | Techni"
+          },
+          {
+            "id": "05349d07-2db2-4bf1-aba1-4b98a934127e",
+            "type": "experience",
+            "document_id": "answer:Q01",
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Answer to RFP question Q01 regarding data hosting and processing was sent to Acme Fintech (IN). | When: 2026-10-20 | Involving: Acme Fintech (IN)"
+          },
+          {
+            "id": "d187fe72-b06b-408b-b99b-2e04e742cdf5",
+            "type": "experience",
+            "document_id": "answer:Q30",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger sent the RFP answer regarding data sharing to Tasman Wealth (AU). | When: 2026-10-20 | Where: Australia | Involving: Kestrel Ledger, Tasman Wealth"
+          },
+          {
+            "id": "9b648673-9909-4ab2-a3ce-4cadd8adb103",
+            "type": "experience",
+            "document_id": "answer:Q24",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger sent the answer to RFP question Q24 regarding USA-based subprocessors to Tasman Wealth (AU). | When: 2026-10-20 | Where: Australia | Involving: Kestrel Ledger, Tasman Wealth"
+          },
+          {
+            "id": "f2a68534-ae08-4762-887f-329209967877",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F01",
+              "cites:F02",
+              "cites:F03",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger stores and processes all customer data in the AWS us-east-1 region (N. Virginia, USA)."
+          },
+          {
+            "id": "a02f5fb9-f9c3-40e5-8cad-6c1a6e2a1cd5",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger customer data is stored and processed exclusively within the United States."
+          },
+          {
+            "id": "3e7dd1f9-f572-4ec9-8dd3-39526ce015cf",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F02",
+              "cites:F01",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger stores and processes all customer data exclusively in the AWS us-east-1 region in N. Virginia, USA. (2026-10-20 00:00: Kestrel Ledger does not offer hosting regions in the Asia-Pacific "
+          },
+          {
+            "id": "1de93d38-6aca-4b06-8999-61478d374c23",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger cannot support data localisation within India."
+          },
+          {
+            "id": "99a9d33d-4f8c-43de-a1dd-b0e19ab4f4dd",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Answer to RFP question Q01 regarding data hosting and processing was sent to Acme Fintech (IN)."
+          },
+          {
+            "id": "2e038ea9-9de9-4178-991e-fbe1315076fc",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger has backups in AWS us-west-2 in Oregon, USA."
+          }
+        ],
+        "usage": {
+          "input_tokens": 61791,
+          "output_tokens": 777,
+          "total_tokens": 62568,
+          "cached_tokens": 17616,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "invalidated": [
+        {
+          "id": "ce230ade-3ee9-43ab-b8c3-3db770468819",
+          "ok": true
+        }
+      ],
+      "retain_v2": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2073,
+          "output_tokens": 274,
+          "total_tokens": 2347,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      }
+    },
+    "E2": {
+      "retain_note": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2039,
+          "output_tokens": 190,
+          "total_tokens": 2229,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      },
+      "recall_hits": [
+        {
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger does not share customer data with any other third parties, including analytics vendors. | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F03:v1",
+          "tags": [
+            "fact:F03",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F07:v1",
+          "tags": [
+            "fact:F07",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger is not ISO 27001 certified and has no plans to obtain this certification in 2026. | When: 2026-01-01 to 2026-12-31 | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F17:v1",
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Customers can export all Kestrel Ledger data in CSV or JSON formats at any time. | Involving: Kestrel Ledger customers"
+        },
+        {
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after co"
+        }
+      ],
+      "mapped_fact": "F03",
+      "sweep": {
+        "structured": {
+          "affected_answer_ids": [
+            "Q05",
+            "Q06",
+            "Q30"
+          ]
+        },
+        "text": "The following RFP responses previously sent to customers are now false or materially incomplete due to the inclusion of Snowflake (US) as a new subprocessor for product usage analytics:\n\n* **Q05 (Acme Fintech):** The response stated that Kestrel Ledger uses only AWS, Stripe, and Zendesk as subprocessors and explicitly denied sharing customer data with any other third parties, including analytics vendors.\n* **Q06 (Nordlys Bank):** The response stated that Kestrel Ledger does not share customer data with any analytics vendors or other third parties, listing only AWS, Stripe, and Zendesk as designated subprocessors.\n* **Q30 (Tasman Wealth):** The response stated that Kestrel Ledger does not share customer data with any third parties, including analytics vendors, and identified only AWS, Stripe, and Zendesk as subprocessors.",
+        "cited": [
+          {
+            "id": "46235252-7920-40ea-a6cf-497df2175b7e",
+            "type": "world",
+            "document_id": "answer:Q06",
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only designated subprocessors. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "1df980cd-4a93-4701-847c-43d7b827520c",
+            "type": "world",
+            "document_id": "answer:Q05",
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only third-party subprocessors. | When: 2026-10-20 | Involving: Kestrel Ledger, Acme Fintech (IN) | Resp"
+          },
+          {
+            "id": "adf8e96b-f130-4826-b849-6c3cc8a93c69",
+            "type": "world",
+            "document_id": "answer:Q30",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as subprocessors. | Involving: Kestrel Ledger, AWS, Stripe, Zendesk"
+          },
+          {
+            "id": "441032e9-1281-4aba-8972-0888ba44f5e2",
+            "type": "world",
+            "document_id": "answer:Q24",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "2372591e-3e84-4826-ad2a-d27587773c97",
+            "type": "world",
+            "document_id": "answer:Q30",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger does not share customer data with any third parties or analytics vendors. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "ad5d7d63-c319-41ab-83a0-a07c5fbaf84c",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only third-party subprocessors."
+          },
+          {
+            "id": "85261df3-9721-448e-98ac-15da3deceac9",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F01",
+              "cites:F02",
+              "cites:F03",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+          },
+          {
+            "id": "d431fb58-62b0-4e04-b0b5-9e87e34bd8c6",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "The answer regarding data sharing was sent to Nordlys Bank (EU)."
+          },
+          {
+            "id": "e9967c08-ed62-4843-920d-3326bfa8d7b3",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F01",
+              "cites:F02",
+              "cites:F03",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger uses Stripe for billing."
+          }
+        ],
+        "usage": {
+          "input_tokens": 57727,
+          "output_tokens": 501,
+          "total_tokens": 58228,
+          "cached_tokens": 17581,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "invalidated": [
+        {
+          "id": "840183e3-9dd5-42c8-b71a-2d8b72224c43",
+          "ok": true
+        },
+        {
+          "id": "3991086a-eb45-4504-ada7-061ad29d7f95",
+          "ok": true
+        }
+      ],
+      "retain_v2": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2064,
+          "output_tokens": 347,
+          "total_tokens": 2411,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      }
+    },
+    "E3": {
+      "retain_note": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2042,
+          "output_tokens": 233,
+          "total_tokens": 2275,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      },
+      "recall_hits": [
+        {
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "The Kestrel mobile app is excluded from the SOC 2 Type II report scope. | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F06:v1",
+          "tags": [
+            "fact:F06",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger holds a SOC 2 Type II report for its web platform and public API. | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F07:v1",
+          "tags": [
+            "fact:F07",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger is not ISO 27001 certified and has no plans to obtain this certification in 2026. | When: 2026-01-01 to 2026-12-31 | Involving: Kestrel Ledger"
+        },
+        {
+          "document_id": "fact:F16:v1",
+          "tags": [
+            "fact:F16",
+            "kind:fact"
+          ],
+          "text": "The Kestrel Ledger public API has a rate limit of 1,000 requests per minute per tenant."
+        },
+        {
+          "document_id": "fact:F13:v1",
+          "tags": [
+            "fact:F13",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger commissions an independent third-party penetration test of its web platform annually. | Involving: Kestrel Ledger | Security and compliance"
+        }
+      ],
+      "mapped_fact": "F06",
+      "sweep": {
+        "structured": {
+          "affected_answer_ids": [
+            "Q09",
+            "Q10",
+            "Q25"
+          ]
+        },
+        "text": "The following previously sent RFP answers are now materially incomplete or false because they explicitly state that the Kestrel mobile application is excluded from the SOC 2 Type II audit scope, whereas the new report now includes it: \n\n* **Q09** (sent to Pinecrest Insurance): Stated that the mobile app was explicitly excluded from the SOC 2 Type II report scope.\n* **Q10** (sent to Acme Fintech): Stated that the SOC 2 Type II report excludes the mobile app from its scope.\n* **Q25** (sent to Pinecrest Insurance): Stated that the Kestrel mobile application is excluded from the scope of the SOC 2 Type II report.\n\nWhile other answers mentioned the SOC 2 report scope (such as Q11), these three identified answers contained specific, now-incorrect claims regarding the mobile app's exclusion.",
+        "cited": [
+          {
+            "id": "a4405603-221e-42ed-bfdf-842a8aead09d",
+            "type": "world",
+            "document_id": "answer:Q09",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The Kestrel Ledger SOC 2 Type II report excludes the mobile app from its scope. | When: 2026-10-20 | Involving: Pinecrest Insurance (US) | The report only covers the Kestrel Ledger web platform and pu"
+          },
+          {
+            "id": "5f93aef8-321b-47c4-98f3-b73572303139",
+            "type": "world",
+            "document_id": "answer:Q25",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The Kestrel mobile application is excluded from the scope of the company's SOC 2 Type II report. | Involving: Kestrel"
+          },
+          {
+            "id": "159500ec-45e6-48e6-958a-6c974933e996",
+            "type": "world",
+            "document_id": "answer:Q10",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "Kestrel Ledger holds a SOC 2 Type II report covering its web platform and public API, but excluding the mobile app. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "4479d3fd-c7c9-4743-9813-e200a30beb3e",
+            "type": "world",
+            "document_id": "answer:Q25",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The Kestrel SOC 2 Type II report covers the Kestrel Ledger web platform and public API. | Involving: Kestrel"
+          },
+          {
+            "id": "0e021973-3319-4427-8c1f-368e1b21539a",
+            "type": "world",
+            "document_id": "answer:Q25",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The answer to RFP question Q25 regarding mobile application audit scope was sent to Pinecrest Insurance. | When: 2026-10-20 | Where: United States | Involving: Pinecrest Insurance"
+          },
+          {
+            "id": "302eb9e0-b1b2-47c4-962d-8a64b40d8a41",
+            "type": "world",
+            "document_id": "answer:Q11",
+            "tags": [
+              "cites:F07",
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "Kestrel Ledger maintains a SOC 2 Type II report for its web platform and public API. | When: 2026-10-20 | Involving: Kestrel Ledger | Context provided to Pinecrest Insurance regarding security complia"
+          },
+          {
+            "id": "5631d704-5dd7-46d3-a851-ff0da415c6ca",
+            "type": "world",
+            "document_id": "answer:Q10",
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "Answer to RFP question Q10 regarding SOC 2 Type II compliance sent to Acme Fintech. | When: 2026-10-20 | Involving: Kestrel Ledger, Acme Fintech"
+          },
+          {
+            "id": "95b9910b-5c73-4384-80c1-550294205484",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The Kestrel mobile application is excluded from the scope of the company's SOC 2 Type II report."
+          },
+          {
+            "id": "653a2721-d766-4aef-80ac-8dadf78bc5f9",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The Kestrel Ledger SOC 2 Type II report excludes the mobile app from its scope."
+          },
+          {
+            "id": "6b34d0d4-303c-4145-a365-86f124ff3bcd",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "An answer to RFP question Q10 regarding SOC 2 Type II compliance was sent to Acme Fintech."
+          },
+          {
+            "id": "bd3c3a9d-e46d-4e78-b00c-7ab38ad08e01",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F06"
+            ],
+            "text": "The answer to RFP question Q25 regarding mobile application audit scope was sent to Pinecrest Insurance."
+          }
+        ],
+        "usage": {
+          "input_tokens": 57706,
+          "output_tokens": 525,
+          "total_tokens": 58231,
+          "cached_tokens": 19497,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "invalidated": [
+        {
+          "id": "83accea5-125f-4899-8989-9fd8ee5780d6",
+          "ok": true
+        },
+        {
+          "id": "1dd91fde-699d-42d5-b23e-fedf5230e450",
+          "ok": true
+        }
+      ],
+      "retain_v2": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2063,
+          "output_tokens": 238,
+          "total_tokens": 2301,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      }
+    },
+    "E4": {
+      "retain_note": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2042,
+          "output_tokens": 192,
+          "total_tokens": 2234,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      },
+      "recall_hits": [
+        {
+          "document_id": "fact:F08:v1",
+          "tags": [
+            "fact:F08",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after co"
+        },
+        {
+          "document_id": "fact:F18:v1",
+          "tags": [
+            "fact:F18",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger retains tenant audit logs for 1 year."
+        },
+        {
+          "document_id": "fact:F01:v2",
+          "tags": [
+            "kind:fact",
+            "fact:F01"
+          ],
+          "text": "Indian customers' data is stored and processed in India by default. | Where: India | Involving: Indian customers"
+        },
+        {
+          "document_id": "fact:F17:v1",
+          "tags": [
+            "fact:F17",
+            "kind:fact"
+          ],
+          "text": "Customers can export all Kestrel Ledger data in CSV or JSON formats at any time. | Involving: Kestrel Ledger customers"
+        },
+        {
+          "document_id": "fact:F02:v1",
+          "tags": [
+            "fact:F02",
+            "kind:fact"
+          ],
+          "text": "Kestrel Ledger encrypted backups are replicated to AWS us-west-2 (Oregon, USA) and retained for 35 days. | Where: AWS us-west-2 (Oregon, USA)"
+        }
+      ],
+      "mapped_fact": "F08",
+      "sweep": {
+        "structured": {
+          "affected_answer_ids": [
+            "Q14",
+            "Q13",
+            "Q12",
+            "Q26"
+          ]
+        },
+        "text": "The following previously sent RFP answers are now materially inaccurate due to the policy change increasing customer data retention from 90 days to 180 days following contract termination:\n\n* **Q14 (Acme Fintech):** The statement that Kestrel Ledger permanently deletes all customer data within 90 days of contract termination is now false.\n* **Q13 (Midwest Credit Union):** The claim that customer data is permanently deleted within 90 days following contract termination is now false.\n* **Q12 (Nordlys Bank):** The assertion that data is permanently deleted within 90 days following contract termination is now false.\n* **Q26 (Nordlys Bank):** The response confirming that data is fully erased within 90 days (three months) is now false.",
+        "cited": [
+          {
+            "id": "25c4fa9f-83d0-4ac5-9e2b-0f9cab46146b",
+            "type": "world",
+            "document_id": "answer:Q14",
+            "tags": [
+              "cites:F17",
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data 90 days after contract termination. | Involving: Kestrel Ledger customers"
+          },
+          {
+            "id": "0c87629d-58a5-48c5-a0fe-bf629d8c72e5",
+            "type": "world",
+            "document_id": "answer:Q13",
+            "tags": [
+              "cites:F17",
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger | Data retention policy after contract ends."
+          },
+          {
+            "id": "d9b7a93f-52b1-4efd-a9f2-7d2f11fdb1ce",
+            "type": "world",
+            "document_id": "answer:Q12",
+            "tags": [
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "c7acf1f7-d4c1-4f20-b0fc-f0755c98fc99",
+            "type": "world",
+            "document_id": "answer:Q26",
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+          },
+          {
+            "id": "5f3f05bf-d92f-40b0-89b8-1469871edb7b",
+            "type": "world",
+            "document_id": "answer:Q12",
+            "tags": [
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Answer regarding data deletion policy sent to Nordlys Bank (EU). | When: 2026-10-20 | Involving: Nordlys Bank (EU) | RFP response"
+          },
+          {
+            "id": "d2ecd07a-ad53-4443-ae81-c045d8d142dd",
+            "type": "world",
+            "document_id": "answer:Q13",
+            "tags": [
+              "cites:F17",
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "The answer to Q13 regarding data retention was sent to Midwest Credit Union. | When: 2026-10-20 | Where: United States | Involving: Midwest Credit Union | RFP response."
+          },
+          {
+            "id": "365a4b7c-6751-4a56-b34e-685991ce16d9",
+            "type": "world",
+            "document_id": "answer:Q26",
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "Answer to Q26 regarding data erasure policy sent to Nordlys Bank. | When: 2026-10-20 | Involving: Nordlys Bank"
+          },
+          {
+            "id": "844c9f61-13bd-4cd0-9966-6b4f91cb3577",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F17",
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+          },
+          {
+            "id": "1a17ced0-0fcb-4473-8eb7-0bdaff4debf2",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+          },
+          {
+            "id": "6dc0258b-5e8e-4342-9638-50507bc77fc5",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "Kestrel Ledger permanently deletes all customer data within 90 days following contract termination."
+          },
+          {
+            "id": "59da96ed-c250-489a-bfc4-90e5962aa914",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "An answer to Q26 regarding data erasure policy was sent to Nordlys Bank on 2026-10-20."
+          },
+          {
+            "id": "70b9b144-f8d5-4b5c-80ae-bba5f79cc717",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F17",
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "The answer to Q13 regarding data retention was sent to Midwest Credit Union on 2026-10-20."
+          },
+          {
+            "id": "68498320-d04f-445d-bb0c-b7412beb4840",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F08"
+            ],
+            "text": "An answer regarding data deletion policy was sent to Nordlys Bank (EU)."
+          }
+        ],
+        "usage": {
+          "input_tokens": 57688,
+          "output_tokens": 508,
+          "total_tokens": 58196,
+          "cached_tokens": 19497,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "invalidated": [
+        {
+          "id": "cc5a4651-069d-45a8-8936-1dced7c3f0a1",
+          "ok": true
+        }
+      ],
+      "retain_v2": {
+        "success": true,
+        "bank_id": "errata-spike-20261109170945",
+        "items_count": 1,
+        "var_async": false,
+        "operation_id": null,
+        "operation_ids": null,
+        "usage": {
+          "input_tokens": 2054,
+          "output_tokens": 171,
+          "total_tokens": 2225,
+          "cached_tokens": 1932,
+          "thoughts_tokens": 0
+        }
+      }
+    }
+  },
+  "consolidate": {
+    "operation_id": "d5db2d44-033b-417f-9b18-245c9e591f23",
+    "deduplicated": false
+  },
+  "idle_after_changes_s": 5.5,
+  "new_answers": {
+    "N1": {
+      "H_facts": {
+        "text": "Yes, Kestrel Ledger offers hosting in the AWS ap-south-1 region located in Mumbai, India. Data for Indian customers is stored and processed in India by default.",
+        "cited": [
+          {
+            "id": "1176e0f7-c656-4cd6-aa11-ad8a3ad749f0",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "9d8f7d4e-cd69-42a9-b067-5f0a4d9459a2",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default. | Where: India | Involving: Indian customers"
+          },
+          {
+            "id": "986daf31-f7de-47da-aa31-9084784ace5d",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "8c9df061-a678-4bcb-a639-05e3ab92c068",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34301,
+          "output_tokens": 223,
+          "total_tokens": 34524,
+          "cached_tokens": 13350,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Yes, Kestrel Ledger offers hosting in India. As of November 3, 2026, the AWS ap-south-1 region in Mumbai is generally available, and new Indian customers' data is stored and processed in India by default.",
+        "cited": [
+          {
+            "id": "1176e0f7-c656-4cd6-aa11-ad8a3ad749f0",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "7a345e68-9234-47aa-8b98-88e41d690f50",
+            "type": "world",
+            "document_id": "change:E1",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The Mumbai region (AWS ap-south-1) is now generally available. | When: 2026-11-03 | Where: Mumbai, India"
+          },
+          {
+            "id": "9d8f7d4e-cd69-42a9-b067-5f0a4d9459a2",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default. | Where: India | Involving: Indian customers"
+          },
+          {
+            "id": "d9a9238a-67eb-47d9-8c89-824eb2e81e9d",
+            "type": "world",
+            "document_id": "change:E1",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "New Indian customers' data is stored and processed in India by default. | When: 2026-11-03 | Where: India"
+          },
+          {
+            "id": "986daf31-f7de-47da-aa31-9084784ace5d",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "7fb3205f-2d59-4ee1-85a7-f3f76d54014f",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The Mumbai region (AWS ap-south-1) is now generally available."
+          },
+          {
+            "id": "8c9df061-a678-4bcb-a639-05e3ab92c068",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default."
+          },
+          {
+            "id": "af44328f-9fea-4892-bba0-68598dfa1313",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "New Indian customers' data is stored and processed in India by default."
+          }
+        ],
+        "usage": {
+          "input_tokens": 66416,
+          "output_tokens": 286,
+          "total_tokens": 66702,
+          "cached_tokens": 21486,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N2": {
+      "H_facts": {
+        "text": "Kestrel Ledger utilizes the following subprocessors for its operations: AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics.",
+        "cited": [
+          {
+            "id": "844d31d0-1080-4864-b0ec-f273edd0adf0",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "02fd9e8a-85a1-4705-80f2-d794058cbd57",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Snowflake for product usage analytics."
+          },
+          {
+            "id": "0f418471-461c-40ab-8562-d3b058c231f3",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Stripe for billing."
+          },
+          {
+            "id": "f5e87262-ac54-4c2d-95f5-b5918ad9ce20",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting."
+          },
+          {
+            "id": "416c3dd3-3a98-4b44-a8c2-f6e3a4c26858",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Zendesk for support tickets."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34269,
+          "output_tokens": 216,
+          "total_tokens": 34485,
+          "cached_tokens": 15265,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Kestrel Ledger utilizes the following third-party subprocessors:\n\n* **AWS:** Hosting services.\n* **Stripe:** Billing processing.\n* **Zendesk:** Support ticket management.\n* **Snowflake:** Product usage analytics (onboarded on November 4, 2026, to process customer account metadata).",
+        "cited": [
+          {
+            "id": "46235252-7920-40ea-a6cf-497df2175b7e",
+            "type": "world",
+            "document_id": "answer:Q06",
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only designated subprocessors. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "441032e9-1281-4aba-8972-0888ba44f5e2",
+            "type": "world",
+            "document_id": "answer:Q24",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "adf8e96b-f130-4826-b849-6c3cc8a93c69",
+            "type": "world",
+            "document_id": "answer:Q30",
+            "tags": [
+              "cites:F03",
+              "cites:F02",
+              "kind:answer",
+              "cites:F01"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as subprocessors. | Involving: Kestrel Ledger, AWS, Stripe, Zendesk"
+          },
+          {
+            "id": "1df980cd-4a93-4701-847c-43d7b827520c",
+            "type": "world",
+            "document_id": "answer:Q05",
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only third-party subprocessors. | When: 2026-10-20 | Involving: Kestrel Ledger, Acme Fintech (IN) | Resp"
+          },
+          {
+            "id": "1a8c312b-4167-44ec-bdd4-5b7915209707",
+            "type": "world",
+            "document_id": "change:E2",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) was onboarded as a new subprocessor for product usage analytics, receiving customer account metadata. | When: 2026-11-04 | Involving: Snowflake (US) | Product usage analytics"
+          },
+          {
+            "id": "844d31d0-1080-4864-b0ec-f273edd0adf0",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "24452526-157d-4ae6-b9d6-7c843befe6cc",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics and is based in the United States. | Where: United States | Involving: Snowflake"
+          },
+          {
+            "id": "2551398d-9b1e-4605-98a9-95486558279d",
+            "type": "world",
+            "document_id": "answer:Q07",
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses Stripe as its billing processor. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "1d097f27-03dc-43fb-a4bd-5635892e7687",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) was onboarded as a new subprocessor for product usage analytics."
+          },
+          {
+            "id": "02fd9e8a-85a1-4705-80f2-d794058cbd57",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Snowflake for product usage analytics."
+          },
+          {
+            "id": "4f00643b-6da6-47b0-8911-902e1f7fe83e",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics."
+          },
+          {
+            "id": "ad5d7d63-c319-41ab-83a0-a07c5fbaf84c",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only third-party subprocessors."
+          },
+          {
+            "id": "85261df3-9721-448e-98ac-15da3deceac9",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F01",
+              "cites:F02",
+              "cites:F03",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger uses Zendesk for support tickets as its only subprocessors."
+          },
+          {
+            "id": "be073db3-7bfd-4337-9e10-f1cd9d15cfc6",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) receives customer account metadata."
+          },
+          {
+            "id": "ef0d1d86-5fb8-49d2-8c94-a9ad77b82097",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake is based in the United States."
+          },
+          {
+            "id": "f5e87262-ac54-4c2d-95f5-b5918ad9ce20",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting."
+          },
+          {
+            "id": "416c3dd3-3a98-4b44-a8c2-f6e3a4c26858",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Zendesk for support tickets."
+          },
+          {
+            "id": "0f418471-461c-40ab-8562-d3b058c231f3",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Stripe for billing."
+          },
+          {
+            "id": "e9967c08-ed62-4843-920d-3326bfa8d7b3",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "cites:F01",
+              "cites:F02",
+              "cites:F03",
+              "kind:answer"
+            ],
+            "text": "Kestrel Ledger uses Stripe for billing."
+          }
+        ],
+        "usage": {
+          "input_tokens": 66022,
+          "output_tokens": 377,
+          "total_tokens": 66399,
+          "cached_tokens": 21483,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N3": {
+      "H_facts": {
+        "text": "Yes, the Kestrel mobile app is included in the scope of our SOC 2 Type II report.",
+        "cited": [
+          {
+            "id": "df8dee5f-1971-4b9a-97b8-9070273ba1f3",
+            "type": "world",
+            "document_id": "fact:F06:v2",
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app. | When: 2026-07-01 to 2026-09-30 | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "59cd27be-e529-4381-8a5c-01c3ae5e79f8",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34376,
+          "output_tokens": 223,
+          "total_tokens": 34599,
+          "cached_tokens": 15269,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Yes, the Kestrel mobile app is included in the scope of our current SOC 2 Type II report for the period of July 2026 to September 2026. While earlier RFP responses from October 2026 noted that the mobile app was excluded from the audit, our most recent product fact update (mentioned November 5, 2026) confirms that the report now covers the mobile app in addition to the web and API platforms.",
+        "cited": [
+          {
+            "id": "d9ea1bcd-96a1-49ca-be8f-df5e69df90de",
+            "type": "world",
+            "document_id": "change:E3",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The SOC 2 Type II audit report for the period of July 2026 to September 2026 now includes the Kestrel mobile app in its scope, in addition to the web and API platforms. | When: 2026-07-01 to 2026-09-3"
+          },
+          {
+            "id": "df8dee5f-1971-4b9a-97b8-9070273ba1f3",
+            "type": "world",
+            "document_id": "fact:F06:v2",
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app. | When: 2026-07-01 to 2026-09-30 | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "59cd27be-e529-4381-8a5c-01c3ae5e79f8",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app."
+          },
+          {
+            "id": "ff7a1726-27bc-4007-9ea0-9ba7bef8ab73",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The SOC 2 Type II audit report for the period of July 2026 to September 2026 includes the Kestrel mobile app, the web platform, and the API platform in its scope."
+          }
+        ],
+        "usage": {
+          "input_tokens": 66888,
+          "output_tokens": 318,
+          "total_tokens": 67206,
+          "cached_tokens": 21490,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N4": {
+      "H_facts": {
+        "text": "Kestrel Ledger retains customer data for 180 days after contract termination for the purpose of regulatory record-keeping. Following this 180-day retention period, the data is permanently deleted.",
+        "cited": [
+          {
+            "id": "42a4e6da-595c-4ac6-9686-6e2cee84b328",
+            "type": "world",
+            "document_id": "fact:F08:v2",
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, followed by permanent deletion. | Involving: Kestrel Ledger | Regulatory record-keeping requ"
+          },
+          {
+            "id": "f1480afe-d877-44bc-85a4-5114897530c0",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34379,
+          "output_tokens": 266,
+          "total_tokens": 34645,
+          "cached_tokens": 15269,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, at which point the data is permanently deleted. Please note that tenant audit logs are subject to a separate retention period of one year following contract termination.",
+        "cited": [
+          {
+            "id": "d5c148f5-4155-4eab-a20e-10ce9b2de792",
+            "type": "world",
+            "document_id": "change:E4",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Customer data retention policy changed from 90 days to 180 days after account termination due to a regulatory record-keeping hold. | When: 2026-11-06 | Regulatory record-keeping hold"
+          },
+          {
+            "id": "42a4e6da-595c-4ac6-9686-6e2cee84b328",
+            "type": "world",
+            "document_id": "fact:F08:v2",
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, followed by permanent deletion. | Involving: Kestrel Ledger | Regulatory record-keeping requ"
+          },
+          {
+            "id": "107abe70-917d-464f-841b-6bd50ae0b2de",
+            "type": "world",
+            "document_id": "answer:Q26",
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "Tenant audit logs are retained for one year following contract termination."
+          },
+          {
+            "id": "f1480afe-d877-44bc-85a4-5114897530c0",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping."
+          },
+          {
+            "id": "ab9cfdf2-b44a-4a5b-91c2-759ee21c2c35",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Customer data retention policy changed from 90 days to 180 days after account termination due to a regulatory record-keeping hold."
+          },
+          {
+            "id": "cf3b2eae-2d7c-4c93-875f-82ee5108546f",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:answer",
+              "cites:F18",
+              "cites:F08"
+            ],
+            "text": "Tenant audit logs are retained for one year following contract termination."
+          }
+        ],
+        "usage": {
+          "input_tokens": 67284,
+          "output_tokens": 295,
+          "total_tokens": 67579,
+          "cached_tokens": 21495,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N5": {
+      "H_facts": {
+        "text": "Kestrel Ledger offers hosting in two regions: AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India). Data for customers located in India is stored and processed within the India region by default.",
+        "cited": [
+          {
+            "id": "1176e0f7-c656-4cd6-aa11-ad8a3ad749f0",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "9d8f7d4e-cd69-42a9-b067-5f0a4d9459a2",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default. | Where: India | Involving: Indian customers"
+          },
+          {
+            "id": "986daf31-f7de-47da-aa31-9084784ace5d",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "ac656157-4d01-47d4-9acf-7deac862996a",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA)."
+          },
+          {
+            "id": "8c9df061-a678-4bcb-a639-05e3ab92c068",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34303,
+          "output_tokens": 245,
+          "total_tokens": 34548,
+          "cached_tokens": 15267,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Kestrel Ledger currently offers hosting in two AWS regions: AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India). For Indian customers, data is stored and processed in the Mumbai region by default.",
+        "cited": [
+          {
+            "id": "1176e0f7-c656-4cd6-aa11-ad8a3ad749f0",
+            "type": "world",
+            "document_id": "fact:F01:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "7a345e68-9234-47aa-8b98-88e41d690f50",
+            "type": "world",
+            "document_id": "change:E1",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The Mumbai region (AWS ap-south-1) is now generally available. | When: 2026-11-03 | Where: Mumbai, India"
+          },
+          {
+            "id": "ac656157-4d01-47d4-9acf-7deac862996a",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS us-east-1 (N. Virginia, USA)."
+          },
+          {
+            "id": "986daf31-f7de-47da-aa31-9084784ace5d",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Kestrel Ledger offers hosting in AWS ap-south-1 (Mumbai, India)."
+          },
+          {
+            "id": "7fb3205f-2d59-4ee1-85a7-f3f76d54014f",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The Mumbai region (AWS ap-south-1) is now generally available."
+          },
+          {
+            "id": "8c9df061-a678-4bcb-a639-05e3ab92c068",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F01"
+            ],
+            "text": "Indian customers' data is stored and processed in India by default."
+          },
+          {
+            "id": "af44328f-9fea-4892-bba0-68598dfa1313",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "New Indian customers' data is stored and processed in India by default."
+          }
+        ],
+        "usage": {
+          "input_tokens": 66252,
+          "output_tokens": 240,
+          "total_tokens": 66492,
+          "cached_tokens": 21487,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N6": {
+      "H_facts": {
+        "text": "Yes, Kestrel Ledger utilizes Snowflake as a subprocessor for product usage analytics. As part of this service, Snowflake receives customer account metadata.",
+        "cited": [
+          {
+            "id": "844d31d0-1080-4864-b0ec-f273edd0adf0",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "24452526-157d-4ae6-b9d6-7c843befe6cc",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics and is based in the United States. | Where: United States | Involving: Snowflake"
+          },
+          {
+            "id": "02fd9e8a-85a1-4705-80f2-d794058cbd57",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Snowflake for product usage analytics."
+          },
+          {
+            "id": "4f00643b-6da6-47b0-8911-902e1f7fe83e",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34345,
+          "output_tokens": 243,
+          "total_tokens": 34588,
+          "cached_tokens": 13350,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Yes, Kestrel Ledger utilizes Snowflake as a subprocessor to perform product usage analytics. As of November 4, 2026, Snowflake receives customer account metadata for these analytics purposes.",
+        "cited": [
+          {
+            "id": "844d31d0-1080-4864-b0ec-f273edd0adf0",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics. | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "24452526-157d-4ae6-b9d6-7c843befe6cc",
+            "type": "world",
+            "document_id": "fact:F03:v2",
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics and is based in the United States. | Where: United States | Involving: Snowflake"
+          },
+          {
+            "id": "1a8c312b-4167-44ec-bdd4-5b7915209707",
+            "type": "world",
+            "document_id": "change:E2",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) was onboarded as a new subprocessor for product usage analytics, receiving customer account metadata. | When: 2026-11-04 | Involving: Snowflake (US) | Product usage analytics"
+          },
+          {
+            "id": "02fd9e8a-85a1-4705-80f2-d794058cbd57",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Snowflake for product usage analytics."
+          },
+          {
+            "id": "1d097f27-03dc-43fb-a4bd-5635892e7687",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) was onboarded as a new subprocessor for product usage analytics."
+          },
+          {
+            "id": "4f00643b-6da6-47b0-8911-902e1f7fe83e",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake receives customer account metadata for product usage analytics."
+          },
+          {
+            "id": "be073db3-7bfd-4337-9e10-f1cd9d15cfc6",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Snowflake (US) receives customer account metadata."
+          },
+          {
+            "id": "ef0d1d86-5fb8-49d2-8c94-a9ad77b82097",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Snowflake is based in the United States."
+          },
+          {
+            "id": "0f418471-461c-40ab-8562-d3b058c231f3",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Stripe for billing."
+          },
+          {
+            "id": "416c3dd3-3a98-4b44-a8c2-f6e3a4c26858",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:fact",
+              "fact:F03"
+            ],
+            "text": "Kestrel Ledger uses Zendesk for support tickets."
+          }
+        ],
+        "usage": {
+          "input_tokens": 66913,
+          "output_tokens": 320,
+          "total_tokens": 67233,
+          "cached_tokens": 21487,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N7": {
+      "H_facts": {
+        "text": "Yes, Kestrel Ledger's independent SOC 2 Type II report includes coverage for the Kestrel mobile app, in addition to the web platform and public API.",
+        "cited": [
+          {
+            "id": "df8dee5f-1971-4b9a-97b8-9070273ba1f3",
+            "type": "world",
+            "document_id": "fact:F06:v2",
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app. | When: 2026-07-01 to 2026-09-30 | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "59cd27be-e529-4381-8a5c-01c3ae5e79f8",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34378,
+          "output_tokens": 217,
+          "total_tokens": 34595,
+          "cached_tokens": 15268,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "Yes, the Kestrel Ledger SOC 2 Type II audit report for the period of July 2026 to September 2026 includes the Kestrel mobile app in its scope, alongside the web platform and public API.",
+        "cited": [
+          {
+            "id": "d9ea1bcd-96a1-49ca-be8f-df5e69df90de",
+            "type": "world",
+            "document_id": "change:E3",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The SOC 2 Type II audit report for the period of July 2026 to September 2026 now includes the Kestrel mobile app in its scope, in addition to the web and API platforms. | When: 2026-07-01 to 2026-09-3"
+          },
+          {
+            "id": "df8dee5f-1971-4b9a-97b8-9070273ba1f3",
+            "type": "world",
+            "document_id": "fact:F06:v2",
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app. | When: 2026-07-01 to 2026-09-30 | Involving: Kestrel Ledger"
+          },
+          {
+            "id": "ff7a1726-27bc-4007-9ea0-9ba7bef8ab73",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "The SOC 2 Type II audit report for the period of July 2026 to September 2026 includes the Kestrel mobile app, the web platform, and the API platform in its scope."
+          },
+          {
+            "id": "59cd27be-e529-4381-8a5c-01c3ae5e79f8",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F06",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger's SOC 2 Type II report covers the web platform, public API, and the Kestrel mobile app."
+          }
+        ],
+        "usage": {
+          "input_tokens": 67125,
+          "output_tokens": 276,
+          "total_tokens": 67401,
+          "cached_tokens": 21495,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    },
+    "N8": {
+      "H_facts": {
+        "text": "Kestrel Ledger retains customer data for 180 days following contract termination to satisfy regulatory record-keeping requirements, after which it is permanently deleted. Therefore, your data will not be deleted within 90 days, but rather remains available for the full 180-day retention period.",
+        "cited": [
+          {
+            "id": "42a4e6da-595c-4ac6-9686-6e2cee84b328",
+            "type": "world",
+            "document_id": "fact:F08:v2",
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, followed by permanent deletion. | Involving: Kestrel Ledger | Regulatory record-keeping requ"
+          },
+          {
+            "id": "f1480afe-d877-44bc-85a4-5114897530c0",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping."
+          }
+        ],
+        "usage": {
+          "input_tokens": 34346,
+          "output_tokens": 240,
+          "total_tokens": 34586,
+          "cached_tokens": 15267,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      },
+      "H_all": {
+        "text": "No, Kestrel Ledger currently retains customer data for 180 days following contract termination to satisfy regulatory record-keeping requirements. While the policy previously stipulated a 90-day deletion period, it was updated on November 6, 2026, to the current 180-day retention schedule.",
+        "cited": [
+          {
+            "id": "42a4e6da-595c-4ac6-9686-6e2cee84b328",
+            "type": "world",
+            "document_id": "fact:F08:v2",
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, followed by permanent deletion. | Involving: Kestrel Ledger | Regulatory record-keeping requ"
+          },
+          {
+            "id": "d5c148f5-4155-4eab-a20e-10ce9b2de792",
+            "type": "world",
+            "document_id": "change:E4",
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Customer data retention policy changed from 90 days to 180 days after account termination due to a regulatory record-keeping hold. | When: 2026-11-06 | Regulatory record-keeping hold"
+          },
+          {
+            "id": "f1480afe-d877-44bc-85a4-5114897530c0",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "fact:F08",
+              "kind:fact"
+            ],
+            "text": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping."
+          },
+          {
+            "id": "ab9cfdf2-b44a-4a5b-91c2-759ee21c2c35",
+            "type": "observation",
+            "document_id": null,
+            "tags": [
+              "kind:change"
+            ],
+            "text": "Customer data retention policy changed from 90 days to 180 days after account termination due to a regulatory record-keeping hold."
+          }
+        ],
+        "usage": {
+          "input_tokens": 67011,
+          "output_tokens": 268,
+          "total_tokens": 67279,
+          "cached_tokens": 21492,
+          "thoughts_tokens": 0
+        },
+        "failed": false
+      }
+    }
+  },
+  "finished": "2026-11-09T17:16:51.145369+00:00"
+}

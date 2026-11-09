@@ -63,6 +63,8 @@ class H(BaseHTTPRequestHandler):
         p = self.path.split("?")[0]
         if p == "/api/state":
             return self._send(200, state())
+        if p == "/favicon.ico":
+            self.send_response(204); self.end_headers(); return
         f = {"/": "index.html", "/app.js": "app.js", "/app.css": "app.css"}.get(p)
         if not f:
             return self._send(404, {"error": "not found"})

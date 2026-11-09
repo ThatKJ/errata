@@ -1,0 +1,30 @@
+recall ranked: ['F01', 'F08', 'F03', 'F02', 'F04']
+apply_change 42.5s: {'Q01': ('affected', ['hindsight_citation', 'dependency_index']), 'Q03': ('unaffected', ['hindsight_citation', 'dependency_index']), 'Q04': ('affected', ['dependency_index']), 'Q22': ('affected', ['hindsight_citation', 'dependency_index'])}
+FAILED
+
+=================================== FAILURES ===================================
+___________ test_live_change_flags_affected_keeps_trap_and_unrelated ___________
+
+tmp_path = PosixPath('/private/var/folders/13/0k9vbdm12j5g2c8nbk74y2s40000gn/T/pytest-of-kirtan/pytest-3/test_live_change_flags_affecte0')
+
+    def test_live_change_flags_affected_keeps_trap_and_unrelated(tmp_path):
+        hs = core.CloudHindsight(os.environ.get("HINDSIGHT_BASE_URL", "https://api.hindsight.vectorize.io"), KEY)
+        bank = "errata-test-" + datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+        e = core.Errata(hs, core.Store(str(tmp_path / "live.db")), bank, FACTS, SLICE)
+        e.seed()
+        for a in e.store.answers():
+            print(a["qid"], "cited:", a["cited_facts"], "|", a["text"][:120])
+        ch = e.propose_change("Ops update Nov 3: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored and processed in India by default; us-east-1 is no longer the only region.", "2026-11-03")
+        print("recall ranked:", ch["ranked_facts"][:5])
+        assert ch["suggested_fact"] == "F01", "recall did not map the residency change to F01"
+        t = time.time()
+        impacts = {i["qid"]: i for i in e.apply_change(ch["id"], "F01")}
+        print(f"apply_change {time.time() - t:.1f}s:", {q: (i["verdict"], i["sources"]) for q, i in impacts.items()})
+>       assert "Q04" not in impacts, "unrelated backups answer must not be a candidate"
+E       AssertionError: unrelated backups answer must not be a candidate
+E       assert 'Q04' not in {'Q01': {'qid': 'Q01', 'sources': ['hindsight_citation', 'dependency_index'], 'verdict': 'affected', 'reason': 'The previous answer was incomplete regarding regional data hosting capabilities for Indian customers.', ...}, 'Q03': {'qid': 'Q03', 'sources': ['hindsight_citation', 'dependency_index'], 'verdict': 'unaffected', 'reason': 'The expansion of Kestrel Ledger to the Mumbai region applies only to new Indian customers, while existing US customers continue to have their data stored and processed exclusively within the United States in the us-east-1 and us-west-2 regions.', ...}, 'Q04': {'qid': 'Q04', 'sources': ['dependency_index'], 'verdict': 'affected', 'reason': 'The previous answer was incomplete regarding the specific regional data processing and storage locations for Indian customers.', ...}, 'Q22': {'qid': 'Q22', 'sources': ['hindsight_citation', 'dependency_index'], 'verdict': 'affected', 'reason': 'Kestrel Ledger has expanded its hosting infrastructure to include a Mumbai region (AWS ap-south-1), rendering the previous answer materially incomplete.', ...}}
+
+tests/test_cloud_live.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cloud_live.py::test_live_change_flags_affected_keeps_trap_and_unrelated
+========================= 1 failed in 84.78s (0:01:24) =========================

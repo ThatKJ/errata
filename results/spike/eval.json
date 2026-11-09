@@ -1,0 +1,1581 @@
+{
+  "phase2": {
+    "rows": [
+      {
+        "qid": "Q01",
+        "gold_B": [
+          "F01"
+        ],
+        "cited_A": [
+          "F01",
+          "F02"
+        ],
+        "keyword_C": [
+          "F01"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F01:v1",
+          "fact:F02:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q02",
+        "gold_B": [
+          "F01"
+        ],
+        "cited_A": [
+          "F01",
+          "F02"
+        ],
+        "keyword_C": [
+          "F01"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F01:v1",
+          "fact:F02:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q03",
+        "gold_B": [
+          "F01"
+        ],
+        "cited_A": [
+          "F01",
+          "F02"
+        ],
+        "keyword_C": [
+          "F01"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F01:v1",
+          "fact:F02:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q04",
+        "gold_B": [
+          "F02"
+        ],
+        "cited_A": [
+          "F02"
+        ],
+        "keyword_C": [
+          "F01",
+          "F02"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F02:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q05",
+        "gold_B": [
+          "F03"
+        ],
+        "cited_A": [
+          "F03"
+        ],
+        "keyword_C": [
+          "F03"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F03:v1",
+          "fact:F03:v1",
+          null,
+          null,
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q06",
+        "gold_B": [
+          "F03"
+        ],
+        "cited_A": [
+          "F03"
+        ],
+        "keyword_C": [
+          "F03"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F03:v1",
+          "fact:F03:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q07",
+        "gold_B": [
+          "F03"
+        ],
+        "cited_A": [
+          "F03"
+        ],
+        "keyword_C": [
+          "F03"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F03:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q08",
+        "gold_B": [
+          "F20"
+        ],
+        "cited_A": [
+          "F20"
+        ],
+        "keyword_C": [
+          "F20"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F20:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q09",
+        "gold_B": [
+          "F06"
+        ],
+        "cited_A": [
+          "F06"
+        ],
+        "keyword_C": [
+          "F06"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F06:v1",
+          "fact:F06:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q10",
+        "gold_B": [
+          "F06"
+        ],
+        "cited_A": [
+          "F06"
+        ],
+        "keyword_C": [
+          "F06"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F06:v1",
+          "fact:F06:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q11",
+        "gold_B": [
+          "F07"
+        ],
+        "cited_A": [
+          "F06",
+          "F07"
+        ],
+        "keyword_C": [
+          "F07"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F07:v1",
+          "fact:F06:v1",
+          null,
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q12",
+        "gold_B": [
+          "F08"
+        ],
+        "cited_A": [
+          "F08"
+        ],
+        "keyword_C": [
+          "F08"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F08:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q13",
+        "gold_B": [
+          "F08"
+        ],
+        "cited_A": [
+          "F08",
+          "F17"
+        ],
+        "keyword_C": [
+          "F08"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F08:v1",
+          "fact:F17:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q14",
+        "gold_B": [
+          "F17"
+        ],
+        "cited_A": [
+          "F08",
+          "F17"
+        ],
+        "keyword_C": [
+          "F17"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F17:v1",
+          "fact:F08:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q15",
+        "gold_B": [
+          "F09"
+        ],
+        "cited_A": [
+          "F09"
+        ],
+        "keyword_C": [
+          "F09"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F09:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q16",
+        "gold_B": [
+          "F10"
+        ],
+        "cited_A": [
+          "F10"
+        ],
+        "keyword_C": [
+          "F10"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F10:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q17",
+        "gold_B": [
+          "F11"
+        ],
+        "cited_A": [
+          "F11"
+        ],
+        "keyword_C": [
+          "F11"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F11:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q18",
+        "gold_B": [
+          "F12"
+        ],
+        "cited_A": [
+          "F12"
+        ],
+        "keyword_C": [
+          "F12"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F12:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q19",
+        "gold_B": [
+          "F13"
+        ],
+        "cited_A": [
+          "F13"
+        ],
+        "keyword_C": [
+          "F13"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F13:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q20",
+        "gold_B": [
+          "F14"
+        ],
+        "cited_A": [
+          "F14"
+        ],
+        "keyword_C": [
+          "F14"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F14:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q21",
+        "gold_B": [
+          "F15"
+        ],
+        "cited_A": [
+          "F15"
+        ],
+        "keyword_C": [
+          "F15"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F15:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q22",
+        "gold_B": [
+          "F01"
+        ],
+        "cited_A": [
+          "F01"
+        ],
+        "keyword_C": [
+          "F01"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F01:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q23",
+        "gold_B": [
+          "F04"
+        ],
+        "cited_A": [
+          "F04"
+        ],
+        "keyword_C": [
+          "F04"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F04:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q24",
+        "gold_B": [
+          "F03"
+        ],
+        "cited_A": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "keyword_C": [
+          "F03",
+          "F09"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F01:v1",
+          "fact:F03:v1",
+          "fact:F02:v1",
+          null,
+          null,
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "world",
+          "observation",
+          "observation",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q25",
+        "gold_B": [
+          "F06"
+        ],
+        "cited_A": [
+          "F06"
+        ],
+        "keyword_C": [
+          "F06"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F06:v1",
+          "fact:F06:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q26",
+        "gold_B": [
+          "F08"
+        ],
+        "cited_A": [
+          "F08",
+          "F18"
+        ],
+        "keyword_C": [
+          "F08"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F08:v1",
+          "fact:F18:v1",
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "observation",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q27",
+        "gold_B": [
+          "F16"
+        ],
+        "cited_A": [
+          "F16"
+        ],
+        "keyword_C": [
+          "F16"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F16:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q28",
+        "gold_B": [
+          "F18"
+        ],
+        "cited_A": [
+          "F18"
+        ],
+        "keyword_C": [
+          "F18"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F18:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q29",
+        "gold_B": [
+          "F05"
+        ],
+        "cited_A": [
+          "F05"
+        ],
+        "keyword_C": [
+          "F05"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F05:v1",
+          null
+        ],
+        "cited_types": [
+          "world",
+          "observation"
+        ]
+      },
+      {
+        "qid": "Q30",
+        "gold_B": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "cited_A": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "keyword_C": [
+          "F03"
+        ],
+        "failed": false,
+        "cited_doc_ids": [
+          "fact:F03:v1",
+          "fact:F03:v1",
+          "fact:F02:v1",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "cited_types": [
+          "world",
+          "world",
+          "world",
+          "observation",
+          "observation",
+          "observation",
+          "observation",
+          "observation"
+        ]
+      }
+    ],
+    "hindsight_cited_A": {
+      "precision": 0.78,
+      "recall": 1.0,
+      "tp": 32,
+      "fp": 9,
+      "fn": 0
+    },
+    "keyword_index_C": {
+      "precision": 0.938,
+      "recall": 0.938,
+      "tp": 30,
+      "fp": 2,
+      "fn": 2
+    },
+    "answers_with_zero_fact_citations": []
+  },
+  "taskA": {
+    "mapping": {
+      "E1": {
+        "true_fact": "F01",
+        "recall_mapped_fact": "F01",
+        "correct": true
+      },
+      "E2": {
+        "true_fact": "F03",
+        "recall_mapped_fact": "F03",
+        "correct": true
+      },
+      "E3": {
+        "true_fact": "F06",
+        "recall_mapped_fact": "F06",
+        "correct": true
+      },
+      "E4": {
+        "true_fact": "F08",
+        "recall_mapped_fact": "F08",
+        "correct": true
+      }
+    },
+    "H1_provenance(mapped by recall)": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q07",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q09",
+          "Q10",
+          "Q11",
+          "Q25"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ],
+        "after_verify": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ]
+      }
+    },
+    "H1_provenance(oracle mapping)": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q07",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q09",
+          "Q10",
+          "Q11",
+          "Q25"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ],
+        "after_verify": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ]
+      }
+    },
+    "H2_reflect_sweep": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q09",
+          "Q10",
+          "Q25"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ],
+        "after_verify": [
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ]
+      }
+    },
+    "D_keyword_index": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q04",
+          "Q22"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q07",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q09",
+          "Q10",
+          "Q25"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q12",
+          "Q13",
+          "Q26"
+        ],
+        "after_verify": [
+          "Q12",
+          "Q13",
+          "Q26"
+        ]
+      }
+    },
+    "D_oracle_manual_table": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q30"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q07",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q09",
+          "Q10",
+          "Q25"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q12",
+          "Q13",
+          "Q26"
+        ],
+        "after_verify": [
+          "Q12",
+          "Q13",
+          "Q26"
+        ]
+      }
+    },
+    "B_rag_bm25_top10": {
+      "E1": {
+        "candidates": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q04",
+          "Q11",
+          "Q22",
+          "Q23",
+          "Q24",
+          "Q25",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q01",
+          "Q02",
+          "Q03",
+          "Q22",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E2": {
+        "candidates": [
+          "Q05",
+          "Q06",
+          "Q07",
+          "Q09",
+          "Q11",
+          "Q14",
+          "Q18",
+          "Q20",
+          "Q24",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q05",
+          "Q06",
+          "Q24",
+          "Q30"
+        ]
+      },
+      "E3": {
+        "candidates": [
+          "Q03",
+          "Q04",
+          "Q09",
+          "Q10",
+          "Q11",
+          "Q13",
+          "Q15",
+          "Q25",
+          "Q27",
+          "Q28"
+        ],
+        "after_verify": []
+      },
+      "E4": {
+        "candidates": [
+          "Q04",
+          "Q05",
+          "Q11",
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q17",
+          "Q21",
+          "Q26",
+          "Q30"
+        ],
+        "after_verify": [
+          "Q04",
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q26"
+        ]
+      }
+    },
+    "summary": {
+      "H1_provenance(mapped by recall)": {
+        "candidate_stage": {
+          "tp": 12,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.632,
+          "recall": 1.0
+        },
+        "after_verify": {
+          "tp": 10,
+          "fp": 4,
+          "fn": 2,
+          "precision": 0.714,
+          "recall": 0.833
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "H1_provenance(oracle mapping)": {
+        "candidate_stage": {
+          "tp": 12,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.632,
+          "recall": 1.0
+        },
+        "after_verify": {
+          "tp": 10,
+          "fp": 4,
+          "fn": 2,
+          "precision": 0.714,
+          "recall": 0.833
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "H2_reflect_sweep": {
+        "candidate_stage": {
+          "tp": 11,
+          "fp": 5,
+          "fn": 1,
+          "precision": 0.688,
+          "recall": 0.917
+        },
+        "after_verify": {
+          "tp": 9,
+          "fp": 4,
+          "fn": 3,
+          "precision": 0.692,
+          "recall": 0.75
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q24/E2",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "D_keyword_index": {
+        "candidate_stage": {
+          "tp": 12,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        },
+        "after_verify": {
+          "tp": 10,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.909,
+          "recall": 0.833
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "D_oracle_manual_table": {
+        "candidate_stage": {
+          "tp": 12,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        },
+        "after_verify": {
+          "tp": 10,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.833,
+          "recall": 0.833
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "B_rag_bm25_top10": {
+        "candidate_stage": {
+          "tp": 12,
+          "fp": 28,
+          "fn": 0,
+          "precision": 0.3,
+          "recall": 1.0
+        },
+        "after_verify": {
+          "tp": 10,
+          "fp": 5,
+          "fn": 2,
+          "precision": 0.667,
+          "recall": 0.833
+        },
+        "false_negatives_after_verify": [
+          "Q09/E3",
+          "Q25/E3"
+        ],
+        "trap_false_positives_after_verify": [
+          "Q03/E1"
+        ]
+      },
+      "A_stateless": "N/A: a stateless LLM has no record of what was sent, so recall is 0 by construction"
+    },
+    "gold": {
+      "E1": [
+        "Q01",
+        "Q02",
+        "Q22"
+      ],
+      "E2": [
+        "Q05",
+        "Q06",
+        "Q24",
+        "Q30"
+      ],
+      "E3": [
+        "Q09",
+        "Q25"
+      ],
+      "E4": [
+        "Q12",
+        "Q13",
+        "Q26"
+      ]
+    }
+  },
+  "taskB": {
+    "N1": {
+      "question": "Do you offer hosting in India?",
+      "answers": {
+        "A_stateless": "Yes, we offer dedicated hosting infrastructure within India to ensure low-latency performance and full data residency compliance for your operations. Our regional data centers are equipped with enterprise-grade security and redundancy to meet local regulatory requirements. Please let me know if you would like a detailed proposal or a site survey of our available facilities.",
+        "B_rag_bm25": "No, Kestrel Ledger does not offer hosting in India; all customer data is exclusively stored and processed in the AWS us-east-1 region located in N. Virginia, USA. While a Mumbai (ap-south-1) region exists, it is not used for storing or processing any customer data.",
+        "D_keyword_current_table": "Yes, Kestrel Ledger offers hosting in the AWS ap-south-1 region located in Mumbai, India. Additionally, Indian customers' data is stored and processed in India by default.",
+        "C_H_facts": "Yes, Kestrel Ledger offers hosting in the AWS ap-south-1 region located in Mumbai, India. Data for Indian customers is stored and processed in India by default.",
+        "C_H_all": "Yes, Kestrel Ledger offers hosting in India. As of November 3, 2026, the AWS ap-south-1 region in Mumbai is generally available, and new Indian customers' data is stored and processed in India by default."
+      },
+      "labels": {
+        "A_stateless": "missing/other",
+        "B_rag_bm25": "correct",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N2": {
+      "question": "List all of your subprocessors.",
+      "answers": {
+        "A_stateless": "Kestrel Ledger does not utilize any external or third-party subprocessors; all cryptographic operations and data processing occur exclusively on our dedicated, air-gapped hardware modules. Our architecture is designed to keep sensitive ledger data entirely within the device without relying on cloud-based or remote computational resources.",
+        "B_rag_bm25": "Kestrel Ledger uses AWS for hosting, Stripe for billing, and Zendesk for support tickets as its only subprocessors. All of these providers maintain infrastructure or operations in the USA. Kestrel Ledger does not share customer data with any other third parties.",
+        "D_keyword_current_table": "Kestrel Ledger's subprocessors include AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for US-based product usage analytics. Additionally, the Enterprise plan utilizes Okta and Microsoft Entra ID to support SAML 2.0 single sign-on.",
+        "C_H_facts": "Kestrel Ledger utilizes the following subprocessors for its operations: AWS for hosting, Stripe for billing, Zendesk for support tickets, and Snowflake for product usage analytics.",
+        "C_H_all": "Kestrel Ledger utilizes the following third-party subprocessors:\n\n* **AWS:** Hosting services.\n* **Stripe:** Billing processing.\n* **Zendesk:** Support ticket management.\n* **Snowflake:** Product usage analytics (onboarded on November 4, 2026, to process customer account metadata)."
+      },
+      "labels": {
+        "A_stateless": "missing/other",
+        "B_rag_bm25": "missing/other",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N3": {
+      "question": "Is your mobile app in scope of your SOC 2 report?",
+      "answers": {
+        "A_stateless": "Yes, our mobile applications are fully included within the scope of our current SOC 2 Type II report. The audit specifically covers the data processing activities and security controls associated with both our web platform and mobile apps. You can verify this inclusion by reviewing the \"Scope\" section of the most recent report available on our website or upon request.",
+        "B_rag_bm25": "The Kestrel Ledger SOC 2 Type II report currently covers only the web platform and public API, explicitly excluding the mobile application. However, a new audit period (July\u2013September 2026) is scheduled to include the mobile app in scope alongside the existing web and API components.",
+        "D_keyword_current_table": "Yes, the Kestrel mobile app is explicitly included in the scope of the SOC 2 Type II report covering July through September 2026. This report also encompasses the web platform and public API alongside the mobile application.",
+        "C_H_facts": "Yes, the Kestrel mobile app is included in the scope of our SOC 2 Type II report.",
+        "C_H_all": "Yes, the Kestrel mobile app is included in the scope of our current SOC 2 Type II report for the period of July 2026 to September 2026. While earlier RFP responses from October 2026 noted that the mobile app was excluded from the audit, our most recent product fact update (mentioned November 5, 2026) confirms that the report now covers the mobile app in addition to the web and API platforms."
+      },
+      "labels": {
+        "A_stateless": "correct",
+        "B_rag_bm25": "correct",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N4": {
+      "question": "How long after termination is customer data deleted?",
+      "answers": {
+        "A_stateless": "Upon contract termination, we initiate a secure data deletion process that typically completes within 90 days to ensure compliance with your requirements and applicable regulations. During this period, all your data is permanently purged from our active systems and backups. If you require an expedited timeline or specific certification of destruction, please let us know so we can accommodate your needs immediately.",
+        "B_rag_bm25": "Due to a regulatory record-keeping hold effective November 6, Kestrel Ledger now retains customer data for 180 days after contract termination before permanently deleting it. This updated policy supersedes the previous standard of 90 days.",
+        "D_keyword_current_table": "Kestrel Ledger retains customer data for 180 days following contract termination to comply with regulatory record-keeping requirements. After this period expires, the data is permanently deleted. Therefore, deletion occurs exactly 180 days after the contract ends.",
+        "C_H_facts": "Kestrel Ledger retains customer data for 180 days after contract termination for the purpose of regulatory record-keeping. Following this 180-day retention period, the data is permanently deleted.",
+        "C_H_all": "Kestrel Ledger retains customer data for 180 days after contract termination for regulatory record-keeping, at which point the data is permanently deleted. Please note that tenant audit logs are subject to a separate retention period of one year following contract termination."
+      },
+      "labels": {
+        "A_stateless": "superseded",
+        "B_rag_bm25": "mixed",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N5": {
+      "question": "Which hosting regions do you offer?",
+      "answers": {
+        "A_stateless": "Kestrel Ledger currently offers secure, low-latency hosting regions in North America (US East and US West) and the European Union (Frankfurt). We are actively expanding our infrastructure to include additional global zones to meet your specific compliance and performance requirements. Please contact our sales team for a customized deployment plan tailored to your target audience.",
+        "B_rag_bm25": "Kestrel Ledger offers two hosting regions: AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India). While the initial documentation stated no Asia-Pacific regions were available, FACT F01 v2 confirms that Mumbai is a supported location where Indian customers' data is stored by default.",
+        "D_keyword_current_table": "Kestrel Ledger offers two hosting regions: AWS us-east-1 in N. Virginia, USA, and AWS ap-south-1 in Mumbai, India. Indian customers' data is stored and processed in India by default.",
+        "C_H_facts": "Kestrel Ledger offers hosting in two regions: AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India). Data for customers located in India is stored and processed within the India region by default.",
+        "C_H_all": "Kestrel Ledger currently offers hosting in two AWS regions: AWS us-east-1 (N. Virginia, USA) and AWS ap-south-1 (Mumbai, India). For Indian customers, data is stored and processed in the Mumbai region by default."
+      },
+      "labels": {
+        "A_stateless": "missing/other",
+        "B_rag_bm25": "correct",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N6": {
+      "question": "Does any analytics provider receive customer data?",
+      "answers": {
+        "A_stateless": "No, Kestrel Ledger does not share or sell your customer data to any external analytics providers. We maintain strict data privacy controls to ensure that all information remains secure and is used solely for the purpose of delivering our services to you.",
+        "B_rag_bm25": "No, Kestrel Ledger does not share customer data with any analytics vendors or other third parties. Its only designated subprocessors are AWS for hosting, Stripe for billing, and Zendesk for support tickets.",
+        "D_keyword_current_table": "Yes, Snowflake receives customer account metadata for US-based product usage analytics. No other listed subprocessors (AWS, Stripe, or Zendesk) are described as receiving customer data for analytics purposes.",
+        "C_H_facts": "Yes, Kestrel Ledger utilizes Snowflake as a subprocessor for product usage analytics. As part of this service, Snowflake receives customer account metadata.",
+        "C_H_all": "Yes, Kestrel Ledger utilizes Snowflake as a subprocessor to perform product usage analytics. As of November 4, 2026, Snowflake receives customer account metadata for these analytics purposes."
+      },
+      "labels": {
+        "A_stateless": "missing/other",
+        "B_rag_bm25": "missing/other",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N7": {
+      "question": "Is your mobile app covered by an independent SOC 2 audit?",
+      "answers": {
+        "A_stateless": "Yes, our mobile application is fully included in the scope of Kestrel Ledger's independent SOC 2 Type II audit. This comprehensive certification validates that the security controls protecting your data on mobile devices meet rigorous industry standards. You can review the full report and specific attestations for mobile coverage directly on our Trust Center.",
+        "B_rag_bm25": "No, your mobile app is not currently covered by an independent SOC 2 audit. The existing SOC 2 Type II report explicitly excludes the mobile application and only covers the Kestrel Ledger web platform and public API. However, a new SOC 2 Type II report for the period of July\u2013September 2026 will include the mobile app in its scope alongside the web and API.",
+        "D_keyword_current_table": "Yes, the Kestrel mobile app is covered by an independent SOC 2 Type II audit for the period of July to September 2026. This report explicitly includes the web platform, public API, and the mobile app as part of its scope.",
+        "C_H_facts": "Yes, Kestrel Ledger's independent SOC 2 Type II report includes coverage for the Kestrel mobile app, in addition to the web platform and public API.",
+        "C_H_all": "Yes, the Kestrel Ledger SOC 2 Type II audit report for the period of July 2026 to September 2026 includes the Kestrel mobile app in its scope, alongside the web platform and public API."
+      },
+      "labels": {
+        "A_stateless": "correct",
+        "B_rag_bm25": "correct",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    },
+    "N8": {
+      "question": "Will our data be deleted within 90 days after we leave?",
+      "answers": {
+        "A_stateless": "No, your data will not be automatically deleted within 90 days of departure; instead, it is securely archived for a period defined by your contract or applicable regulations. We can discuss specific retention timelines and the process for permanent deletion upon your request during our offboarding phase. Please let us know if you would like to schedule a meeting to review these details.",
+        "B_rag_bm25": "Yes, Kestrel Ledger permanently deletes all customer data within 90 days following contract termination. Please note that while your customer data is erased during this period, tenant audit logs are subject to a separate retention period of one year.",
+        "D_keyword_current_table": "No, your data will not be deleted within 90 days; Kestrel Ledger retains customer data for 180 days after contract termination before permanently deleting it. This retention period exceeds the 90-day timeframe you mentioned.",
+        "C_H_facts": "Kestrel Ledger retains customer data for 180 days following contract termination to satisfy regulatory record-keeping requirements, after which it is permanently deleted. Therefore, your data will not be deleted within 90 days, but rather remains available for the full 180-day retention period.",
+        "C_H_all": "No, Kestrel Ledger currently retains customer data for 180 days following contract termination to satisfy regulatory record-keeping requirements. While the policy previously stipulated a 90-day deletion period, it was updated on November 6, 2026, to the current 180-day retention schedule."
+      },
+      "labels": {
+        "A_stateless": "missing/other",
+        "B_rag_bm25": "missing/other",
+        "D_keyword_current_table": "correct",
+        "C_H_facts": "correct",
+        "C_H_all": "correct"
+      }
+    }
+  },
+  "latency_ms": {
+    "qwen_verify": [
+      8337,
+      649,
+      576,
+      509,
+      583,
+      956,
+      570,
+      634,
+      741,
+      639,
+      511,
+      551,
+      565,
+      591,
+      660,
+      615,
+      667,
+      378,
+      589,
+      534,
+      654,
+      660,
+      636,
+      738,
+      710,
+      856,
+      499,
+      326,
+      672,
+      540,
+      609,
+      540,
+      450,
+      575,
+      686,
+      931,
+      1373,
+      555,
+      326,
+      760
+    ],
+    "qwen_answer": [
+      3146,
+      2765,
+      3270,
+      2859,
+      3018,
+      2312,
+      3065,
+      3788
+    ]
+  },
+  "llm_failures": [],
+  "taskB_summary": {
+    "A_stateless": {
+      "missing/other": 5,
+      "correct": 2,
+      "superseded": 1
+    },
+    "B_rag_bm25": {
+      "correct": 4,
+      "missing/other": 3,
+      "mixed": 1
+    },
+    "D_keyword_current_table": {
+      "correct": 8
+    },
+    "C_H_facts": {
+      "correct": 8
+    },
+    "C_H_all": {
+      "correct": 8
+    }
+  },
+  "hindsight_latency_ms": {
+    "get_version": {
+      "n": 1,
+      "p50": 1271,
+      "max": 1271
+    },
+    "create_bank": {
+      "n": 1,
+      "p50": 1592,
+      "max": 1592
+    },
+    "retain_batch_facts": {
+      "n": 1,
+      "p50": 7260,
+      "max": 7260
+    },
+    "list_operations": {
+      "n": 20,
+      "p50": 531,
+      "max": 1365
+    },
+    "reflect_draft": {
+      "n": 30,
+      "p50": 5129,
+      "max": 7081
+    },
+    "retain_batch_answers": {
+      "n": 1,
+      "p50": 11482,
+      "max": 11482
+    },
+    "retain_note": {
+      "n": 4,
+      "p50": 2855,
+      "max": 3330
+    },
+    "recall_map": {
+      "n": 4,
+      "p50": 647,
+      "max": 3382
+    },
+    "reflect_sweep": {
+      "n": 4,
+      "p50": 7643,
+      "max": 7766
+    },
+    "list_v1": {
+      "n": 4,
+      "p50": 1251,
+      "max": 1254
+    },
+    "invalidate": {
+      "n": 6,
+      "p50": 2639,
+      "max": 3226
+    },
+    "retain_v2": {
+      "n": 4,
+      "p50": 2678,
+      "max": 2962
+    },
+    "consolidate": {
+      "n": 1,
+      "p50": 1262,
+      "max": 1262
+    },
+    "reflect_new": {
+      "n": 16,
+      "p50": 6209,
+      "max": 10153
+    }
+  },
+  "hindsight_errors": [],
+  "cost_estimate_usd": {
+    "reflect_calls": 50,
+    "reflect_cost_at_$0.05": 2.5,
+    "note": "Retain/recall token charges not itemised by the API responses we captured; see raw usage fields. ESTIMATE from published Cloud pricing."
+  }
+}

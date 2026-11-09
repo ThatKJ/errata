@@ -1,0 +1,342 @@
+[
+  {
+    "change": "E1",
+    "qid": "Q01",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 5916,
+    "reason": "The previous answer was materially incomplete regarding the specific data hosting and processing regions used by Kestrel Ledger.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q02",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 6611,
+    "reason": "Kestrel Ledger now supports data residency within India with a generally available Mumbai region (AWS ap-south-1), meaning data for Indian customers is now stored and processed in India by default.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q03",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": false,
+    "trap": true,
+    "ms": 5846,
+    "reason": "The previous statement incorrectly claimed all customer data is processed exclusively within the United States, failing to account for the new AWS ap-south-1 region in Mumbai for Indian customers.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q04",
+    "sources": [
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": false,
+    "trap": false,
+    "ms": 6797,
+    "reason": "The previous information regarding data storage location for customers in India was incorrect.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q22",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 5530,
+    "reason": "The previous answer failed to mention the addition of a second hosting region in Mumbai (AWS ap-south-1) effective November 3, 2026.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q24",
+    "sources": [
+      "hindsight_citation"
+    ],
+    "verdict": "affected",
+    "gold_affected": false,
+    "trap": false,
+    "ms": 5585,
+    "reason": "The previous answer omitted the new hosting capability in the Mumbai region (AWS ap-south-1) and the specific data storage locations for Indian customers.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E1",
+    "qid": "Q30",
+    "sources": [
+      "hindsight_citation"
+    ],
+    "verdict": "affected",
+    "gold_affected": false,
+    "trap": false,
+    "ms": 6567,
+    "reason": "The previous statement incorrectly claimed that all primary customer data is stored and processed exclusively in the AWS us-east-1 region, failing to account for the new AWS ap-south-1 region for Indian customers.",
+    "cited_docs": [
+      "fact:F01:v2",
+      "fact:F01:v2",
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E2",
+    "qid": "Q05",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 5077,
+    "reason": "The previous answer was incomplete because it failed to include Snowflake as a subprocessor for product usage analytics.",
+    "cited_docs": [
+      "fact:F03:v2",
+      "fact:F03:v2",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E2",
+    "qid": "Q06",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "affected",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 5974,
+    "reason": "The previous answer was materially incomplete regarding the use of Snowflake as a subprocessor for product usage analytics.",
+    "cited_docs": [
+      "fact:F03:v2",
+      "fact:F03:v2",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E2",
+    "qid": "Q07",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "unaffected",
+    "gold_affected": false,
+    "trap": true,
+    "ms": 5993,
+    "reason": "The recent update to subprocessors only involves the addition of Snowflake for product usage analytics and does not affect billing, which continues to utilize Stripe.",
+    "cited_docs": [
+      "fact:F03:v2",
+      "fact:F03:v2",
+      null,
+      null
+    ]
+  },
+  {
+    "change": "E2",
+    "qid": "Q24",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 1186,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E2",
+    "qid": "Q30",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 1149,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E3",
+    "qid": "Q09",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 411,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E3",
+    "qid": "Q10",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": false,
+    "trap": true,
+    "ms": 349,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E3",
+    "qid": "Q11",
+    "sources": [
+      "hindsight_citation"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": false,
+    "trap": false,
+    "ms": 330,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E3",
+    "qid": "Q25",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 383,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E4",
+    "qid": "Q12",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 329,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E4",
+    "qid": "Q13",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 1231,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E4",
+    "qid": "Q14",
+    "sources": [
+      "hindsight_citation"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": false,
+    "trap": false,
+    "ms": 1150,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  },
+  {
+    "change": "E4",
+    "qid": "Q26",
+    "sources": [
+      "hindsight_citation",
+      "dependency_index"
+    ],
+    "verdict": "needs_review",
+    "gold_affected": true,
+    "trap": false,
+    "ms": 321,
+    "reason": "failed: ApiException()",
+    "cited_docs": []
+  }
+]
