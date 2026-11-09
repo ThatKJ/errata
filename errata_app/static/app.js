@@ -19,9 +19,9 @@ async function load() {
 
 function render() {
   $("#status").innerHTML = S.configured
-    ? `<span class="dot"></span>Hindsight Cloud · bank <code>${esc(S.bank)}</code>`
-    : `<span class="dot off"></span>Hindsight not configured`;
-  if (!S.configured) { banner("HINDSIGHT_API_KEY is not set on the server. Add it to .env and restart. (No data is faked.)"); }
+    ? `<span class="dot"></span>Hindsight (${esc(S.hindsight)}) · bank <code>${esc(S.bank)}</code>`
+    : `<span class="dot off"></span>Hindsight unreachable`;
+  if (!S.configured) { banner("Hindsight is not reachable. Run scripts/hindsight-local.sh start (and make sure Ollama is running). No data is faked."); }
   const seeded = !!S.seeded_at;
   $("#setup").hidden = seeded || !S.configured;
   $("#workspace").hidden = !seeded;

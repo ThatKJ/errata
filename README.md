@@ -4,7 +4,20 @@
 
 > All data in this repo is **synthetic** (a fictional company, "Kestrel Ledger", and fictional customers). Errata never contacts customers. Approved corrections are marked *"approved (not sent)"*.
 
-<!-- RESULTS -->
+## Results (measured locally, synthetic data, small n)
+Full pipeline on the open-source Hindsight server + Ollama `qwen3.5:9b`: 30 sent answers, 4 fact changes, and 12 stale (answer, change) pairs labelled before any run. Details and raw rows: [`docs/LOCAL_VALIDATION_REPORT.md`](docs/LOCAL_VALIDATION_REPORT.md), `results/local/eval_local.json`.
+
+| | |
+|---|---|
+| Stale answers **silently cleared** | **0 / 12**: all 12 reached a human (6 *needs correction*, 6 *needs review*) |
+| Change note → right fact (Hindsight `recall` top-1) | 4 / 4 |
+| Precision of *needs correction* | 0.50. All 6 "false alarms" quote a sent sentence that really is stale, but outside the pre-registered labels |
+| Old fact version after a change | invalidated in Hindsight with a reason; new version live; verified via `list_memories(state=…)` |
+| Persistence | memory and audit trail survive a full restart of Hindsight and the app |
+| Latency (laptop, Apple silicon) | `reflect` median ≈32 s; verification ≈38 s per candidate; seeding 30 answers ≈33 min |
+
+An earlier spike on Hindsight Cloud (different model) measured `based_on` citation recall of 32/32. On 8 post-change questions it scored Hindsight 8/8, BM25 RAG 4/8 and stateless 2/8: [`docs/MEMORY_PROOF.md`](docs/MEMORY_PROOF.md).
+
 
 ## Why memory, not a search box
 Answer libraries such as Loopio and Responsive keep *future* answers fresh. Nobody tracks which customer was told the *old* version. To do that you need:
@@ -30,27 +43,37 @@ The same idea, retroactively repairing past decisions when a fact is retracted, 
 
 Architecture and failure behaviour: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Band Desktop usage (team workflow, not runtime): [`docs/BAND_USAGE.md`](docs/BAND_USAGE.md).
 
-## Run it (≈2 minutes + seeding)
+## Run it locally (no Cloud, no API key, no Docker)
+Errata runs against the **open-source Hindsight server** on your machine, with embedded PostgreSQL and a local LLM via Ollama.
+
+Prerequisites: macOS/Linux, [uv](https://docs.astral.sh/uv/), [Ollama](https://ollama.com) running, about 10 GB of disk space, and 16 GB of RAM recommended.
 ```bash
 git clone <this repo> && cd errata
-cp .env.example .env            # add your Hindsight Cloud key (https://ui.hindsight.vectorize.io)
+ollama pull qwen3.5:9b                 # ~7.6 GB, once
+cp .env.example .env                   # local defaults; no key needed
+scripts/hindsight-local.sh start       # installs hindsight-all==1.2.0 into .hindsight-venv on first run, serves 127.0.0.1:8888
 uv sync
-uv run python -m errata_app.server   # http://127.0.0.1:8765
+uv run python -m errata_app.server     # http://127.0.0.1:8765
 ```
-Click **Load synthetic workspace**. This makes 30 real `reflect` calls, so expect several minutes. Then paste a change, for example:
+Stop: `Ctrl-C` the app, then run `scripts/hindsight-local.sh stop`. Memory lives in Hindsight's embedded Postgres, and the audit trail lives in `errata-local.db`. Both survive restarts, and the app never re-seeds an existing workspace.
+
+Click **Load synthetic workspace**. It makes 30 real local `reflect` calls, so seeding takes tens of minutes on a laptop (see measured timings below). Then paste a change, for example:
 > Ops update Nov 3: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored and processed in India by default; us-east-1 is no longer the only region.
+
+The same adapter also works against Hindsight Cloud: set `HINDSIGHT_BASE_URL` and `HINDSIGHT_API_KEY` in `.env`.
 
 ## Tests
 ```bash
-uv run pytest                          # unit tests use a FAKE Hindsight client (logic only)
-HINDSIGHT_API_KEY=... uv run pytest tests/test_cloud_live.py -s   # real Cloud, isolated bank
+uv run pytest                                            # unit tests (FAKE client for logic, real adapter for connection loss)
+ERRATA_REQUIRE_LIVE=1 uv run pytest -m live -v -s        # REAL local Hindsight + Ollama, fresh isolated bank
+uv run python scripts/eval_local.py                      # ground-truth eval of the full app pipeline (30 answers, 4 changes)
 ```
 
 ## Limitations (honest)
 - The demo data is synthetic. Results on 30 answers and 4 changes are not a production accuracy claim.
 - The dependency index is a hand-written keyword list for this fact sheet.
 - Verdicts come from an LLM (Hindsight `reflect`). Every verdict is reviewable, and nothing is sent automatically.
-- Latency is LLM-bound (seconds per call, and it varies). The one-time seed of 30 drafts takes minutes.
+- Latency is local-LLM-bound (tens of seconds per `reflect` on a laptop). The one-time seed of 30 drafts takes tens of minutes.
 - Single user, single workspace, local SQLite. No authentication.
 
 ## License

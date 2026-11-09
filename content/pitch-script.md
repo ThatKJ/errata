@@ -10,24 +10,25 @@
 ## 1:10–1:25 — Solution in one sentence
 "Errata remembers which facts every answer you sent relied on. When a fact changes, it lists the answers that are now wrong, with evidence, and drafts the fix for you to approve."
 
-## 1:25–3:25 — Live demo (app running against Hindsight Cloud; synthetic data)
+## 1:25–3:25 — Live demo (app on this laptop: local open-source Hindsight + Ollama; synthetic data)
 1. **Sent answers table:** point at Q02, "cannot host data within India", and at the cited-fact chips. *"Drafted by Hindsight reflect. These chips are its `based_on` citations."*
 2. **Post the change:** paste the Mumbai note → *Find the fact it changes* → recall ranks F01. *"I confirm. A human owns that mapping."*
-3. **Supersede & check:** takes about 30–45 s, so talk over it: *"It's invalidating the old F01 memories (kept for audit, not deleted), retaining v2, and re-checking each linked answer. Each 'affected' must quote the false sentence."*
+3. **Supersede & check:** locally this takes several minutes (~38 s per candidate). Apply one change live and talk over the first verdicts, OR show a change applied before the pitch and say so plainly ("I ran this one at [time] on this laptop"): *"It's invalidating the old F01 memories (kept for audit, not deleted), retaining v2, and re-checking each linked answer. Each 'affected' must quote the false sentence."*
 4. **Wow:** the affected list with Q02, Q01 and Q22.
 5. **Negative control:** Q03, the US customer. Show its actual verdict. If it was flagged, say so honestly: *"this is exactly why a human approves; it's in our measured limitations."*
 6. **Review Q02:** old answer vs. drafted correction, plus Memory evidence (v1 struck through, v2, `based_on` doc IDs) → Approve.
 7. **Refresh:** v2, "approved (not sent)", and the audit trail.
 
-**Fallback if the Cloud or network fails:** say "the network is down, so here is a recorded run from [date]" and play `docs/demo/recorded-run.mp4` (record it once credits are restored). Never pretend it's live.
+**Fallback if the laptop stack fails:** say "here is a recorded run from [date]" and play the recorded demo video. Never pretend it's live. No network is needed for the live demo.
 
-## 3:25–4:15 — Before vs. after (measured, synthetic, small n; docs/MEMORY_PROOF.md)
+## 3:25–4:15 — Before vs. after (measured, synthetic, small n; docs/LOCAL_VALIDATION_REPORT.md, earlier Cloud spike in docs/MEMORY_PROOF.md)
 - `based_on` captured **32/32** true fact dependencies (precision 0.78).
 - New questions after 4 changes: **Hindsight 8/8**, plain RAG over the same docs 4/8, stateless 2/8.
+- Local full-pipeline eval (30 answers, 4 changes, 12 pre-labelled stale pairs): **0 of 12 silently cleared**, recall mapping 4/4, "affected" precision 0.50; every false alarm quoted a really-stale sent sentence.
 - Honest: a keyword index found the same candidates on this small fact sheet. The verdict is the hard part. Our verifier over-flagged, so verdicts must quote the false sentence and a human approves.
 
 ## 4:15–5:00 — Architecture, team, limitations, next
-- Stdlib Python server, SQLite audit store, Hindsight Cloud (retain / recall / reflect / invalidate). Band Desktop was used for our agent review loop, not at runtime.
+- Stdlib Python server, SQLite audit store, open-source Hindsight running locally (embedded Postgres) on Ollama qwen3.5:9b: retain / recall / reflect / invalidate. No paid API. Band Desktop was used for our agent review loop, not at runtime.
 - Team contributions: [FILL IN — only real contributions].
 - Next: Loopio/Responsive export import, per-customer region context, and evaluation on real (consented) questionnaire history.
 
@@ -41,6 +42,8 @@
 7. **Is the data real?** No, it's synthetic, with the ground truth fixed before any run. The counts are small, and this is a mechanism test, not an accuracy claim.
 8. **Can it send something wrong to a customer?** There is no send path in the code. Approved corrections are marked "not sent".
 9. **Prompt injection via a change note?** Notes are quoted as data, the output is schema-constrained, and every change needs human confirmation of the fact and approval of the correction.
-10. **What exactly is built?** Everything in the demo: seed, change, impact, review, approval, persistence, and tests (16 unit tests with a fake client, plus a live Cloud test).
+10. **What exactly is built?** Everything in the demo: seed, change, impact, review, approval, persistence, and tests (33 unit tests, a live integration test against the local Hindsight server, and a 30-answer ground-truth eval of the full pipeline). It runs fully offline on a laptop: open-source Hindsight + Ollama.
 11. **Competitors?** Loopio and Responsive do forward hygiene. Conveyor and Inventive store answer sources but, as far as we could verify, don't sweep sent answers. Unsay did backward correction for medication safety; we credit it.
 12. **What does Band do?** We used Band Desktop rooms for agent code review of the approval path. It isn't part of Errata's runtime, and it isn't connected to Hindsight.
+
+13. **Why local, not Cloud?** We started on Hindsight Cloud and ran out of credits. The open-source server gave the same API (same client, same calls; the only change was making the API key optional). Customer commitments are sensitive, so local-by-default is also the better product answer. Trade-off: ~38 s per verification on a laptop.

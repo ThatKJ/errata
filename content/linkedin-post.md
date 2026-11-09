@@ -5,14 +5,15 @@
 Your answer library keeps the next answer fresh.
 Nobody tracks which customers were told the old one.
 
-I built Errata to find them, with Hindsight agent memory:
+I built Errata to find them, on Hindsight agent memory running fully local (open-source server + Ollama, no API key):
 
-- Draft answers with reflect and store based_on. Provenance comes free: it cited 32/32 true dependencies in my test set.
-- Version fact IDs and invalidate old memories; never upsert evidence.
-- New questions after 4 fact changes: Hindsight 8/8 correct, plain RAG 4/8.
-- Hard part: deciding whether an answer is really wrong. A verdict must quote the false sentence or it goes to human review.
+- Draft answers with reflect and keep based_on as provenance.
+- Version fact IDs; invalidate old memories, never overwrite evidence.
+- Every verdict must quote the sentence that went stale, or it goes to a human.
 
-Synthetic data, small n. Code: https://github.com/ThatKJ/errata
+Result on my synthetic test (30 sent answers, 4 changes): 0 of 12 stale answers slipped through. Half needed human review, and the "false alarms" were real stale sentences I hadn't labelled.
+
+Code: https://github.com/ThatKJ/errata
 
 #AIAgents #AgentMemory #Hindsight #LLM
 ---

@@ -16,5 +16,7 @@ package = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = '-m "not live"'  # live tests need a real Hindsight server: pytest -m live
+markers = ["live: needs a real Hindsight server (local or Cloud)"]
 
 pythonpath = ["."]

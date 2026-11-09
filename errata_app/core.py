@@ -83,7 +83,8 @@ def grounded(verdict, sent_text):
     """'affected' only counts if the verifier quoted a sentence that is really in the sent answer."""
     quote = (verdict.get("false_sentence") or "").strip()
     if verdict.get("status") == "affected" and not (len(norm(quote).split()) >= 2 and norm(quote) in norm(sent_text)):
-        return "needs_review", "verifier said affected but did not quote a sentence that was actually sent: " + (verdict.get("reason") or ""), ""
+        return "needs_review", (f"verifier said affected but its quote was not found in the sent answer (quote: {json.dumps(quote[:200])}): "
+                                + (verdict.get("reason") or "")), ""
     return verdict["status"], verdict.get("reason", ""), quote if verdict.get("status") == "affected" else ""
 
 
@@ -92,9 +93,10 @@ def evidence(based_on):
             for m in (as_dict(based_on) or {}).get("memories") or []]
 
 
-class CloudHindsight:
-    """Thin adapter over the official hindsight-client 1.2.0 (+ one raw PATCH the high-level client doesn't wrap)."""
-    def __init__(self, base_url, api_key, timeout=120.0):
+class LiveHindsight:
+    """Thin adapter over the official hindsight-client 1.2.0 (+ one raw PATCH the high-level client doesn't wrap).
+    Works against the local open-source server (no key) or Hindsight Cloud (key)."""
+    def __init__(self, base_url, api_key=None, timeout=600.0):  # > server LLM timeout (300s), so the server fails first
         from hindsight_client import Hindsight
         self.base, self.key = base_url.rstrip("/"), api_key
         self.c = Hindsight(base_url=self.base, api_key=api_key, timeout=timeout)
@@ -109,7 +111,7 @@ class CloudHindsight:
     def invalidate(self, bank_id, memory_id, reason):
         req = urllib.request.Request(f"{self.base}/v1/default/banks/{bank_id}/memories/{memory_id}", method="PATCH",
                                      data=json.dumps({"state": "invalidated", "reason": reason[:500]}).encode(),
-                                     headers={"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"})
+                                     headers={"Content-Type": "application/json", **({"Authorization": f"Bearer {self.key}"} if self.key else {})})
         with urllib.request.urlopen(req, timeout=60) as r:
             return json.loads(r.read() or b"{}")
 
@@ -195,8 +197,10 @@ class Errata:
             progress(n, len(self.questions))
         if not sent:
             st.log("warning", {"seed": "every answer draft failed; workspace NOT marked seeded"})
-            raise RuntimeError("seeding failed: no answer could be drafted (check Hindsight status/credits)")
-        self.hs.retain_batch(self.bank, sent)
+            raise RuntimeError("seeding failed: no answer could be drafted (is Hindsight/Ollama running?)")
+        # Sent answers are an audit record nothing waits on; extracting 30 of them on a local LLM takes minutes, so the
+        # server processes them in the background (facts above are retained synchronously: drafts depend on them).
+        self.hs.retain_batch(self.bank, sent, retain_async=True)
         st.meta("seeded_at", now()); st.log("seed", {"facts": len(items), "answers": len(self.questions), "drafted": len(sent)})
 
     # ---- 2. propose a change (Hindsight suggests which fact it supersedes) ------
@@ -248,10 +252,15 @@ class Errata:
                      (f["version"] + 1, new_text, new_doc, ch["effective"], json.dumps(hist), fid))
         out = []
         for a in self.store.answers():
-            sources = (["hindsight_citation"] if fid in a["cited_facts"] else []) + (["dependency_index"] if fid in a["index_deps"] else [])
+            sources = (["hindsight_citation"] if fid in a["cited_facts"] else []) + (["dependency_index"] if fid in a["index_deps"] else []) \
+                + (["draft_failed"] if not a["text"] else [])  # no text = no provenance: always route to a human
             if not sources:
                 continue
-            out.append(self._verify(cid, ch, fid, a, sources))
+            v = self._verify(cid, ch, fid, a, sources)
+            if not items and v["verdict"] == "unaffected":  # old version may still be live in memory: verdict untrustworthy
+                v.update(verdict="needs_review", reason=f"old fact version {old_doc} was not found to invalidate; " + v["reason"])
+                self.store.x("update impacts set verdict=?, reason=? where change_id=? and qid=?", (v["verdict"], v["reason"], cid, a["qid"]))
+            out.append(v)
         self.store.x("update changes set applied_fact=?, status='applied' where id=?", (fid, cid))
         self.store.log("apply_change", {"id": cid, "fact": fid, "candidates": len(out), "affected": sum(i["verdict"] == "affected" for i in out)})
         return out

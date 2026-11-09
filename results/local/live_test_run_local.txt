@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0 -- ./.venv/bin/python
+cachedir: .pytest_cache
+configfile: pyproject.toml
+testpaths: tests
+collecting ... collected 30 items / 29 deselected / 1 selected
+
+tests/test_live.py::test_live_change_flags_affected_keeps_trap_and_unrelated seed 296.9s (4 reflect drafts + 2 retain batches)
+Q01 cited: ['F01', 'F03', 'F08', 'F20', 'F02', 'F04'] | # Kestrel Ledger Data Hosting and Processing  **Primary Production Hosting:** All Kestrel Ledger customer data is stored
+Q03 cited: ['F01', 'F02', 'F03'] | **Yes, Kestrel Ledger stores and processes all customer data exclusively inside the United States.**  Primary operationa
+Q04 cited: ['F02', 'F08', 'F01'] | # Data Backup Storage and Retention for Kestrel Ledger  Kestrel Ledger stores **encrypted backups of data in AWS us-west
+Q22 cited: ['F01', 'F02'] | Kestrel Ledger does not offer any hosting region in Asia-Pacific or closer to Australia; it exclusively stores and proce
+recall ranked: ['F01', 'F03', 'F02', 'F04', 'F08'] 503 ms
+apply_change 169.7s: {'Q01': ('needs_review', ['hindsight_citation', 'dependency_index'], ''), 'Q03': ('needs_review', ['hindsight_citation', 'dependency_index'], ''), 'Q04': ('needs_review', ['hindsight_citation', 'dependency_index'], ''), 'Q22': ('affected', ['hindsight_citation', 'dependency_index'], 'Kestrel Ledger does not offer any hosting region in Asia-Pac')}
+fact:F01:v1 memory states: []
+Q04 sources: ['hindsight_citation', 'dependency_index'] verdict: needs_review
+PASSED
+
+================= 1 passed, 29 deselected in 508.64s (0:08:28) =================

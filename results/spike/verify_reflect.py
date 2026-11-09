@@ -2,7 +2,7 @@
 on every candidate from the union of Hindsight citations and the keyword index, in the spike bank (v1 invalidated, v2 retained).
 Writes results/verify_reflect.json."""
 import json, os, sys, time
-sys.path.insert(0, "/Users/kirtan/Hackathons/HWB/errata")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))  # repo root
 from errata_app import core  # same prompt/schema as the app; sets SSL_CERT_FILE
 from data import QUESTIONS, CHANGES, AFFECTED, TRAPS
 from evaluate import kw_deps

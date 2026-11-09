@@ -5,3 +5,12 @@ __pycache__/
 .pytest_cache/
 errata.db
 results/raw/
+.hindsight-venv/
+.hindsight.pid
+hindsight-local.log
+errata-local*.db
+.env.*
+!.env.example
+results/local/*.db
+errata-server.log
+results/local/*.log

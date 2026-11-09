@@ -1,7 +1,7 @@
 """Errata HTTP server (stdlib only). The Hindsight API key stays server-side; the browser never sees it.
 Run: uv run python -m errata_app.server   (reads .env; serves http://127.0.0.1:8765)
 """
-import json, os, re, threading, traceback
+import json, os, re, threading, traceback, urllib.request
 from datetime import datetime, timezone
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -15,14 +15,22 @@ CFG = {k: os.environ.get(k) or ENV.get(k, "") for k in ("HINDSIGHT_API_KEY", "HI
 store = core.Store(CFG["ERRATA_DB"] or str(ROOT.parent / "errata.db"))
 BANK = CFG["ERRATA_BANK"] or store.meta("bank") or store.meta("bank", "errata-demo-" + datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S"))
 store.meta("bank", BANK)
-HS = core.CloudHindsight(CFG["HINDSIGHT_BASE_URL"] or "https://api.hindsight.vectorize.io", CFG["HINDSIGHT_API_KEY"]) if CFG["HINDSIGHT_API_KEY"] else None
-APP = core.Errata(HS, store, BANK, FACTS, QUESTIONS) if HS else None
+HS_URL = CFG["HINDSIGHT_BASE_URL"] or "http://127.0.0.1:8888"  # local open-source Hindsight; key only needed for Cloud
+HS = core.LiveHindsight(HS_URL, CFG["HINDSIGHT_API_KEY"] or None)
+APP = core.Errata(HS, store, BANK, FACTS, QUESTIONS)
 SEED = {"running": False, "done": 0, "total": len(QUESTIONS), "error": None}
 BUSY = threading.Lock()  # one mutating Hindsight workflow at a time (demo-scale app)
 
 
+def hindsight_up():
+    try:
+        return urllib.request.urlopen(HS_URL + "/health", timeout=2).status == 200
+    except Exception:
+        return False
+
+
 def state():
-    return {"configured": bool(APP), "bank": BANK, "seeded_at": store.meta("seeded_at"), "seed": SEED,
+    return {"configured": hindsight_up(), "hindsight": "local" if HS_URL.startswith(("http://127.0.0.1", "http://localhost")) else "remote", "bank": BANK, "seeded_at": store.meta("seeded_at"), "seed": SEED,
             "facts": store.facts(), "answers": store.answers(),
             "changes": [{**c, "impacts": store.impacts(c["id"])} for c in reversed(store.changes())],
             "events": store.events(30)}
@@ -64,6 +72,8 @@ class H(BaseHTTPRequestHandler):
 
     def do_GET(self):
         p = self.path.split("?")[0]
+        if (self.headers.get("Host") or "").split(":")[0] not in ("127.0.0.1", "localhost"):  # DNS-rebinding guard
+            return self._send(403, {"error": "localhost only"})
         if p == "/api/state":
             return self._send(200, state())
         if p == "/favicon.ico":
@@ -80,8 +90,6 @@ class H(BaseHTTPRequestHandler):
         host = (self.headers.get("Host") or "").split(":")[0]
         if host not in ("127.0.0.1", "localhost") or not (self.headers.get("Content-Type") or "").startswith("application/json"):
             return self._send(403, {"error": "requests must be application/json to localhost"})
-        if not APP:
-            return self._send(503, {"error": "HINDSIGHT_API_KEY is not configured on the server. Add it to .env and restart."})
         try:
             b = self._body()
             if p == "/api/seed":
@@ -129,7 +137,7 @@ class H(BaseHTTPRequestHandler):
 
 def main():
     port = int(os.environ.get("PORT", "8765"))
-    print(f"Errata on http://127.0.0.1:{port}  bank={BANK}  hindsight={'configured' if APP else 'NOT CONFIGURED'}")
+    print(f"Errata on http://127.0.0.1:{port}  bank={BANK}  hindsight={HS_URL}")
     ThreadingHTTPServer(("127.0.0.1", port), H).serve_forever()
 
 

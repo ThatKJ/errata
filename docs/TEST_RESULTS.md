@@ -1,5 +1,7 @@
 # Test results record (2026-11-09, IST)
 
+> **Superseded for current numbers by [`LOCAL_VALIDATION_REPORT.md`](LOCAL_VALIDATION_REPORT.md) (2026-11-10, local open-source Hindsight + Ollama).** This file records the earlier Cloud/fake-backend phase.
+
 Tests are separated by what they prove. **"Fake" means a recording stub, not Hindsight Cloud.**
 
 ## A. Automated unit tests (FAKE Hindsight client — logic only)

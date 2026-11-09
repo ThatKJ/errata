@@ -2,7 +2,7 @@
 
 **What Band is:** a desktop app where coding-agent "seats" (e.g. Claude Code) and humans work in a shared room and hand work to each other by `@mention`. It does not supply models.
 
-**What Band is NOT in Errata:** Errata's runtime does not call Band, and Band is **not** connected to Hindsight. Errata's memory is Hindsight Cloud only. We do not claim a product integration.
+**What Band is NOT in Errata:** Errata's runtime does not call Band, and Band is **not** connected to Hindsight. Errata's memory is the local open-source Hindsight server (Ollama-backed). We do not claim a product integration.
 
 **How we used it:** to run the code-review loop on Errata's riskiest path (the Hindsight evidence → human approval flow), with one agent seat reviewing and one implementing.
 

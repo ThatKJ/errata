@@ -7,15 +7,19 @@ Browser (static HTML/JS, no secrets)
 errata_app/server.py   stdlib ThreadingHTTPServer · input validation · one mutating workflow at a time
    │
    ▼
-errata_app/core.py ── Errata engine ──────────────┬──► Hindsight Cloud (hindsight-client 1.2.0 + 1 raw PATCH)
+errata_app/core.py ── Errata engine ──────────────┬──► local Hindsight server 1.2.0 (127.0.0.1:8888, open source)
    │                                              │      retain · recall · reflect(based_on, response_schema)
    ▼                                              │      list_memories · PATCH state=invalidated
-SQLite audit store (errata.db)                    │
+SQLite audit store (errata-local.db)              │        ├─ embedded PostgreSQL + pgvector (pg0) — memory persists on disk
+                                                  │        ├─ local embeddings + reranker (sentence-transformers)
+                                                  │        └─► Ollama 127.0.0.1:11434 · qwen3.5:9b (thinking off)
  facts (versions + history) · answers (versions,  │
  cited facts, index deps, evidence) · changes ·   │
  impacts (verdict, sources, evidence, decision) · │
  events                                           │
 ```
+
+No Docker, no Cloud, no API key, no paid service. `scripts/hindsight-local.sh start|stop|status` runs the server; the same adapter (`core.LiveHindsight`) also works against Hindsight Cloud if `HINDSIGHT_BASE_URL` and `HINDSIGHT_API_KEY` point there. Observations/mental models are disabled (`HINDSIGHT_API_ENABLE_OBSERVATIONS=false`); Errata does not use them.
 
 ## Who does what
 | Concern | Where | Why there |
@@ -29,12 +33,12 @@ SQLite audit store (errata.db)                    │
 | Answer versions, approvals, audit | SQLite (`Store`) | Exact, queryable state. Memory is not a system of record |
 | Human approval | `decide` → answer v+1, status "correction approved (not sent)", decision retained as an experience | No autonomous outbound action exists in the code |
 
-## Failure behaviour (tested in `tests/test_core.py` with a fake client)
+## Failure behaviour (tested in `tests/test_core.py`; connection loss uses the real adapter against a closed port)
 - A verification call fails, or returns an unparseable verdict → `needs_review`. The verdict is never silently "unaffected".
 - A missing original answer text → `needs_review`.
 - Deciding twice → 409 `Conflict`.
 - An empty or oversized change note → 400.
-- No API key → 503 with an explicit message. The UI shows a banner, and no data is faked.
+- Hindsight unreachable (or Ollama down, which surfaces as a Hindsight error) → verification `needs_review`; change apply → `failed`; HTTP 502 with the upstream error. No data is faked.
 
 ## Band
 Band Desktop is used for the team's agent review workflow, not in Errata's runtime. See `BAND_USAGE.md`.

@@ -1,5 +1,5 @@
 """Unit tests for Errata's logic. These use FakeHindsight — a recording stub, NOT Hindsight Cloud.
-They prove orchestration/bookkeeping logic only. Real-API behaviour is tested in test_cloud_live.py."""
+They prove orchestration/bookkeeping logic only. Real-API behaviour is tested in test_live.py (pytest -m live)."""
 import pytest
 from errata_app import core
 
@@ -237,3 +237,71 @@ def test_all_drafts_failing_does_not_mark_seeded(tmp_path):
     with pytest.raises(RuntimeError):
         e.seed()
     assert e.store.meta("seeded_at") is None
+
+
+def test_local_adapter_sends_no_auth_header_without_key():
+    """Local Hindsight is unauthenticated: no key -> no 'Authorization: Bearer None' on the raw PATCH."""
+    import json, threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    seen = {}
+
+    class H(BaseHTTPRequestHandler):
+        def do_PATCH(self):
+            seen["auth"], seen["path"] = self.headers.get("Authorization"), self.path
+            self.rfile.read(int(self.headers["Content-Length"]))
+            self.send_response(200); self.end_headers(); self.wfile.write(b"{}")
+        def log_message(self, *a): pass
+
+    srv = HTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=srv.handle_request, daemon=True).start()
+    hs = core.LiveHindsight(f"http://127.0.0.1:{srv.server_port}", None)
+    hs.invalidate("b1", "m1", "superseded")
+    srv.server_close()
+    assert seen == {"auth": None, "path": "/v1/default/banks/b1/memories/m1"}
+
+
+def test_hindsight_down_never_clears(tmp_path):
+    """Real adapter against a closed port (connection loss): verification -> needs_review, apply -> failed, no clearance."""
+    dead = core.LiveHindsight("http://127.0.0.1:9", None, timeout=3)
+    e = core.Errata(dead, core.Store(str(tmp_path / "d.db")), "b", {"F01": ("residency", "US only")}, [])
+    e.store.x("insert into facts values(?,?,?,?,?,?,?)", ("F01", "residency", 1, "US only", "fact:F01:v1", "2026-08-01", "[]"))
+    a = {"qid": "Q01", "deal": "Acme", "question": "Where is data hosted?", "text": "Only in the US.", "cited_facts": ["F01"]}
+    v = e._verify("C1", {"effective": "2026-11-03", "note": "India region"}, "F01", a, ["hindsight_citation"])
+    assert v["verdict"] == "needs_review" and "verification failed" in v["reason"]
+    with pytest.raises(Exception):
+        e.propose_change("India region GA", "2026-11-03")
+
+
+def test_grounding_ignores_markdown_formatting():
+    """Local models answer in Markdown; a quote without the ** / # markup is still a quote of what was sent."""
+    sent = "# Hosting\n\n**All customer data is stored only in AWS us-east-1.** We offer no other region."
+    v = {"status": "affected", "false_sentence": "All customer data is stored only in AWS us-east-1.", "reason": "India region", "corrected_answer": "x"}
+    assert core.grounded(v, sent)[0] == "affected"
+    fake = dict(v, false_sentence="Data is stored in Frankfurt.")
+    assert core.grounded(fake, sent)[0] == "needs_review"
+
+
+def test_failed_draft_is_always_a_candidate(tmp_path):
+    """An answer whose draft failed has no citations; it must still surface as needs_review on every change."""
+    hs = FakeHindsight(fail_reflect_for=("pricing",))
+    e = core.Errata(hs, core.Store(str(tmp_path / "f.db")), "b", {"F01": ("residency", "US only"), "F02": ("backups", "Oregon")},
+                    [("Q01", "Acme", "Where is our data hosted?", ["F01"], None), ("Q09", "Zed", "What is your pricing?", ["F19"], None)])
+    e.seed()
+    ch = e.propose_change("Backups move to Ireland", "2026-11-03")
+    imp = {i["qid"]: i for i in e.apply_change(ch["id"], "F02")}
+    assert imp["Q09"]["verdict"] == "needs_review"
+
+
+def test_nothing_invalidated_never_clears(app):
+    """If the old fact version could not be found to invalidate, the verifier may have seen stale memory: no 'unaffected'."""
+    e, hs = app
+    hs.list_memories = lambda *a, **k: {"items": []}
+    ch = e.propose_change("Mumbai region GA", "2026-11-03")
+    imp = {i["qid"]: i for i in e.apply_change(ch["id"], "F01")}
+    assert imp["Q03"]["verdict"] == "needs_review"
+
+
+def test_ungrounded_quote_is_shown_to_reviewer():
+    v = {"status": "affected", "false_sentence": "We host only in Virginia", "reason": "India region", "corrected_answer": "x"}
+    verdict, reason, quoted = core.grounded(v, "All data stays in us-east-1.")
+    assert verdict == "needs_review" and "We host only in Virginia" in reason and quoted == ""
