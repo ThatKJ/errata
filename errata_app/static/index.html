@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errata — find the answers you already sent that are now wrong</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true">E</span><span>Errata</span></div>
+  <p class="pitch">When a product fact changes, find every customer you already told the old version — with the memory evidence — and draft the correction for your approval.</p>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+</header>
+
+<div class="banner" id="banner" role="alert" hidden></div>
+
+<main id="main">
+  <section class="card" id="setup" hidden>
+    <h2>Load the demo workspace</h2>
+    <p>Loads a <strong>synthetic</strong> fact sheet for a fictional company (Kestrel Ledger: 20 facts) into Hindsight, then drafts 30 customer answers with Hindsight <code>reflect</code> and records which facts each answer cited. These stand in for answers your team already sent.</p>
+    <button class="primary" id="seedBtn">Load synthetic workspace</button>
+    <div class="progress" id="seedProgress" hidden><div class="bar"><span id="seedBar"></span></div><span id="seedText"></span></div>
+  </section>
+
+  <div class="grid" id="workspace" hidden>
+    <section class="card" aria-labelledby="chgTitle">
+      <h2 id="chgTitle"><span class="step">1</span> Post a change</h2>
+      <p class="hint">Paste the announcement the way it arrived (Slack, changelog, legal email). It is stored in Hindsight as untrusted text.</p>
+      <label for="note">Change announcement</label>
+      <textarea id="note" rows="4" maxlength="5000" placeholder="e.g. Ops update: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored in India by default."></textarea>
+      <div class="row">
+        <div><label for="eff">Effective date</label><input id="eff" type="date"></div>
+        <button class="primary" id="proposeBtn">Find the fact it changes</button>
+      </div>
+      <div id="proposal"></div>
+    </section>
+
+    <section class="card" aria-labelledby="impTitle">
+      <h2 id="impTitle"><span class="step">2</span> Sent answers affected</h2>
+      <div id="impacts"><p class="empty">Post a change to see which sent answers it touches.</p></div>
+    </section>
+
+    <section class="card wide" aria-labelledby="ansTitle">
+      <h2 id="ansTitle">Sent answers <span class="tag">synthetic</span></h2>
+      <p class="hint">Each answer was drafted by Hindsight <code>reflect</code>; the chips show the facts it cited (<span class="chip cite">cited</span>) and the app's own dependency index (<span class="chip idx">index</span>).</p>
+      <div class="tablewrap"><table id="answers"><thead><tr><th>ID</th><th>Customer</th><th>Question</th><th>Answer on file</th><th>Depends on</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="card" aria-labelledby="factsTitle">
+      <h2 id="factsTitle">Fact sheet <span class="tag">synthetic</span></h2>
+      <ul class="facts" id="facts"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="logTitle">
+      <h2 id="logTitle">Audit trail</h2>
+      <ol class="log" id="log"></ol>
+    </section>
+  </div>
+</main>
+
+<dialog id="review" aria-labelledby="revTitle">
+  <form method="dialog" id="revForm">
+    <h2 id="revTitle"><span class="step">3</span> Review correction</h2>
+    <div id="revBody"></div>
+    <label for="reviewer">Your name (recorded with the decision)</label>
+    <input id="reviewer" autocomplete="name" required maxlength="80">
+    <p class="hint">Approving records the corrected answer and writes the decision back into Hindsight memory. <strong>Nothing is sent to the customer.</strong></p>
+    <div class="row end">
+      <button type="button" class="ghost" id="cancelBtn">Cancel</button>
+      <button type="button" class="ghost danger" id="rejectBtn">Reject — keep original</button>
+      <button type="button" class="primary" id="approveBtn">Approve correction</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="foot">Demo data is synthetic and fictional. Memory: <a href="https://github.com/vectorize-io/hindsight">Hindsight</a> (Vectorize). Errata never contacts customers.</footer>
+<script src="/app.js"></script>
+</body>
+</html>
