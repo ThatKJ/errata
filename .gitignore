@@ -16,3 +16,4 @@ errata-server.log
 results/local/*.log
 results/backups/
 .playwright-mcp/
+results/local/learn-*.db

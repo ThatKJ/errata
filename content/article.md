@@ -10,7 +10,7 @@ The company is fictional and every customer, fact and answer is synthetic. The s
 
 ## The problem nobody's tool looks at
 
-If you answer security questionnaires and RFPs, you live inside an answer library. Loopio, Responsive and friends keep the *next* answer current. In the public docs and reviews I could reach, I found nothing that goes backwards, taking a changed fact and listing every customer who already received the old version.
+If you answer security questionnaires and RFPs, you live inside an answer library. Loopio, Responsive and friends keep the *next* answer current. In the public docs and reviews I could reach, nothing goes backwards from a changed fact to every customer who already received the old version.
 
 Closing that gap needs three things:
 
@@ -56,7 +56,7 @@ def facts_from_based_on(based_on):
 
 That list is stored with the answer: a dependency record I never hand-labelled.
 
-Is it accurate? On Hindsight Cloud I generated 30 answers over a 20-fact sheet and compared the cited facts with the facts each question actually depends on, using ground truth fixed before running anything.
+Is it accurate? On Hindsight Cloud I generated 30 answers over a 20-fact sheet and compared the cited facts with each question's true dependencies, fixed before running anything.
 
 - **Recall: 1.00** (32 of 32 true dependencies cited).
 - **Precision: 0.78.** `based_on` over-cites, mostly through consolidated *observations* that mention neighbouring facts. Q01's answer about hosting also cited the backups fact, because the answer itself mentioned backups.
