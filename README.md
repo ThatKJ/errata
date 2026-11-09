@@ -14,7 +14,7 @@ Full pipeline on the open-source Hindsight server + Ollama `qwen3.5:9b`: 30 sent
 | Precision of *needs correction* | 0.55 (run 2). 4 of the 5 "false alarms" quote a sent sentence that really is stale but sits outside the pre-registered labels; 1 is a genuine verifier error |
 | Old fact version after a change | invalidated in Hindsight with a reason; new version live; verified via `list_memories(state=…)` |
 | Persistence | memory and audit trail survive a full restart of Hindsight and the app |
-| Latency (laptop, Apple silicon) | `reflect` median ≈32 s; verification median ≈38 s per candidate (up to ~3 min for long drafts); seeding 30 answers ≈19–20 min |
+| Latency (laptop, Apple silicon) | `reflect` median ≈32 s; verification median ≈38 s per candidate (up to ~3 min for long drafts); seeding 30 answers ≈19–20 min. Verification runs as a background job, so the page stays live and shows each verdict as it lands |
 
 An earlier spike on Hindsight Cloud (different model) measured `based_on` citation recall of 32/32. On 8 post-change questions it scored Hindsight 8/8, BM25 RAG 4/8 and stateless 2/8: [`docs/MEMORY_PROOF.md`](docs/MEMORY_PROOF.md).
 
@@ -29,8 +29,11 @@ The same idea, retroactively repairing past decisions when a fact is retracted, 
 
 ## The three-step journey
 1. **Post a change.** Paste the announcement as it arrived. Hindsight `recall` suggests which fact it supersedes, and you confirm.
-2. **See the affected sent answers.** Each candidate is grouped as *needs correction*, *needs human review* or *still accurate*, with how it was found (`hindsight_citation` / `dependency_index`).
-3. **Review and approve.** Compare the old answer, the drafted correction and the memory evidence (old fact struck through, new fact, `based_on` memories). Approve or reject. The decision is retained back into Hindsight.
+2. **See the blast radius.** The new fact version is retained and the old one invalidated at once (no LLM); then every sent answer linked to the fact is re-checked in the background, one local model call each, and each verdict lands as it is produced. The view shows one bar per change: *needs correction*, *needs review*, *still accurate*, *not yet checked*, with the quoted sentence that is now false. A run interrupted by a restart resumes where it stopped.
+3. **Open the evidence and decide.** The evidence time machine lists, in time order: the fact version the answer relied on, the answer as sent (false sentence highlighted only when it is verbatim), the change (old memory `invalidated` with its reason and timestamp, new version `valid`, both read live from Hindsight), the verdict with its `based_on` memories, and your decision. Approve or reject beside a before/after pane. The decision is retained back into Hindsight. Nothing is sent.
+
+![Blast radius for one change on the real local demo bank](docs/screenshots/overnight-01-blast-radius.png)
+![Evidence time machine for Q02](docs/screenshots/overnight-02-evidence-time-machine.png)
 
 ## Where Hindsight is used (real calls, `errata_app/core.py`)
 | Operation | Function | Purpose |
@@ -41,7 +44,7 @@ The same idea, retroactively repairing past decisions when a fact is retracted, 
 | `list_memories` + `PATCH state=invalidated` | `apply_change` | retire every memory of the old fact version, with a reason |
 | `reflect` + `response_schema` | `_verify` | per-answer verdict {affected/unaffected, reason, corrected answer} against current facts |
 
-Architecture and failure behaviour: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Band Desktop usage (team workflow, not runtime): [`docs/BAND_USAGE.md`](docs/BAND_USAGE.md).
+Architecture and failure behaviour: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Release gate with reproducible commands: [`docs/RELEASE_READINESS.md`](docs/RELEASE_READINESS.md). Design references and competitor check: [`docs/UX_REFERENCE_AND_COMPETITORS.md`](docs/UX_REFERENCE_AND_COMPETITORS.md). Band Desktop usage (team workflow, not runtime): [`docs/BAND_USAGE.md`](docs/BAND_USAGE.md).
 
 ## Run it locally (no Cloud, no API key, no Docker)
 Errata runs against the **open-source Hindsight server** on your machine, with embedded PostgreSQL and a local LLM via Ollama.
@@ -64,7 +67,7 @@ The same adapter also works against Hindsight Cloud: set `HINDSIGHT_BASE_URL` an
 
 ## Tests
 ```bash
-uv run pytest                                            # unit tests (FAKE client for logic, real adapter for connection loss)
+uv run pytest                                            # 47 unit + HTTP tests (FAKE client for logic, real adapter for connection loss)
 ERRATA_REQUIRE_LIVE=1 uv run pytest -m live -v -s        # REAL local Hindsight + Ollama, fresh isolated bank
 uv run python scripts/eval_local.py                      # ground-truth eval of the full app pipeline (30 answers, 4 changes)
 ```

@@ -6,19 +6,19 @@
 
 In October, a security-questionnaire answer told an Indian microfinance customer: *"Kestrel Ledger cannot host data within India, as all customer data is exclusively stored and processed in the AWS us-east-1 region in N. Virginia, USA."* That was true when it went out. On November 3 we launched a Mumbai region. The answer was still sitting in that customer's security review, now wrong, and nobody on our side knew which customers had been told the old version.
 
-The company is fictional. Every customer, fact and answer here is synthetic data. The sentence above is a real `reflect` output, though, and it shows the question I wanted to answer: **once a fact changes, which answers you already sent are now wrong?**
+The company is fictional and every customer, fact and answer is synthetic. The sentence above is a real `reflect` output, though, and it poses the question I wanted to answer: **once a fact changes, which answers you already sent are now wrong?**
 
 ## The problem nobody's tool looks at
 
 If you answer security questionnaires and RFPs, you live inside an answer library. Loopio, Responsive and friends keep the *next* answer current. In the public docs and reviews I could reach, I found nothing that goes backwards, taking a changed fact and listing every customer who already received the old version.
 
-That gap needs three things:
+Closing that gap needs three things:
 
 1. **Provenance at send time.** Which facts did each answer actually rely on?
 2. **Facts that change without being overwritten.** The old version has to stay inspectable, and it must stop influencing new answers.
 3. **A judgement per answer.** "Is our data stored in the US?" is *still true* for a US credit union after an India region launches. Depending on a changed fact is not the same as being wrong.
 
-I built **Errata** to test whether an agent memory layer could carry those three jobs. I used [Hindsight](https://github.com/vectorize-io/hindsight), Vectorize's open-source agent memory. I started on Hindsight Cloud and finished on the open-source server running on my laptop, with embedded Postgres and `qwen3.5:9b` through Ollama. No API key, no Docker. The idea isn't new: a project called Unsay did retroactive correction for medication safety on CockroachDB. What I wanted to know was whether Hindsight's `retain`/`recall`/`reflect` primitives make it cheap to build for B2B commitments.
+I built **Errata** to test whether an agent memory layer could do those three jobs. I used [Hindsight](https://github.com/vectorize-io/hindsight), Vectorize's open-source agent memory. I started on Hindsight Cloud and finished on the open-source server running on my laptop, with embedded Postgres and `qwen3.5:9b` through Ollama. No API key, no Docker. The idea isn't new: a project called Unsay did retroactive correction for medication safety on CockroachDB. What I wanted to know was whether Hindsight's `retain`/`recall`/`reflect` primitives make it cheap to build for B2B commitments.
 
 ## How it hangs together
 
@@ -36,7 +36,7 @@ The flow has three steps for the user:
 - **See affected sent answers.** Each is grouped as *needs correction*, *needs review* or *still accurate*.
 - **Review and approve a drafted correction.**
 
-Approval writes the decision back into memory. Nothing is ever sent to a customer.
+Every verdict opens a timeline built from stored rows and a live memory read: the fact version the answer relied on, the answer as sent, the old memory marked invalidated with its reason, the new version, the verdict. Approval writes the decision back into memory. Nothing is ever sent to a customer.
 
 ## Provenance came for free (mostly)
 
@@ -54,14 +54,14 @@ def facts_from_based_on(based_on):
     return out
 ```
 
-That list is stored with the answer. It is the dependency record I never had to hand-label.
+That list is stored with the answer: a dependency record I never hand-labelled.
 
 Is it accurate? On Hindsight Cloud I generated 30 answers over a 20-fact sheet and compared the cited facts with the facts each question actually depends on, using ground truth fixed before running anything.
 
 - **Recall: 1.00** (32 of 32 true dependencies cited).
 - **Precision: 0.78.** `based_on` over-cites, mostly through consolidated *observations* that mention neighbouring facts. Q01's answer about hosting also cited the backups fact, because the answer itself mentioned backups.
 
-For a "who might be affected?" sweep, over-citing is the right failure direction.
+For a "who might be affected?" sweep, over-citing is the right direction to fail in.
 
 ## Superseding a fact without destroying the evidence
 
@@ -89,7 +89,7 @@ I expected Hindsight to win at *finding* the affected answers. On this dataset i
 
 The hard part is the **verdict**. On the data-residency change, Errata's verifier (`reflect` with a `response_schema`) found all three truly affected answers, but also flagged four that weren't wrong, including my deliberate trap: a US credit union whose "your data stays in the US" answer is still true. In an earlier run that trap came back correctly *unaffected*. The verdict isn't deterministic.
 
-So I made the verifier earn its "affected" (`core.py`):
+So the verifier has to earn its "affected" (`core.py`):
 
 ```python
 def grounded(verdict, sent_text):
@@ -103,12 +103,12 @@ def grounded(verdict, sent_text):
 
 The schema now requires the exact sentence from the sent answer that became false. If the model can't point at one that really exists, the item drops to *needs review* instead of *needs correction*.
 
-Then I re-ran everything locally: all 30 answers and all 4 changes through the real app pipeline, against 12 affected answers I had labelled in advance. The honest numbers:
+Then I re-ran everything locally: 30 answers and 4 changes through the real app pipeline, against 12 affected answers labelled in advance. The numbers:
 
 - **False clears: 0 of 12, in two runs.** Every truly affected answer reached a human: 6 marked *needs correction*, 6 *needs review* because the model's quote didn't match the sent text.
 - **Precision of "needs correction": 0.55.** The "false positives" surprised me: four of five quote a sent sentence that really is stale. The local model's chatty answers restated neighbouring facts, like "No other third parties process customer data, including any analytics vendors." inside a billing answer. My labels assumed answers stay on topic. That assumption was wrong, not the verifier.
 
-A verification costs about 38 seconds on a laptop, which is fine for a batch job that runs once per change.
+A verification costs about 38 seconds on a laptop, fine for a batch job that runs once per change.
 
 ## Lessons I'd reuse
 
@@ -119,4 +119,4 @@ A verification costs about 38 seconds on a laptop, which is fine for a batch job
 5. **Short answers are easier to audit.** Every extra sentence you send is another claim that can go stale.
 6. **Fail toward a human.** Every error path ends in *needs review*; only approval changes anything.
 
-Everything above ran on synthetic data: 20 facts, 30 answers and 4 changes, with one local model. That's a mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [GITHUB_REPO_URL]. Hindsight itself is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), with docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.
+Everything above ran on synthetic data: 20 facts, 30 answers, 4 changes, one local model. A mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [GITHUB_REPO_URL]. Hindsight itself is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), with docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.
