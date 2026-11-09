@@ -3,78 +3,70 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Errata — find the answers you already sent that are now wrong</title>
+<title>Errata</title>
+<meta name="description" content="When a product fact changes, Errata finds the customer answers you already sent that are now wrong, shows the memory evidence, and drafts a correction for your approval.">
 <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-<header class="top">
-  <div class="brand"><span class="mark" aria-hidden="true">E</span><span>Errata</span></div>
-  <p class="pitch">When a product fact changes, find every customer you already told the old version — with the memory evidence — and draft the correction for your approval.</p>
-  <div class="status" id="status" role="status" aria-live="polite"></div>
+<header class="topbar">
+  <a class="wordmark" href="/" aria-label="Errata home">ERRATA</a>
+  <span class="workspace">Kestrel Ledger workspace <span class="synthetic" title="A fictional company and fictional customers. Nothing here describes a real business.">synthetic data</span></span>
+  <div class="conn" id="status" role="status" aria-live="polite"></div>
 </header>
 
 <div class="banner" id="banner" role="alert" hidden></div>
 
 <main id="main">
-  <section class="card" id="setup" hidden>
-    <h2>Load the demo workspace</h2>
-    <p>Loads a <strong>synthetic</strong> fact sheet for a fictional company (Kestrel Ledger: 20 facts) into Hindsight, then drafts 30 customer answers with Hindsight <code>reflect</code> and records which facts each answer cited. These stand in for answers your team already sent.</p>
+  <section class="first-run" id="setup" hidden>
+    <h1>Load the demo workspace</h1>
+    <p>Errata needs answers that were already sent. This loads a synthetic fact sheet for a fictional company (20 facts) into Hindsight, then drafts 30 customer answers with Hindsight <code>reflect</code> and records which facts each answer cited.</p>
+    <p class="quiet">Each draft is a real local model call, so this takes tens of minutes on a laptop. The workspace is kept, so you only do this once.</p>
     <button class="primary" id="seedBtn">Load synthetic workspace</button>
-    <div class="progress" id="seedProgress" hidden><div class="bar"><span id="seedBar"></span></div><span id="seedText"></span></div>
+    <div class="progress" id="seedProgress" hidden><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="30" id="seedBarWrap"><span id="seedBar"></span></div><span id="seedText"></span></div>
   </section>
 
-  <div class="grid" id="workspace" hidden>
-    <section class="card" aria-labelledby="chgTitle">
-      <h2 id="chgTitle"><span class="step">1</span> Post a change</h2>
-      <p class="hint">Paste the announcement the way it arrived (Slack, changelog, legal email). It is stored in Hindsight as untrusted text.</p>
-      <label for="note">Change announcement</label>
-      <textarea id="note" rows="4" maxlength="5000" placeholder="e.g. Ops update: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored in India by default."></textarea>
-      <div class="row">
-        <div><label for="eff">Effective date</label><input id="eff" type="date"></div>
-        <button class="primary" id="proposeBtn">Find the fact it changes</button>
+  <div class="shell" id="workspace" hidden>
+    <aside class="rail" aria-label="Changes">
+      <h2 class="rail-title">Fact changes</h2>
+      <ol class="changes" id="changeList"></ol>
+      <form class="post" id="postForm" aria-labelledby="postTitle">
+        <h2 id="postTitle">Post a change</h2>
+        <p class="quiet">Paste the announcement the way it arrived. It is stored in Hindsight as untrusted text and never executed.</p>
+        <label for="note">Announcement</label>
+        <textarea id="note" rows="4" maxlength="5000" required placeholder="Ops update: our Mumbai region (AWS ap-south-1) is now GA. New Indian customers' data is stored in India by default."></textarea>
+        <label for="eff">Effective date</label>
+        <input id="eff" type="date" required>
+        <button class="primary" id="proposeBtn" type="submit">Find the fact it changes</button>
+      </form>
+    </aside>
+
+    <section class="focus" id="focus" aria-live="polite"></section>
+
+    <section class="records">
+      <div class="tabs" role="tablist" aria-label="Records">
+        <button role="tab" aria-selected="true" aria-controls="tab-answers" id="tabbtn-answers" data-tab="answers">Sent answers</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-facts" id="tabbtn-facts" data-tab="facts">Fact sheet</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-log" id="tabbtn-log" data-tab="log">Audit trail</button>
       </div>
-      <div id="proposal"></div>
-    </section>
-
-    <section class="card" aria-labelledby="impTitle">
-      <h2 id="impTitle"><span class="step">2</span> Sent answers affected</h2>
-      <div id="impacts"><p class="empty">Post a change to see which sent answers it touches.</p></div>
-    </section>
-
-    <section class="card wide" aria-labelledby="ansTitle">
-      <h2 id="ansTitle">Sent answers <span class="tag">synthetic</span></h2>
-      <p class="hint">Each answer was drafted by Hindsight <code>reflect</code>; the chips show the facts it cited (<span class="chip cite">cited</span>) and the app's own dependency index (<span class="chip idx">index</span>).</p>
-      <div class="tablewrap"><table id="answers"><thead><tr><th>ID</th><th>Customer</th><th>Question</th><th>Answer on file</th><th>Depends on</th><th>Status</th></tr></thead><tbody></tbody></table></div>
-    </section>
-
-    <section class="card" aria-labelledby="factsTitle">
-      <h2 id="factsTitle">Fact sheet <span class="tag">synthetic</span></h2>
-      <ul class="facts" id="facts"></ul>
-    </section>
-
-    <section class="card" aria-labelledby="logTitle">
-      <h2 id="logTitle">Audit trail</h2>
-      <ol class="log" id="log"></ol>
+      <div role="tabpanel" id="tab-answers" aria-labelledby="tabbtn-answers">
+        <p class="quiet">Every answer was drafted by Hindsight <code>reflect</code> and stands in for one your team already sent. <span class="chip cite">F01</span> means reflect cited that fact (<code>based_on</code>); <span class="chip idx">F02</span> means the app's keyword index linked it.</p>
+        <div class="tablewrap"><table id="answers"><thead><tr><th scope="col">Answer</th><th scope="col">Customer</th><th scope="col">Question</th><th scope="col">What we told them</th><th scope="col">Relies on</th><th scope="col">Status</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div role="tabpanel" id="tab-facts" aria-labelledby="tabbtn-facts" hidden><ul class="facts" id="facts"></ul></div>
+      <div role="tabpanel" id="tab-log" aria-labelledby="tabbtn-log" hidden><ol class="log" id="log"></ol></div>
     </section>
   </div>
 </main>
 
 <dialog id="review" aria-labelledby="revTitle">
-  <form method="dialog" id="revForm">
-    <h2 id="revTitle"><span class="step">3</span> Review correction</h2>
-    <div id="revBody"></div>
-    <label for="reviewer">Your name (recorded with the decision)</label>
-    <input id="reviewer" autocomplete="name" required maxlength="80">
-    <p class="hint">Approving records the corrected answer and writes the decision back into Hindsight memory. <strong>Nothing is sent to the customer.</strong></p>
-    <div class="row end">
-      <button type="button" class="ghost" id="cancelBtn">Cancel</button>
-      <button type="button" class="ghost danger" id="rejectBtn">Reject — keep original</button>
-      <button type="button" class="primary" id="approveBtn">Approve correction</button>
-    </div>
-  </form>
+  <div class="dlg-head">
+    <h2 id="revTitle">Evidence</h2>
+    <button type="button" class="ghost small" id="cancelBtn" aria-label="Close">Close</button>
+  </div>
+  <div class="dlg-body" id="revBody"></div>
 </dialog>
 
-<footer class="foot">Demo data is synthetic and fictional. Memory: <a href="https://github.com/vectorize-io/hindsight">Hindsight</a> (Vectorize). Errata never contacts customers.</footer>
+<footer class="foot">All data is synthetic and fictional. Memory layer: <a href="https://github.com/vectorize-io/hindsight">Hindsight</a> by Vectorize, running locally. Errata never contacts customers.</footer>
 <script src="/app.js"></script>
 </body>
 </html>
