@@ -124,4 +124,6 @@ A verification takes about 38 seconds on a laptop: fine for a once-per-change ba
 5. **Short answers are easier to audit.** Every extra sentence you send is another claim that can go stale.
 6. **Fail toward a human.** Every error path ends in *needs review*; only approval changes anything.
 
-Everything above ran on synthetic data: 20 facts, 30 answers, 4 changes, one local model. A mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [github.com/ThatKJ/errata](https://github.com/ThatKJ/errata). Hindsight itself is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), with docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.
+Everything above ran on synthetic data: 20 facts, 30 answers, 4 changes, one local model. A mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [github.com/ThatKJ/errata](https://github.com/ThatKJ/errata). Hindsight is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.
+
+cc [Code.in](https://code.in/)
