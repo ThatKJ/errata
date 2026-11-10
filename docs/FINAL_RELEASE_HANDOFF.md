@@ -9,8 +9,9 @@ The canonical submission tracker is `../SUBMISSION_STATUS.md`, outside this repo
 | Secret scan | **PASS**: no keys or tokens in tracked files or full history; `.env*` and databases are ignored | `docs/RELEASE_READINESS.md` row 13 |
 | Claims | reconciled against raw rows | `docs/RELEASE_CLAIMS.md` |
 | Article | **PUBLISHED** on DEV, verified logged out | https://dev.to/kirtan120007/the-answers-you-already-sent-are-the-ones-hindsight-remembers-3b8e |
-| Demo video | **FILE READY**, 3:05, 1080p, synthesized narration disclosed; not yet uploaded | `docs/demo/errata-demo.mp4`, `content/youtube-upload.md` |
-| LinkedIn, Reddit, YouTube, Band, forms | need the owner's signed-in browser | `../SUBMISSION_STATUS.md` |
+| Demo video | **PUBLISHED PUBLIC** on YouTube, verified logged out (3:05, 1080p, synthesized narration disclosed) | https://youtu.be/f30yLISBpfY |
+| LinkedIn post | **PUBLISHED**, article and Hindsight links as first and second comments, verified logged out | https://www.linkedin.com/feed/update/urn:li:activity:7525824588321267712/ |
+| Reddit, Band, forms | need the owner. The browser extension refuses reddit.com, and the forms need personal details | `../SUBMISSION_STATUS.md` |
 
 ## Release refs
 - Baseline: tag `baseline-1caf2bb`. Overnight work: tag `overnight-final-4481e38`, branch `improve/errata-overnight`.

@@ -1,4 +1,4 @@
-# YouTube upload package (final demo)
+# YouTube upload package (final demo) — PUBLISHED PUBLIC 2026-11-10: https://youtu.be/f30yLISBpfY
 
 **File:** `docs/demo/errata-demo.mp4`. It is 1920×1080, H.264 with AAC audio, and 3:05 long. ffprobe: `width=1920 height=1080 duration=185.03`.
 **Thumbnail:** `docs/demo/thumbnail.png` (1280×720).

@@ -1,4 +1,4 @@
-# LinkedIn post — DRAFT (do not post until the repo URL and article URL are real)
+# LinkedIn post — PUBLISHED 2026-11-10: https://www.linkedin.com/feed/update/urn:li:activity:7525824588321267712/ (both comments posted)
 
 ## Post body (paste between the lines)
 ---
