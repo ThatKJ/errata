@@ -51,7 +51,7 @@ Errata runs against the **open-source Hindsight server** on your machine, with e
 
 Prerequisites: macOS/Linux, [uv](https://docs.astral.sh/uv/), [Ollama](https://ollama.com) running, about 10 GB of disk space, and 16 GB of RAM recommended.
 ```bash
-git clone <this repo> && cd errata
+git clone https://github.com/ThatKJ/errata.git && cd errata
 ollama pull qwen3.5:9b                 # ~7.6 GB, once
 cp .env.example .env                   # local defaults; no key needed
 scripts/hindsight-local.sh start       # installs hindsight-all==1.2.0 into .hindsight-venv on first run, serves 127.0.0.1:8888
@@ -81,4 +81,4 @@ uv run python scripts/eval_local.py                      # ground-truth eval of 
 - Human decisions are retained into Hindsight, but the verifier does not yet recall them. An isolated experiment (`scripts/learn_experiment.py`, `results/local/learn_experiment.json`) showed a retained rejection changing a held-out verdict for the same customer (2/2) while a control stayed flagged, and also being recalled once for a different customer. That cross-customer recall is why it is not integrated: **experimental, not a learning claim.**
 
 ## License
-MIT
+MIT, see [LICENSE](LICENSE).

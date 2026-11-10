@@ -1,8 +1,7 @@
 # The answers you already sent are the ones Hindsight remembers
 
-<!-- DRAFT. Numbers come from real runs: docs/LOCAL_VALIDATION_REPORT.md (local) and docs/MEMORY_PROOF.md (earlier Cloud spike).
-     TODO before publishing: (1) replace [GITHUB_REPO_URL] once the repo is public; (2) add screenshots from
-     content/ARTICLE_PUBLISHING_CHECKLIST.md; (3) run content/check_content.py. -->
+<!-- Numbers come from real runs: docs/LOCAL_VALIDATION_REPORT.md (local) and docs/MEMORY_PROOF.md (earlier Cloud spike).
+     Screenshots are real captures of the local app (synthetic data). Run content/check_content.py before republishing. Remove this comment when pasting. -->
 
 In October, a security-questionnaire answer told an Indian microfinance customer: *"Kestrel Ledger cannot host data within India, as all customer data is exclusively stored and processed in the AWS us-east-1 region in N. Virginia, USA."* That was true when it went out. On November 3 we launched a Mumbai region. The answer was still sitting in that customer's security review, now wrong, and nobody on our side knew which customers had been told the old version.
 
@@ -10,7 +9,7 @@ The company is fictional and every customer, fact and answer is synthetic. The s
 
 ## The problem nobody's tool looks at
 
-If you answer security questionnaires and RFPs, you live inside an answer library. Loopio, Responsive and friends keep the *next* answer current. In the public docs and reviews I could reach, nothing goes backwards from a changed fact to every customer who already received the old version.
+If you answer security questionnaires and RFPs, you live inside an answer library. Loopio and Responsive keep the *next* answer current. In the public docs and reviews I could reach, nothing goes backwards from a changed fact to every customer who already received the old version.
 
 Closing that gap needs three things:
 
@@ -22,7 +21,7 @@ I built **Errata** to test whether an agent memory layer could do those three jo
 
 ## How it hangs together
 
-Errata is small: a standard-library Python HTTP server, a SQLite audit store, and the official `hindsight-client`.
+Errata is small: a standard-library Python server, SQLite for audit, and the official `hindsight-client`.
 
 ```
 UI → server.py → core.py ──► local Hindsight: retain · recall · reflect(based_on) · invalidate
@@ -32,11 +31,15 @@ UI → server.py → core.py ──► local Hindsight: retain · recall · refl
 
 The flow has three steps for the user:
 
-- **Post a change.** It's just the Slack message, pasted as text.
+- **Post a change.** Paste the Slack message as text.
 - **See affected sent answers.** Each is grouped as *needs correction*, *needs review* or *still accurate*.
 - **Review and approve a drafted correction.**
 
 Every verdict opens a timeline built from stored rows and a live memory read: the fact version the answer relied on, the answer as sent, the old memory marked invalidated with its reason, the new version, the verdict. Approval writes the decision back into memory. Nothing is ever sent to a customer.
+
+![Blast radius of one fact change across sent answers, grouped by verdict (synthetic data)](https://raw.githubusercontent.com/ThatKJ/errata/main/docs/screenshots/overnight-01-blast-radius.png)
+
+![Evidence timeline for one sent answer with the drafted correction](https://raw.githubusercontent.com/ThatKJ/errata/main/docs/screenshots/overnight-02-evidence-time-machine.png)
 
 ## Provenance came for free (mostly)
 
@@ -59,7 +62,7 @@ That list is stored with the answer: a dependency record I never hand-labelled.
 Is it accurate? On Hindsight Cloud I generated 30 answers over a 20-fact sheet and compared the cited facts with each question's true dependencies, fixed before running anything.
 
 - **Recall: 1.00** (32 of 32 true dependencies cited).
-- **Precision: 0.78.** `based_on` over-cites, mostly through consolidated *observations* that mention neighbouring facts. Q01's answer about hosting also cited the backups fact, because the answer itself mentioned backups.
+- **Precision: 0.78.** `based_on` over-cites, mostly through consolidated *observations* that mention neighbouring facts.
 
 For a "who might be affected?" sweep, over-citing is the right direction to fail in.
 
@@ -79,7 +82,9 @@ for m in items:
 
 `invalidate` is a `PATCH /memories/{id}` with `state: "invalidated"`. The memory is excluded from recall but kept, with its reason, for audit.
 
-Which fact a free-text note supersedes comes from `recall` over the fact memories. A human confirms the top suggestion before anything changes. Recall's top hit was the right fact for **4 of 4** change notes, on Cloud and again locally.
+![Old fact memory shown invalidated in Hindsight, with reason and timestamp](https://raw.githubusercontent.com/ThatKJ/errata/main/docs/screenshots/overnight-03-invalidated-memory.png)
+
+`recall` over the fact memories suggests which fact a free-text note supersedes. A human confirms it before anything changes. Recall's top hit was the right fact for **4 of 4** change notes, on Cloud and again locally.
 
 Does the old version stop leaking into new answers? In the Cloud run I asked 8 fresh questions after all four changes. Hindsight `reflect` got **8 of 8** right, including when I let it search the bank that still holds the 30 old (now wrong) sent answers. Plain BM25 over the same raw documents, with the same answer model, got **4 of 8**. A stateless model got **2 of 8**.
 
@@ -103,12 +108,12 @@ def grounded(verdict, sent_text):
 
 The schema now requires the exact sentence from the sent answer that became false. If the model can't point at one that really exists, the item drops to *needs review* instead of *needs correction*.
 
-Then I re-ran everything locally: 30 answers and 4 changes through the real app pipeline, against 12 affected answers labelled in advance. The numbers:
+Then I re-ran the full app pipeline locally: 30 answers, 4 changes, 12 affected answers labelled in advance:
 
 - **False clears: 0 of 12, in two runs.** Every truly affected answer reached a human: 6 marked *needs correction*, 6 *needs review* because the model's quote didn't match the sent text.
 - **Precision of "needs correction": 0.55.** The "false positives" surprised me: four of five quote a sent sentence that really is stale. The local model's chatty answers restated neighbouring facts, like "No other third parties process customer data, including any analytics vendors." inside a billing answer. My labels assumed answers stay on topic. That assumption was wrong, not the verifier.
 
-A verification costs about 38 seconds on a laptop, fine for a batch job that runs once per change.
+A verification takes about 38 seconds on a laptop: fine for a once-per-change batch job.
 
 ## Lessons I'd reuse
 
@@ -119,4 +124,4 @@ A verification costs about 38 seconds on a laptop, fine for a batch job that run
 5. **Short answers are easier to audit.** Every extra sentence you send is another claim that can go stale.
 6. **Fail toward a human.** Every error path ends in *needs review*; only approval changes anything.
 
-Everything above ran on synthetic data: 20 facts, 30 answers, 4 changes, one local model. A mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [GITHUB_REPO_URL]. Hindsight itself is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), with docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.
+Everything above ran on synthetic data: 20 facts, 30 answers, 4 changes, one local model. A mechanism test, not an accuracy claim. Code, dataset, ground truth and raw logs: [github.com/ThatKJ/errata](https://github.com/ThatKJ/errata). Hindsight itself is at [github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight), with docs at [hindsight.vectorize.io](https://hindsight.vectorize.io/). Vectorize's [agent memory explainer](https://vectorize.io/what-is-agent-memory) is a good primer.

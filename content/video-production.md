@@ -28,7 +28,7 @@ Errata finds security-questionnaire and RFP answers that a product-fact change m
 - Runs fully local: the open-source Hindsight server (embedded Postgres) + Ollama qwen3.5:9b. No API key.
 - Measured on synthetic data (small n): see docs/LOCAL_VALIDATION_REPORT.md in the repo.
 
-Code: [GITHUB_REPO_URL] · Article: [ARTICLE_URL] · Hindsight: https://github.com/vectorize-io/hindsight · Docs: https://hindsight.vectorize.io/
+Code: https://github.com/ThatKJ/errata · Article: [ARTICLE_URL] · Hindsight: https://github.com/vectorize-io/hindsight · Docs: https://hindsight.vectorize.io/
 
 Chapters: 0:00 Intro · 0:20 The problem · 0:50 Post a change · 1:20 Impact check · 2:00 Negative control · 2:30 Review & approve · 3:00 Persistence · 3:15 Results · 3:35 Links
 Tags: agent memory, Hindsight, LLM, RAG, provenance, Python
