@@ -15,7 +15,7 @@ async function api(path, body) {
   return j;
 }
 function banner(msg) { const b = $("#banner"); b.hidden = !msg; b.textContent = msg || ""; }
-function busy(btn, on, label) { if (!btn) return; btn.disabled = on; if (label) { btn.dataset.l ??= btn.textContent; btn.textContent = on ? label : btn.dataset.l; } }
+function busy(btn, on, label) { if (!btn) return; btn.disabled = on; if (on && label) { btn.dataset.l ??= btn.textContent; btn.textContent = label; } else if (!on && btn.dataset.l) { btn.textContent = btn.dataset.l; delete btn.dataset.l; } }
 const DT = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" });
 const D = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 function fmt(iso) { if (!iso) return ""; const d = new Date(iso.length === 10 ? iso + "T00:00:00Z" : iso); return isNaN(d) ? iso : iso.length === 10 ? D.format(d) : DT.format(d) + " UTC"; }

@@ -6,7 +6,7 @@ _Status values: **PASS** (ran, evidence path given), **FAIL**, **BLOCKED** (need
 
 | # | Check | Command | Status | Evidence |
 |---|---|---|---|---|
-| 1 | Unit + HTTP tests (FAKE Hindsight; real adapter for connection loss) | `uv run pytest -q` | **PASS** 47 passed, 2 deselected | this session, after commit `3df6a7a` |
+| 1 | Unit + HTTP tests (FAKE Hindsight; real adapter for connection loss) | `uv run pytest -q` | **PASS** 48 passed, 2 deselected (2026-11-10 final release; adds `tests/test_static.py`) | final release run |
 | 2 | Live tests against local Hindsight + Ollama (fresh bank, ~9 min, one LLM call at a time) | `ERRATA_REQUIRE_LIVE=1 uv run pytest -m live -v -s` | **NOT RUN this sprint** (verdict logic untouched; last PASS 2026-11-10 01:37 in `results/local/live_test_run_local.txt`) | `results/local/live_test_run_local.txt` |
 | 3 | Ground-truth eval, run 2 | `uv run python scripts/eval_local.py` | **PASS (recorded)**, not re-run: 0/12 false clears, precision 0.545, recall 0.50, mapping 4/4 | `results/local/eval_local.json` (finished 2026-11-09T21:41:45Z) |
 | 4 | App serves the real demo bank | `uv run python -m errata_app.server` then `curl -s 127.0.0.1:8765/api/state` | **PASS** `configured: true`, bank `errata-demo-20261109193639`, C1 applied, 12/12 verified | `errata-server.log` |

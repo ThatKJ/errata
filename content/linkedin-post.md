@@ -19,7 +19,7 @@ Code: https://github.com/ThatKJ/errata
 ---
 
 ## First comment (after the article is published)
-Full write-up: [ARTICLE_URL]
+Full write-up: https://dev.to/kirtan120007/the-answers-you-already-sent-are-the-ones-hindsight-remembers-3b8e
 
 ## Second comment
 Hindsight, the memory layer I used: https://github.com/vectorize-io/hindsight

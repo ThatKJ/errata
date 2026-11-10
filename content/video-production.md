@@ -11,6 +11,9 @@
    The result must be width ≥1920, height ≥1080, and duration between 120 and 300 s.
 6. Optional thumbnail: a team photo plus the text "Find the answers you already sent wrong". Make it in Nano Banana per the guide, with real team photos only.
 
+## Final asset (2026-11-10)
+`docs/demo/errata-demo.mp4`: a Playwright recording of the real app with a live Hindsight recall, labelled saved results, and disclosed synthesized narration. It is 3:05 at 1920×1080. Upload package: `content/youtube-upload.md`. To re-record, run `scripts/demo_video/record.py` against a copy of the demo DB on port 8766.
+
 ## Draft asset already generated (not a substitute for the recording)
 `docs/demo/errata-recorded-screens-draft.mp4`: 1920×1080, 152 s, built on 2026-11-10 from four **real screenshots** of the local app on the real demo bank plus three title cards. Every frame is labelled "recorded screenshot"; no live timing is implied; there is no narration. Use it as a storyboard or as the fallback if the live app cannot be shown. ffprobe: `width=1920 height=1080 duration=152.0`.
 
@@ -28,7 +31,7 @@ Errata finds security-questionnaire and RFP answers that a product-fact change m
 - Runs fully local: the open-source Hindsight server (embedded Postgres) + Ollama qwen3.5:9b. No API key.
 - Measured on synthetic data (small n): see docs/LOCAL_VALIDATION_REPORT.md in the repo.
 
-Code: https://github.com/ThatKJ/errata · Article: [ARTICLE_URL] · Hindsight: https://github.com/vectorize-io/hindsight · Docs: https://hindsight.vectorize.io/
+Code: https://github.com/ThatKJ/errata · Article: https://dev.to/kirtan120007/the-answers-you-already-sent-are-the-ones-hindsight-remembers-3b8e · Hindsight: https://github.com/vectorize-io/hindsight · Docs: https://hindsight.vectorize.io/
 
 Chapters: 0:00 Intro · 0:20 The problem · 0:50 Post a change · 1:20 Impact check · 2:00 Negative control · 2:30 Review & approve · 3:00 Persistence · 3:15 Results · 3:35 Links
 Tags: agent memory, Hindsight, LLM, RAG, provenance, Python
